@@ -1,0 +1,13 @@
+1
+11
+components/Film.qml
+components/Gallery.qml
+components/ListItemFilm.qml
+components/ListItemHeader.qml
+images/ic_favorite.png
+main.qml
+pages/ConcertsPage.qml
+pages/FilmPage.qml
+pages/FilmsPage.qml
+_javascript/Common.js
+_javascript/Request.js
