@@ -1,1 +1,1 @@
-include (../Hello_TUT.pro)
+include (../Tutty.pro)

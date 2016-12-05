@@ -29,25 +29,25 @@
     <id>chachkouski.Tutty</id>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/Hello_TUT" entry="true" type="Qnx/Elf">Hello_TUT</asset>
+       <asset path="arm/o.le-v7-g/Tutty" entry="true" type="Qnx/Elf">Tutty</asset>
     </configuration>
     <configuration name="Device-Release">
        <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/Hello_TUT.so" entry="true" type="Qnx/Elf">Hello_TUT.so</asset>
+       <asset path="arm/o.le-v7/Tutty.so" entry="true" type="Qnx/Elf">Tutty.so</asset>
     </configuration>
     <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm-p/o.le-v7-g/Hello_TUT" entry="true" type="Qnx/Elf">Hello_TUT</asset>
+       <asset path="arm-p/o.le-v7-g/Tutty" entry="true" type="Qnx/Elf">Tutty</asset>
     </configuration>
     <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
-       <asset path="x86/o-g/Hello_TUT" entry="true" type="Qnx/Elf">Hello_TUT</asset>
+       <asset path="x86/o-g/Tutty" entry="true" type="Qnx/Elf">Tutty</asset>
     </configuration>
 
     <!-- The name that is displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>Hello_TUT</name>
+    <name>Tutty</name>
 
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -63,7 +63,7 @@
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The Hello_TUT application</description>
+    <description>The Tutty application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
