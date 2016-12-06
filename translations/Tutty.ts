@@ -12,18 +12,13 @@
 <context>
     <name>FilmPage</name>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="34"/>
-        <source>Director</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/FilmPage.qml" line="40"/>
-        <source>Actors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/FilmPage.qml" line="61"/>
+        <location filename="../assets/pages/FilmPage.qml" line="64"/>
         <source>Comments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/FilmPage.qml" line="147"/>
+        <source>Buy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
