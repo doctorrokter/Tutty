@@ -46,15 +46,23 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
-        $$quote($$BASEDIR/assets/pages/FilmsPage.qml)
+        $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \
+        $$quote($$BASEDIR/assets/pages/SessionsPage.qml)
 }
 
 config_pri_source_group1 {
     SOURCES += \
         $$quote($$BASEDIR/src/applicationui.cpp) \
-        $$quote($$BASEDIR/src/main.cpp)
+        $$quote($$BASEDIR/src/main.cpp) \
+        $$quote($$BASEDIR/src/models/Cinema.cpp) \
+        $$quote($$BASEDIR/src/models/Film.cpp) \
+        $$quote($$BASEDIR/src/services/FilmsService.cpp)
 
-    HEADERS += $$quote($$BASEDIR/src/applicationui.hpp)
+    HEADERS += \
+        $$quote($$BASEDIR/src/applicationui.hpp) \
+        $$quote($$BASEDIR/src/models/Cinema.hpp) \
+        $$quote($$BASEDIR/src/models/Film.hpp) \
+        $$quote($$BASEDIR/src/services/FilmsService.hpp)
 }
 
 CONFIG += precompile_header
@@ -68,6 +76,16 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../src/*.cc) \
         $$quote($$BASEDIR/../src/*.cpp) \
         $$quote($$BASEDIR/../src/*.cxx) \
+        $$quote($$BASEDIR/../src/models/*.c) \
+        $$quote($$BASEDIR/../src/models/*.c++) \
+        $$quote($$BASEDIR/../src/models/*.cc) \
+        $$quote($$BASEDIR/../src/models/*.cpp) \
+        $$quote($$BASEDIR/../src/models/*.cxx) \
+        $$quote($$BASEDIR/../src/services/*.c) \
+        $$quote($$BASEDIR/../src/services/*.c++) \
+        $$quote($$BASEDIR/../src/services/*.cc) \
+        $$quote($$BASEDIR/../src/services/*.cpp) \
+        $$quote($$BASEDIR/../src/services/*.cxx) \
         $$quote($$BASEDIR/../assets/*.qml) \
         $$quote($$BASEDIR/../assets/*.js) \
         $$quote($$BASEDIR/../assets/*.qs) \

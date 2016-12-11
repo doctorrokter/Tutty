@@ -23,14 +23,16 @@ TabbedPane {
     Tab {
         title: qsTr("Films") + Retranslate.onLocaleOrLanguageChanged
         NavigationPane {
-            
             FilmsPage {
-                
                 onFilmChosen: {
                     var component = Qt.createComponent("./pages/FilmPage.qml");
                     var fp = component.createObject(this, {"film": film});
                     root.activeTab.content.push(fp);
                 }
+            }
+            
+            onPopTransitionEnded: {
+                page.destroy();
             }
         }
     }

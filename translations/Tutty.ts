@@ -12,26 +12,44 @@
 <context>
     <name>FilmPage</name>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="64"/>
-        <source>Comments</source>
+        <location filename="../assets/pages/FilmPage.qml" line="36"/>
+        <source>Director</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="147"/>
-        <source>Buy</source>
+        <location filename="../assets/pages/FilmPage.qml" line="42"/>
+        <source>Actors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/FilmPage.qml" line="64"/>
+        <source>Comments</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FilmsPage</name>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="24"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="33"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="28"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="39"/>
         <source>Cinemas</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SessionsPage</name>
+    <message>
+        <location filename="../assets/pages/SessionsPage.qml" line="13"/>
+        <source>Sessions: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/SessionsPage.qml" line="92"/>
+        <source>Buy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -43,7 +61,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="39"/>
+        <location filename="../assets/main.qml" line="41"/>
         <source>Concerts</source>
         <translation type="unfinished"></translation>
     </message>

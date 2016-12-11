@@ -17,7 +17,7 @@ Page {
     }
     
     ScrollView {
-        scrollRole: ScrollRole.Main
+        scrollRole: ScrollRole.None
         Container {
             Film { film: root.film }
             
@@ -27,29 +27,29 @@ Page {
             
             Divider {}
             
-//            Container {
-//                id: info
-//                leftPadding: ui.du(2.5)
-//                rightPadding: ui.du(2.5)           
-//                Container {
-//                    Label {
-//                        text: "<html><strong>" + qsTr("Director") + 
-//                        Retranslate.onLocaleOrLanguageChanged + ":</strong> " + root.film.director + "</html>"
-//                        multiline: true
-//                    }
-//                    
-//                    Label {
-//                        text: "<html><strong>" + qsTr("Actors") + 
-//                        Retranslate.onLocaleOrLanguageChanged + ":</strong> " + root.film.actors + "</html>"
-//                        multiline: true
-//                    }
-//                    
-//                    Label {
-//                        text: root.film.description
-//                        multiline: true
-//                    }
-//                }
-//            }
+            Container {
+                id: info
+                leftPadding: ui.du(2.5)
+                rightPadding: ui.du(2.5)           
+                Container {
+                    Label {
+                        text: "<html><strong>" + qsTr("Director") + 
+                        Retranslate.onLocaleOrLanguageChanged + ":</strong> " + root.film.director + "</html>"
+                        multiline: true
+                    }
+                    
+                    Label {
+                        text: "<html><strong>" + qsTr("Actors") + 
+                        Retranslate.onLocaleOrLanguageChanged + ":</strong> " + root.film.actors + "</html>"
+                        multiline: true
+                    }
+                    
+                    Label {
+                        text: root.film.description
+                        multiline: true
+                    }
+                }
+            }
             
             Divider {}
             
@@ -70,88 +70,89 @@ Page {
                 }
             }
             
-            ListView {
-                dataModel: GroupDataModel {
-                    id: groupDataModel
-                    sortingKeys: ["date"]
-                }
-                
-                layout: StackListLayout {
-                    headerMode: ListHeaderMode.Sticky
-                }
-                
-                function itemType(data, indexPath) {
-                    if (indexPath.length === 1) {
-                        return "header";
-                    } else {
-                        return "item";
-                    }
-                }
-                
-                listItemComponents: [
-                    ListItemComponent {
-                        type: "header"
-                        ListItemHeader {
-                            text: Qt.formatDate(new Date(ListItemData), "dddd, d MMMM")
-                        }
-                    },
-                    
-                    ListItemComponent {
-                        type: "item"
-                        CustomListItem {
-                            Container {
-                                layout: DockLayout {}
-                                horizontalAlignment: HorizontalAlignment.Fill
-                                
-                                topPadding: ui.du(2.5)
-                                leftPadding: ui.du(2.5)
-                                rightPadding: ui.du(2.5)
-                                bottomPadding: ui.du(2.5)
-                                
-                                Container {
-                                    horizontalAlignment: HorizontalAlignment.Left
-                                    layout: StackLayout {
-                                        orientation: LayoutOrientation.TopToBottom
-                                    }
-                                    
-                                    Label {
-                                        text: "Cinema: "
-                                        textStyle.base: SystemDefaults.TextStyles.PrimaryText
-                                        multiline: true
-                                    }
-                                    
-                                    Label {
-                                        text: "Cinema Address: "
-                                        textStyle.base: SystemDefaults.TextStyles.SubtitleText
-                                        multiline: true
-                                    }
-                                    
-                                    Label {
-                                        text: "Time: "
-                                        textStyle.base: SystemDefaults.TextStyles.BodyText
-                                    }
-                                    
-                                    Label {
-                                        text: "Price: "
-                                        textStyle.base: SystemDefaults.TextStyles.SubtitleText
-                                    }
-                                }
-                                
-                                Container {
-                                    horizontalAlignment: HorizontalAlignment.Right
-                                    verticalAlignment: VerticalAlignment.Center
-                                    
-                                    maxWidth: ui.du(20)
-                                    
-                                    Button {
-                                        text: qsTr("Buy") + Retranslate.onLocaleOrLanguageChanged
-                                    }
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
+//            ListView {
+//                scrollRole: ScrollRole.Main
+//                dataModel: GroupDataModel {
+//                    id: groupDataModel
+//                    sortingKeys: ["date"]
+//                }
+//                
+//                layout: StackListLayout {
+//                    headerMode: ListHeaderMode.Sticky
+//                }
+//                
+//                function itemType(data, indexPath) {
+//                    if (indexPath.length === 1) {
+//                        return "header";
+//                    } else {
+//                        return "item";
+//                    }
+//                }
+//                
+//                listItemComponents: [
+//                    ListItemComponent {
+//                        type: "header"
+//                        ListItemHeader {
+//                            text: Qt.formatDate(new Date(ListItemData), "dddd, d MMMM")
+//                        }
+//                    },
+//                    
+//                    ListItemComponent {
+//                        type: "item"
+//                        CustomListItem {
+//                            Container {
+//                                layout: DockLayout {}
+//                                horizontalAlignment: HorizontalAlignment.Fill
+//                                
+//                                topPadding: ui.du(2.5)
+//                                leftPadding: ui.du(2.5)
+//                                rightPadding: ui.du(2.5)
+//                                bottomPadding: ui.du(2.5)
+//                                
+//                                Container {
+//                                    horizontalAlignment: HorizontalAlignment.Left
+//                                    layout: StackLayout {
+//                                        orientation: LayoutOrientation.TopToBottom
+//                                    }
+//                                    
+//                                    Label {
+//                                        text: "Cinema: "
+//                                        textStyle.base: SystemDefaults.TextStyles.PrimaryText
+//                                        multiline: true
+//                                    }
+//                                    
+//                                    Label {
+//                                        text: "Cinema Address: "
+//                                        textStyle.base: SystemDefaults.TextStyles.SubtitleText
+//                                        multiline: true
+//                                    }
+//                                    
+//                                    Label {
+//                                        text: "Time: "
+//                                        textStyle.base: SystemDefaults.TextStyles.BodyText
+//                                    }
+//                                    
+//                                    Label {
+//                                        text: "Price: "
+//                                        textStyle.base: SystemDefaults.TextStyles.SubtitleText
+//                                    }
+//                                }
+//                                
+//                                Container {
+//                                    horizontalAlignment: HorizontalAlignment.Right
+//                                    verticalAlignment: VerticalAlignment.Center
+//                                    
+//                                    maxWidth: ui.du(20)
+//                                    
+//                                    Button {
+//                                        text: qsTr("Buy") + Retranslate.onLocaleOrLanguageChanged
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                ]
+//            }
         }   
     }
     
@@ -176,14 +177,14 @@ Page {
             });
             groupDataModel.insertList(itemsArr);
         });
-//        var itemsArr = Object.keys(root.items).map(function(key) {
-//            var obj = {};
-//            obj["date"] = parseInt(key) * 1000;
-//            
-//            var value = root.items[key];
-//            obj["value"] = root.items[key];
-//            return obj;
-//        });
-//        groupDataModel.insertList(itemsArr);
+        var itemsArr = Object.keys(root.items).map(function(key) {
+            var obj = {};
+            obj["date"] = parseInt(key) * 1000;
+            
+            var value = root.items[key];
+            obj["value"] = root.items[key];
+            return obj;
+        });
+        groupDataModel.insertList(itemsArr);
     }
 }

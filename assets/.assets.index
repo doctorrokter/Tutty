@@ -1,5 +1,5 @@
 1
-11
+12
 components/Film.qml
 components/Gallery.qml
 components/ListItemFilm.qml
@@ -9,5 +9,6 @@ main.qml
 pages/ConcertsPage.qml
 pages/FilmPage.qml
 pages/FilmsPage.qml
+pages/SessionsPage.qml
 _javascript/Common.js
 _javascript/Request.js

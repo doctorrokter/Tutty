@@ -21,6 +21,8 @@
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
 
+#include "services/FilmsService.hpp"
+
 using namespace bb::cascades;
 
 ApplicationUI::ApplicationUI() :
@@ -29,6 +31,8 @@ ApplicationUI::ApplicationUI() :
     // prepare the localization
     m_pTranslator = new QTranslator(this);
     m_pLocaleHandler = new LocaleHandler(this);
+
+    FilmsService* m_filmsService = new FilmsService(this);
 
     bool res = QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()));
     // This is only available in Debug builds
@@ -43,6 +47,10 @@ ApplicationUI::ApplicationUI() :
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+
+    QDeclarativeEngine* engine = QmlDocument::defaultDeclarativeEngine();
+    QDeclarativeContext* rootContext = engine->rootContext();
+    rootContext->setContextProperty("_filmsService", m_filmsService);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
