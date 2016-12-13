@@ -38,7 +38,7 @@ config_pri_assets {
     OTHER_FILES += \
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
-        $$quote($$BASEDIR/assets/components/Film.qml) \
+        $$quote($$BASEDIR/assets/components/FilmHeader.qml) \
         $$quote($$BASEDIR/assets/components/Gallery.qml) \
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \

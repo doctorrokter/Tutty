@@ -11,32 +11,33 @@
 #include <QtCore/QObject>
 #include <QList>
 #include <QVariantMap>
+#include <QVariantList>
 
 class Film: public QObject {
     Q_OBJECT
-    Q_PROPERTY(int id READ getId WRITE setId)
-    Q_PROPERTY(QString name READ getName WRITE setName)
-    Q_PROPERTY(QString description READ getDescription WRITE setDescription)
-    Q_PROPERTY(QString actors READ getActors WRITE setActors)
-    Q_PROPERTY(QString director READ getDirector WRITE setDirector)
-    Q_PROPERTY(QString image READ getImage WRITE setImage)
-    Q_PROPERTY(int year READ getYear WRITE setYear)
-    Q_PROPERTY(QString country READ getCountry WRITE setCountry)
-    Q_PROPERTY(int duration READ getDuration WRITE setDuration)
-    Q_PROPERTY(bool isPremiere READ isPremiere WRITE setIsPremiere)
-    Q_PROPERTY(int premiereAt READ getPremiereAt WRITE setPremiereAt)
-    Q_PROPERTY(bool threeD READ isThreeD WRITE setThreeD)
-    Q_PROPERTY(QString video READ getVideo WRITE setVideo)
-    Q_PROPERTY(QString genres READ getGenres WRITE setGenres)
-    Q_PROPERTY(QString restriction READ getRestriction WRITE setRestriction)
-    Q_PROPERTY(QList<QString> images READ getImages WRITE setImages)
-    Q_PROPERTY(int timeLeft READ getTimeLeft WRITE setTimeLeft)
-    Q_PROPERTY(int commentCnt READ getCommentsCnt WRITE setCommentsCnt)
-    Q_PROPERTY(float rate READ getRate WRITE setRate)
-    Q_PROPERTY(float rateTen READ getRateTen WRITE setRateTen)
-    Q_PROPERTY(float rateImdb READ getRateImdb WRITE setRateImdb)
-    Q_PROPERTY(float rateKinopoisk READ getRateKinopoisk WRITE setRateKinopoisk)
-    Q_PROPERTY(QString url READ getUrl WRITE setUrl)
+    Q_PROPERTY(int id READ getId WRITE setId NOTIFY idChanged)
+    Q_PROPERTY(QString name READ getName WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString description READ getDescription WRITE setDescription NOTIFY descriptionChanged)
+    Q_PROPERTY(QString actors READ getActors WRITE setActors NOTIFY actorsChanged)
+    Q_PROPERTY(QString director READ getDirector WRITE setDirector NOTIFY directorChanged)
+    Q_PROPERTY(QString image READ getImage WRITE setImage NOTIFY imageChanged)
+    Q_PROPERTY(int year READ getYear WRITE setYear NOTIFY yearChanged)
+    Q_PROPERTY(QString country READ getCountry WRITE setCountry NOTIFY countryChanged)
+    Q_PROPERTY(int duration READ getDuration WRITE setDuration NOTIFY durationChanged)
+    Q_PROPERTY(bool isPremiere READ isPremiere WRITE setIsPremiere NOTIFY isPremiereChanged)
+    Q_PROPERTY(int premiereAt READ getPremiereAt WRITE setPremiereAt NOTIFY premiereAtChanged)
+    Q_PROPERTY(bool threeD READ isThreeD WRITE setThreeD NOTIFY isThreeDChanged)
+    Q_PROPERTY(QString video READ getVideo WRITE setVideo NOTIFY videoChanged)
+    Q_PROPERTY(QString genres READ getGenres WRITE setGenres NOTIFY genresChanged)
+    Q_PROPERTY(QString restriction READ getRestriction WRITE setRestriction NOTIFY restrictionChanged)
+    Q_PROPERTY(QList<QString> images READ getImages WRITE setImages NOTIFY imagesChanged)
+    Q_PROPERTY(int timeLeft READ getTimeLeft WRITE setTimeLeft NOTIFY timeLeftChanged)
+    Q_PROPERTY(int commentsCnt READ getCommentsCnt WRITE setCommentsCnt NOTIFY commentsCntChanged)
+    Q_PROPERTY(float rate READ getRate WRITE setRate NOTIFY rateChanged)
+    Q_PROPERTY(float rateTen READ getRateTen WRITE setRateTen NOTIFY rateTenChanged)
+    Q_PROPERTY(float rateImdb READ getRateImdb WRITE setRateImdb NOTIFY rateImdbChanged)
+    Q_PROPERTY(float rateKinopoisk READ getRateKinopoisk WRITE setRateKinopoisk NOTIFY rateKinopoiskChanged)
+    Q_PROPERTY(QString url READ getUrl WRITE setUrl NOTIFY urlChanged)
 
 public:
     Film(QObject* parent = 0);
@@ -92,7 +93,7 @@ public:
     Q_INVOKABLE void setRestriction(const QString restriction);
 
     Q_INVOKABLE const QList<QString>& getImages() const;
-    Q_INVOKABLE void setImages(const QList<QString> images);
+    Q_INVOKABLE void setImages(const QList<QString>& images);
 
     Q_INVOKABLE int getTimeLeft() const;
     Q_INVOKABLE void setTimeLeft(const int timeLeft);
@@ -117,6 +118,33 @@ public:
 
     Q_INVOKABLE void fromMap(const QVariantMap map);
     Q_INVOKABLE QVariantMap toMap() const;
+
+    Q_INVOKABLE QVariantList imagesToQVList() const;
+
+Q_SIGNALS:
+    void idChanged(const int id);
+    void nameChanged(const QString& name);
+    void descriptionChanged(const QString& description);
+    void actorsChanged(const QString& actors);
+    void directorChanged(const QString& director);
+    void imageChanged(const QString& image);
+    void yearChanged(const int year);
+    void countryChanged(const QString& country);
+    void durationChanged(const int duration);
+    void isPremiereChanged(const bool isPremiere);
+    void premiereAtChanged(const long premiereAt);
+    void isThreeDChanged(const bool isThreeD);
+    void videoChanged(const QString& video);
+    void genresChanged(const QString& genres);
+    void restrictionChanged(const QString& restriction);
+    void imagesChanged(const QList<QString>& images);
+    void timeLeftChanged(const int timeLeft);
+    void commentsCntChanged(const int commentsCnt);
+    void rateChanged(const float rate);
+    void rateTenChanged(const float rateTen);
+    void rateImdbChanged(const float rateImdb);
+    void rateKinopoiskChanged(const float rateKinopoisk);
+    void urlChanged(const QString& url);
 
 private:
     int m_id;

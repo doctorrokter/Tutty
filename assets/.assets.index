@@ -1,6 +1,6 @@
 1
 12
-components/Film.qml
+components/FilmHeader.qml
 components/Gallery.qml
 components/ListItemFilm.qml
 components/ListItemHeader.qml

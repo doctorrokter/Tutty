@@ -6,6 +6,9 @@
  */
 
 #include "Film.hpp"
+#include <iostream>
+
+using namespace std;
 
 Film::Film(QObject* parent) : QObject(parent) {
     m_id = 0;
@@ -50,73 +53,142 @@ bool Film::operator==(const Film& film) {
 }
 
 int Film::getId() const { return m_id; }
-void Film::setId(const int id) { m_id = id; }
+void Film::setId(const int id) {
+    m_id = id;
+    emit idChanged(m_id);
+}
 
 const QString& Film::getName() const { return m_name; }
-void Film::setName(const QString name) { m_name = name; }
+void Film::setName(const QString name) {
+    m_name = name;
+    emit nameChanged(m_name);
+}
 
 const QString& Film::getDescription() const { return m_description; }
-void Film::setDescription(const QString description) { m_description = description; }
+void Film::setDescription(const QString description) {
+    m_description = description;
+    emit descriptionChanged(m_description);
+}
 
 const QString& Film::getActors() const { return m_actors; }
-void Film::setActors(const QString actors) { m_actors = actors; }
+void Film::setActors(const QString actors) {
+    m_actors = actors;
+    emit actorsChanged(m_actors);
+}
 
 const QString& Film::getDirector() const { return m_director; }
-void Film::setDirector(const QString director) { m_director = director; }
+void Film::setDirector(const QString director) {
+    m_director = director;
+    emit directorChanged(m_director);
+}
 
 const QString& Film::getImage() const { return m_image; }
-void Film::setImage(const QString image) { m_image = image; }
+void Film::setImage(const QString image) {
+    m_image = image;
+    emit imageChanged(m_image);
+}
 
 int Film::getYear() const { return m_year; }
-void Film::setYear(const int year) { m_year = year; }
+void Film::setYear(const int year) {
+    m_year = year;
+    emit yearChanged(m_year);
+}
 
 const QString& Film::getCountry() const { return m_country; }
-void Film::setCountry(const QString country) { m_country = country; }
+void Film::setCountry(const QString country) {
+    m_country = country;
+    emit countryChanged(m_country);
+}
 
 int Film::getDuration() const { return m_duration; }
-void Film::setDuration(const int duration) { m_duration = duration; }
+void Film::setDuration(const int duration) {
+    m_duration = duration;
+    emit durationChanged(m_duration);
+}
 
 bool Film::isPremiere() const { return m_isPremiere; }
-void Film::setIsPremiere(const bool isPremiere) { m_isPremiere = isPremiere; }
+void Film::setIsPremiere(const bool isPremiere) {
+    m_isPremiere = isPremiere;
+    emit isPremiereChanged(m_isPremiere);
+}
 
 int Film::getPremiereAt() const { return m_premiereAt; }
-void Film::setPremiereAt(const int premiereAt) { m_premiereAt = premiereAt; }
+void Film::setPremiereAt(const int premiereAt) {
+    m_premiereAt = premiereAt;
+    emit premiereAtChanged(m_premiereAt);
+}
 
 bool Film::isThreeD() const { return m_threeD; }
-void Film::setThreeD(const bool threeD) { m_threeD = threeD; }
+void Film::setThreeD(const bool threeD) {
+    m_threeD = threeD;
+    emit isThreeDChanged(m_threeD);
+}
 
 const QString& Film::getVideo() const { return m_video; }
-void Film::setVideo(const QString video) { m_video = video; }
+void Film::setVideo(const QString video) {
+    m_video = video;
+    emit videoChanged(m_video);
+}
 
 const QString& Film::getGenres() const { return m_genres; }
-void Film::setGenres(const QString genres) { m_genres = genres; }
+void Film::setGenres(const QString genres) {
+    m_genres = genres;
+    emit genresChanged(m_genres);
+}
 
 const QString& Film::getRestriction() const { return m_restriction; }
-void Film::setRestriction(const QString restriction) { m_restriction = restriction; }
+void Film::setRestriction(const QString restriction) {
+    m_restriction = restriction;
+    emit restrictionChanged(m_restriction);
+}
 
 const QList<QString>& Film::getImages() const { return m_images; }
-void Film::setImages(const QList<QString> images) { m_images = images; }
+void Film::setImages(const QList<QString>& images) {
+    m_images = images;
+    emit imagesChanged(m_images);
+}
 
 int Film::getTimeLeft() const { return m_timeLeft; }
-void Film::setTimeLeft(const int timeLeft) { m_timeLeft = timeLeft; }
+void Film::setTimeLeft(const int timeLeft) {
+    m_timeLeft = timeLeft;
+    emit timeLeftChanged(m_timeLeft);
+}
 
 int Film::getCommentsCnt() const { return m_commentsCnt; }
-void Film::setCommentsCnt(const int commentsCnt) { m_commentsCnt = commentsCnt; }
+void Film::setCommentsCnt(const int commentsCnt) {
+    m_commentsCnt = commentsCnt;
+    emit commentsCntChanged(m_commentsCnt);
+}
 
 float Film::getRate() const { return m_rate; }
-void Film::setRate(const float rate) { m_rate = rate; }
+void Film::setRate(const float rate) {
+    m_rate = rate;
+    emit rateChanged(m_rate);
+}
 
 float Film::getRateTen() const { return m_rateTen; }
-void Film::setRateTen(const float rateTen) { m_rateTen = rateTen; }
+void Film::setRateTen(const float rateTen) {
+    m_rateTen = rateTen;
+    emit rateTenChanged(m_rateTen);
+}
 
 float Film::getRateImdb() const { return m_rateImdb; }
-void Film::setRateImdb(const float rateImdb) { m_rateImdb = rateImdb; }
+void Film::setRateImdb(const float rateImdb) {
+    m_rateImdb = rateImdb;
+    emit rateImdbChanged(m_rateImdb);
+}
 
 float Film::getRateKinopoisk() const { return m_rateKinopoisk; }
-void Film::setRateKinopoisk(const float rateKinopoisk) { m_rateKinopoisk = rateKinopoisk; }
+void Film::setRateKinopoisk(const float rateKinopoisk) {
+    m_rateKinopoisk = rateKinopoisk;
+    emit rateKinopoiskChanged(m_rateKinopoisk);
+}
 
 const QString& Film::getUrl() const { return m_url; }
-void Film::setUrl(const QString url) { m_url = url; }
+void Film::setUrl(const QString url) {
+    m_url = url;
+    emit urlChanged(m_url);
+}
 
 void Film::fromMap(const QVariantMap map) {
     this->setId(map.value("id").toInt());
@@ -136,9 +208,11 @@ void Film::fromMap(const QVariantMap map) {
     this->setRestriction(map.value("restriction").toString());
 
     QList<QVariant> rawImages = map.value("images").toList();
+    QList<QString> images;
     for (int i = 0; i < rawImages.size(); i++) {
-        this->m_images.append(rawImages[i].toString());
+        images.append(rawImages[i].toString());
     }
+    this->setImages(images);
 
     this->setTimeLeft(map.value("timeLeft").toInt());
     this->setCommentsCnt(map.value("commentsCnt").toInt());
@@ -229,9 +303,16 @@ void Film::swap(const Film& film) {
     QString url = film.getUrl();
     this->setUrl(url);
 
-    QList<QString> images = film.getImages();
     for (int i = 0; i < film.getImages().size(); i++) {
-        m_images.append(images.at(i));
+        m_images.append(film.getImages().at(i));
     }
+}
+
+QVariantList Film::imagesToQVList() const {
+    QVariantList images;
+    for (int i = 0; i < m_images.size(); i++) {
+        images.append(m_images.at(i));
+    }
+    return images;
 }
 

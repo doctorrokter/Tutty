@@ -23,10 +23,20 @@
 
 #include <Qt/qdeclarativedebug.h>
 
+#include <QList>
+
+#include "models/Film.hpp"
+#include "models/Cinema.hpp"
+
 using namespace bb::cascades;
 
 Q_DECL_EXPORT int main(int argc, char **argv)
 {
+    qmlRegisterType<Film>("chachkouski.models", 1, 0, "Film");
+    qmlRegisterType<Cinema>("chachkouski.models", 1, 0, "Cinema");
+    qRegisterMetaType<QList<Film*> >("QList<Film*>");
+    qRegisterMetaType<QList<Cinema*> >("QList<Cinema*>");
+
     Application app(argc, argv);
 
     // Create the Application UI object, this is where the main.qml file

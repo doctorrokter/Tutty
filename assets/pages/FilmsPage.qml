@@ -16,7 +16,7 @@ Page {
     }
     
     function populateCinemas() {
-        cinemasDataModel.append(_filmsService.cinemasToMaps());
+        cinemasDataModel.insertList(_filmsService.cinemasToMaps());
     }
     
     Container {
@@ -35,7 +35,6 @@ Page {
                     
                     Option {
                         id: cinemasOption
-                        selected: true
                         text: qsTr("Cinemas") + Retranslate.onLocaleOrLanguageChanged
                     }
                 ]
@@ -74,12 +73,34 @@ Page {
             id: cinemasContainer
             visible: cinemasOption.selected
             ListView {
-                dataModel: ArrayDataModel {
+                dataModel: GroupDataModel {
                     id: cinemasDataModel
+                    sortingKeys: ["title"]
+                    grouping: ItemGrouping.ByFirstChar
+                }
+                
+                layout: StackListLayout {
+                    headerMode: ListHeaderMode.Sticky
+                }
+
+                function itemType(data, indexPath) {
+                    if (indexPath.length === 1) {
+                        return "header";
+                    } else {
+                        return "item";
+                    }
                 }
                 
                 listItemComponents: [
                     ListItemComponent {
+                        type: "header" 
+                        ListItemHeader {
+                            text: ListItemData
+                        }   
+                    },
+                    
+                    ListItemComponent {
+                        type: "item"
                         StandardListItem {
                             title: ListItemData.title
                             description: ListItemData.address
@@ -99,6 +120,6 @@ Page {
             _filmsService.cinemasFromMaps(data.movietheatres);
         });
 //        filmsDataModel.append(root.films);
-//        cinemasDataModel.append(root.cinemas)
+//        cinemasDataModel.append(root.cinemas);
     }
 }

@@ -25,8 +25,13 @@ TabbedPane {
         NavigationPane {
             FilmsPage {
                 onFilmChosen: {
-                    var component = Qt.createComponent("./pages/FilmPage.qml");
-                    var fp = component.createObject(this, {"film": film});
+//                    var component = Qt.createComponent("./pages/FilmPage.qml");
+//                    var fp = component.createObject(this, {"film": film});
+//                    root.activeTab.content.push(fp);
+                    _filmsService.setActiveFilm(parseInt(film.id));
+//                    var f = _filmsService.activeFilm;
+//                    var images = f.images;
+                    var fp = filmPage.createObject(this);
                     root.activeTab.content.push(fp);
                 }
             }
@@ -34,6 +39,13 @@ TabbedPane {
             onPopTransitionEnded: {
                 page.destroy();
             }
+            
+            attachedObjects: [
+                ComponentDefinition {
+                    id: filmPage
+                    FilmPage {}
+                }
+            ]
         }
     }
     
