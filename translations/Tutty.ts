@@ -48,13 +48,26 @@
 <context>
     <name>SessionsPage</name>
     <message>
-        <location filename="../assets/pages/SessionsPage.qml" line="13"/>
-        <source>Sessions: </source>
+        <location filename="../assets/pages/SessionsPage.qml" line="76"/>
+        <source>Buy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/SessionsPage.qml" line="92"/>
-        <source>Buy</source>
+        <location filename="../assets/pages/SessionsPage.qml" line="138"/>
+        <source>Sessions in 3D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/SessionsPage.qml" line="209"/>
+        <source>Choose a session</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebSheet</name>
+    <message>
+        <location filename="../assets/sheets/WebSheet.qml" line="46"/>
+        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -66,7 +79,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="53"/>
+        <location filename="../assets/main.qml" line="58"/>
         <source>Concerts</source>
         <translation type="unfinished"></translation>
     </message>

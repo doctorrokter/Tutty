@@ -39,6 +39,9 @@ public:
     Q_INVOKABLE Film* getActiveFilm() const;
     Q_INVOKABLE void setActiveFilm(const int filmId);
 
+    Q_INVOKABLE Film* findFilmById(const int id) const;
+    Q_INVOKABLE Cinema* findCinemaById(const int id) const;
+
 Q_SIGNALS:
     void filmsChanged(const QList<Film*>& films);
     void cinemasChanged(const QList<Cinema*>& cinemas);

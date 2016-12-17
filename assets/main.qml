@@ -25,12 +25,7 @@ TabbedPane {
         NavigationPane {
             FilmsPage {
                 onFilmChosen: {
-//                    var component = Qt.createComponent("./pages/FilmPage.qml");
-//                    var fp = component.createObject(this, {"film": film});
-//                    root.activeTab.content.push(fp);
                     _filmsService.setActiveFilm(parseInt(film.id));
-//                    var f = _filmsService.activeFilm;
-//                    var images = f.images;
                     var fp = filmPage.createObject(this);
                     root.activeTab.content.push(fp);
                 }
@@ -43,7 +38,17 @@ TabbedPane {
             attachedObjects: [
                 ComponentDefinition {
                     id: filmPage
-                    FilmPage {}
+                    FilmPage {
+                        onSessionsRequested: {
+                            var sp = sessionsPage.createObject(this);
+                            root.activeTab.content.push(sp);
+                        }
+                    }
+                },
+                
+                ComponentDefinition {
+                    id: sessionsPage
+                    SessionsPage {}
                 }
             ]
         }

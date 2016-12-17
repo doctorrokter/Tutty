@@ -80,4 +80,24 @@ void FilmsService::setActiveFilm(const int filmId) {
     }
 }
 
+Film* FilmsService::findFilmById(const int id) const {
+    for (int i = 0; i < m_films.size(); i++) {
+        Film* film = m_films.at(i);
+        if (film->getId() == id) {
+            return film;
+        }
+    }
+    return NULL;
+}
+
+Cinema* FilmsService::findCinemaById(const int id) const {
+    for (int i = 0; i < m_cinemas.size(); i++) {
+        Cinema* cinema = m_cinemas.at(i);
+        if (cinema->getId() == id) {
+            return cinema;
+        }
+    }
+    return NULL;
+}
+
 

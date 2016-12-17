@@ -7,7 +7,7 @@ import "../_javascript/Common.js" as Common;
 Page {
     id: root
     
-    signal sessionsRequested(int filmId, string filmName)
+    signal sessionsRequested()
     
     titleBar: TitleBar {
         kind: TitleBarKind.Default
@@ -117,8 +117,7 @@ Page {
                 gestureHandlers: [
                     TapHandler {
                         onTapped: {
-                            console.debug('PRIVET');
-                            sessionsRequested(parseInt(_filmsService.activeFilm.id), _filmsService.activeFilm.name);
+                            sessionsRequested();
                         }
                     }
                 ]

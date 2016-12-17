@@ -47,7 +47,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \
-        $$quote($$BASEDIR/assets/pages/SessionsPage.qml)
+        $$quote($$BASEDIR/assets/pages/SessionsPage.qml) \
+        $$quote($$BASEDIR/assets/sheets/WebSheet.qml)
 }
 
 config_pri_source_group1 {
@@ -100,7 +101,10 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/images/*.qs) \
         $$quote($$BASEDIR/../assets/pages/*.qml) \
         $$quote($$BASEDIR/../assets/pages/*.js) \
-        $$quote($$BASEDIR/../assets/pages/*.qs)
+        $$quote($$BASEDIR/../assets/pages/*.qs) \
+        $$quote($$BASEDIR/../assets/sheets/*.qml) \
+        $$quote($$BASEDIR/../assets/sheets/*.js) \
+        $$quote($$BASEDIR/../assets/sheets/*.qs)
 
     HEADERS += \
         $$quote($$BASEDIR/../src/*.h) \
