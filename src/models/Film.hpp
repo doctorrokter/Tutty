@@ -33,10 +33,10 @@ class Film: public QObject {
     Q_PROPERTY(QList<QString> images READ getImages WRITE setImages NOTIFY imagesChanged)
     Q_PROPERTY(int timeLeft READ getTimeLeft WRITE setTimeLeft NOTIFY timeLeftChanged)
     Q_PROPERTY(int commentsCnt READ getCommentsCnt WRITE setCommentsCnt NOTIFY commentsCntChanged)
-    Q_PROPERTY(float rate READ getRate WRITE setRate NOTIFY rateChanged)
-    Q_PROPERTY(float rateTen READ getRateTen WRITE setRateTen NOTIFY rateTenChanged)
-    Q_PROPERTY(float rateImdb READ getRateImdb WRITE setRateImdb NOTIFY rateImdbChanged)
-    Q_PROPERTY(float rateKinopoisk READ getRateKinopoisk WRITE setRateKinopoisk NOTIFY rateKinopoiskChanged)
+    Q_PROPERTY(QString rate READ getRate WRITE setRate NOTIFY rateChanged)
+    Q_PROPERTY(QString rateTen READ getRateTen WRITE setRateTen NOTIFY rateTenChanged)
+    Q_PROPERTY(QString rateImdb READ getRateImdb WRITE setRateImdb NOTIFY rateImdbChanged)
+    Q_PROPERTY(QString rateKinopoisk READ getRateKinopoisk WRITE setRateKinopoisk NOTIFY rateKinopoiskChanged)
     Q_PROPERTY(QString url READ getUrl WRITE setUrl NOTIFY urlChanged)
 
 public:
@@ -101,17 +101,17 @@ public:
     Q_INVOKABLE int getCommentsCnt() const;
     Q_INVOKABLE void setCommentsCnt(const int commentsCnt);
 
-    Q_INVOKABLE float getRate() const;
-    Q_INVOKABLE void setRate(const float rate);
+    Q_INVOKABLE const QString& getRate() const;
+    Q_INVOKABLE void setRate(const QString rate);
 
-    Q_INVOKABLE float getRateTen() const;
-    Q_INVOKABLE void setRateTen(const float rateTen);
+    Q_INVOKABLE const QString& getRateTen() const;
+    Q_INVOKABLE void setRateTen(const QString rateTen);
 
-    Q_INVOKABLE float getRateImdb() const;
-    Q_INVOKABLE void setRateImdb(const float rateImdb);
+    Q_INVOKABLE const QString& getRateImdb() const;
+    Q_INVOKABLE void setRateImdb(const QString rateImdb);
 
-    Q_INVOKABLE float getRateKinopoisk() const;
-    Q_INVOKABLE void setRateKinopoisk(const float rateKinopoisk);
+    Q_INVOKABLE const QString& getRateKinopoisk() const;
+    Q_INVOKABLE void setRateKinopoisk(const QString rateKinopoisk);
 
     Q_INVOKABLE const QString& getUrl() const;
     Q_INVOKABLE void setUrl(const QString url);
@@ -140,10 +140,10 @@ Q_SIGNALS:
     void imagesChanged(const QList<QString>& images);
     void timeLeftChanged(const int timeLeft);
     void commentsCntChanged(const int commentsCnt);
-    void rateChanged(const float rate);
-    void rateTenChanged(const float rateTen);
-    void rateImdbChanged(const float rateImdb);
-    void rateKinopoiskChanged(const float rateKinopoisk);
+    void rateChanged(const QString& rate);
+    void rateTenChanged(const QString& rateTen);
+    void rateImdbChanged(const QString& rateImdb);
+    void rateKinopoiskChanged(const QString& rateKinopoisk);
     void urlChanged(const QString& url);
 
 private:
@@ -165,10 +165,10 @@ private:
     QList<QString> m_images;
     int m_timeLeft;
     int m_commentsCnt;
-    float m_rate;
-    float m_rateTen;
-    float m_rateImdb;
-    float m_rateKinopoisk;
+    QString m_rate;
+    QString m_rateTen;
+    QString m_rateImdb;
+    QString m_rateKinopoisk;
     QString m_url;
 
     void swap(const Film& film);

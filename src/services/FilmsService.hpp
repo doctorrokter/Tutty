@@ -11,6 +11,8 @@
 #include <QtCore/QObject>
 #include <QList>
 #include <QVariantList>
+#include <QVariantMap>
+#include "../models/FilmSession.hpp"
 #include "../models/Film.hpp"
 #include "../models/Cinema.hpp"
 
@@ -19,6 +21,7 @@ class FilmsService : public QObject {
     Q_PROPERTY(QList<Film*> films READ getFilms WRITE setFilms)
     Q_PROPERTY(QList<Cinema*> cinemas READ getCinemas WRITE setCinemas)
     Q_PROPERTY(Film* activeFilm READ getActiveFilm NOTIFY activeFilmChanged)
+    Q_PROPERTY(QList<FilmSession*> filmsSessions READ getFilmsSessions WRITE setFilmsSessions NOTIFY filmsSessionsChanged)
 
 public:
     FilmsService(QObject* parent = 0);
@@ -39,18 +42,28 @@ public:
     Q_INVOKABLE Film* getActiveFilm() const;
     Q_INVOKABLE void setActiveFilm(const int filmId);
 
+    Q_INVOKABLE QList<FilmSession*>& getFilmsSessions();
+    Q_INVOKABLE void setFilmsSessions(const QList<FilmSession*> filmsSessions);
+
     Q_INVOKABLE Film* findFilmById(const int id) const;
     Q_INVOKABLE Cinema* findCinemaById(const int id) const;
+
+    Q_INVOKABLE bool hasSessions(const int filmId) const;
+    Q_INVOKABLE QList<FilmSession*> getSessionsFor(const int filmId) const;
+    Q_INVOKABLE QVariantList sessionsToMaps(const int filmId) const;
+    Q_INVOKABLE void sessionsFromMaps(const QVariantMap items);
 
 Q_SIGNALS:
     void filmsChanged(const QList<Film*>& films);
     void cinemasChanged(const QList<Cinema*>& cinemas);
     void activeFilmChanged(const Film* activeFilm);
+    void filmsSessionsChanged(const QList<FilmSession*> filmsSessions);
 
 private:
     QList<Film*> m_films;
     QList<Cinema*> m_cinemas;
     Film* m_activeFilm;
+    QList<FilmSession*> m_filmsSessions;
 };
 
 #endif /* FILMSSERVICE_HPP_ */

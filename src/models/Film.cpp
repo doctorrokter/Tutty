@@ -28,10 +28,10 @@ Film::Film(QObject* parent) : QObject(parent) {
     m_restriction = "";
     m_timeLeft = 0;
     m_commentsCnt = 0;
-    m_rate = 0;
-    m_rateTen = 0;
-    m_rateImdb = 0;
-    m_rateKinopoisk = 0;
+    m_rate = "";
+    m_rateTen = "";
+    m_rateImdb = "";
+    m_rateKinopoisk = "";
     m_url = "";
 }
 
@@ -160,26 +160,26 @@ void Film::setCommentsCnt(const int commentsCnt) {
     emit commentsCntChanged(m_commentsCnt);
 }
 
-float Film::getRate() const { return m_rate; }
-void Film::setRate(const float rate) {
+const QString& Film::getRate() const { return m_rate; }
+void Film::setRate(const QString rate) {
     m_rate = rate;
     emit rateChanged(m_rate);
 }
 
-float Film::getRateTen() const { return m_rateTen; }
-void Film::setRateTen(const float rateTen) {
+const QString& Film::getRateTen() const { return m_rateTen; }
+void Film::setRateTen(const QString rateTen) {
     m_rateTen = rateTen;
     emit rateTenChanged(m_rateTen);
 }
 
-float Film::getRateImdb() const { return m_rateImdb; }
-void Film::setRateImdb(const float rateImdb) {
+const QString& Film::getRateImdb() const { return m_rateImdb; }
+void Film::setRateImdb(const QString rateImdb) {
     m_rateImdb = rateImdb;
     emit rateImdbChanged(m_rateImdb);
 }
 
-float Film::getRateKinopoisk() const { return m_rateKinopoisk; }
-void Film::setRateKinopoisk(const float rateKinopoisk) {
+const QString& Film::getRateKinopoisk() const { return m_rateKinopoisk; }
+void Film::setRateKinopoisk(const QString rateKinopoisk) {
     m_rateKinopoisk = rateKinopoisk;
     emit rateKinopoiskChanged(m_rateKinopoisk);
 }
@@ -200,9 +200,9 @@ void Film::fromMap(const QVariantMap map) {
     this->setYear(map.value("year").toInt());
     this->setCountry(map.value("country").toString());
     this->setDuration(map.value("duration").toInt());
-    this->setIsPremiere(map.value("is_premiere").toInt());
+    this->setIsPremiere(map.value("is_premiere").toInt() == 1);
     this->setPremiereAt(map.value("premiere_at").toInt());
-    this->setThreeD(map.value("3d").toInt());
+    this->setThreeD(map.value("3d").toInt() == 1);
     this->setVideo(map.value("video").toString());
     this->setGenres(map.value("genres").toString());
     this->setRestriction(map.value("restriction").toString());
@@ -216,10 +216,10 @@ void Film::fromMap(const QVariantMap map) {
 
     this->setTimeLeft(map.value("timeLeft").toInt());
     this->setCommentsCnt(map.value("commentsCnt").toInt());
-    this->setRate(map.value("rate").toFloat());
-    this->setRateTen(map.value("rate_ten").toFloat());
-    this->setRateImdb(map.value("rate_imdb").toFloat());
-    this->setRateKinopoisk(map.value("rate_kinopoisk").toFloat());
+    this->setRate(map.value("rate").toString());
+    this->setRateTen(map.value("rate_ten").toString());
+    this->setRateImdb(map.value("rate_imdb").toString());
+    this->setRateKinopoisk(map.value("rate_kinopoisk").toString());
     this->setUrl(map.value("url").toString());
 }
 
@@ -234,18 +234,18 @@ QVariantMap Film::toMap() const {
     map.insert("year", this->getYear());
     map.insert("country", this->getCountry());
     map.insert("duration", this->getDuration());
-    map.insert("is_premiere", this->isPremiere());
-    map.insert("premiere_at", this->getPremiereAt());
-    map.insert("3d", this->isThreeD());
+    map.insert("isPremiere", this->isPremiere());
+    map.insert("premiereAt", this->getPremiereAt());
+    map.insert("threeD", this->isThreeD());
     map.insert("video", this->getVideo());
     map.insert("genres", this->getGenres());
     map.insert("restriction", this->getRestriction());
     map.insert("timeLeft", this->getTimeLeft());
     map.insert("commentsCnt", this->getCommentsCnt());
     map.insert("rate", this->getRate());
-    map.insert("rate_ten", this->getRateTen());
-    map.insert("rate_imdb", this->getRateImdb());
-    map.insert("rate_kinopoisk", this->getRateKinopoisk());
+    map.insert("rateTen", this->getRateTen());
+    map.insert("rateImdb", this->getRateImdb());
+    map.insert("rateKinopoisk", this->getRateKinopoisk());
     map.insert("url", this->getUrl());
 
     QVariantList images;

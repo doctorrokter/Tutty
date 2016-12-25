@@ -36,12 +36,14 @@ simulator {
 
 config_pri_assets {
     OTHER_FILES += \
+        $$quote($$BASEDIR/assets/Test.qml) \
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
         $$quote($$BASEDIR/assets/components/FilmHeader.qml) \
         $$quote($$BASEDIR/assets/components/Gallery.qml) \
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
+        $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
@@ -57,12 +59,16 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/main.cpp) \
         $$quote($$BASEDIR/src/models/Cinema.cpp) \
         $$quote($$BASEDIR/src/models/Film.cpp) \
+        $$quote($$BASEDIR/src/models/FilmSession.cpp) \
+        $$quote($$BASEDIR/src/models/Session.cpp) \
         $$quote($$BASEDIR/src/services/FilmsService.cpp)
 
     HEADERS += \
         $$quote($$BASEDIR/src/applicationui.hpp) \
         $$quote($$BASEDIR/src/models/Cinema.hpp) \
         $$quote($$BASEDIR/src/models/Film.hpp) \
+        $$quote($$BASEDIR/src/models/FilmSession.hpp) \
+        $$quote($$BASEDIR/src/models/Session.hpp) \
         $$quote($$BASEDIR/src/services/FilmsService.hpp)
 }
 

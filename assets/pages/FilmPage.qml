@@ -49,81 +49,29 @@ Page {
                 }
             }
             
-            Divider {}
+            Header {
+                title: qsTr("Comments") + Retranslate.onLocaleOrLanguageChanged + " " + _filmsService.activeFilm.commentsCnt
+                subtitle: qsTr("Read comments") + Retranslate.onLocaleOrLanguageChanged
+                mode: HeaderMode.Interactive
+                
+                onClicked: {
+                    console.debug();
+                }
+            }
+            
+            Header {
+                title: qsTr("Sessions") + Retranslate.onLocaleOrLanguageChanged
+                subtitle: qsTr("View sessions") + Retranslate.onLocaleOrLanguageChanged
+                mode: HeaderMode.Interactive
+                
+                onClicked: {
+                    sessionsRequested();
+                }
+            }
             
             Container {
-                horizontalAlignment: HorizontalAlignment.Fill
-                leftPadding: ui.du(2.5)
-                rightPadding: ui.du(2.5)
-                bottomPadding: ui.du(2.5)
-                topPadding: ui.du(2.5)
-                layout: DockLayout {}
-                
-                Container {
-                    verticalAlignment: VerticalAlignment.Center
-                    horizontalAlignment: HorizontalAlignment.Left
-                    layout: StackLayout {
-                        orientation: LayoutOrientation.LeftToRight
-                    }
-                    Label {
-                        text: qsTr("Comments") + Retranslate.onLocaleOrLanguageChanged
-                    }
-                    
-                    Label {
-                        text: _filmsService.activeFilm.commentsCnt
-                    }
-                }
-                
-                Container {
-                    horizontalAlignment: HorizontalAlignment.Right
-                    Label {
-                        text: ">"
-                    }
-                }
-            }       
-            
-            Divider {}
-            
-            Container {
-                horizontalAlignment: HorizontalAlignment.Fill
-                leftPadding: ui.du(2.5)
-                rightPadding: ui.du(2.5)
-                bottomPadding: ui.du(2.5)
-                topPadding: ui.du(2.5)
-                layout: DockLayout {}
-                
-                Container {
-                    verticalAlignment: VerticalAlignment.Center
-                    horizontalAlignment: HorizontalAlignment.Left
-                    layout: StackLayout {
-                        orientation: LayoutOrientation.LeftToRight
-                    }
-                    Label {
-                        text: qsTr("Sessions") + Retranslate.onLocaleOrLanguageChanged
-                    }
-                    
-                    Label {
-                        text: _filmsService.activeFilm.commentsCnt
-                    }
-                }
-                
-                Container {
-                    horizontalAlignment: HorizontalAlignment.Right
-                    Label {
-                        text: ">"
-                    }
-                }
-                
-                gestureHandlers: [
-                    TapHandler {
-                        onTapped: {
-                            sessionsRequested();
-                        }
-                    }
-                ]
-            }       
-            
-            Divider {}
+                id: sessionsContainer
+            }
         }   
     }
     

@@ -6,6 +6,7 @@
  */
 
 #include "FilmsService.hpp"
+#include "../models/Session.hpp"
 #include <iostream>
 #include <iterator>
 
@@ -80,6 +81,12 @@ void FilmsService::setActiveFilm(const int filmId) {
     }
 }
 
+QList<FilmSession*>& FilmsService::getFilmsSessions() { return m_filmsSessions; }
+void FilmsService::setFilmsSessions(const QList<FilmSession*> filmsSessions) {
+    m_filmsSessions = filmsSessions;
+    emit filmsSessionsChanged(m_filmsSessions);
+}
+
 Film* FilmsService::findFilmById(const int id) const {
     for (int i = 0; i < m_films.size(); i++) {
         Film* film = m_films.at(i);
@@ -100,4 +107,65 @@ Cinema* FilmsService::findCinemaById(const int id) const {
     return NULL;
 }
 
+bool FilmsService::hasSessions(const int filmId) const {
+    for (int i = 0; i < m_filmsSessions.size(); i++) {
+        if (filmId == m_filmsSessions.at(i)->getFilm()->getId()) {
+            return true;
+        }
+    }
+    return false;
+}
 
+QList<FilmSession*> FilmsService::getSessionsFor(const int filmId) const {
+    QList<FilmSession*> filmsSessions;
+    for (int i = 0; i < m_filmsSessions.size(); i++) {
+        if (filmId == m_filmsSessions.at(i)->getFilm()->getId()) {
+            filmsSessions.append(m_filmsSessions.at(i));
+        }
+    }
+    return filmsSessions;
+}
+
+QVariantList FilmsService::sessionsToMaps(const int filmId) const {
+    QVariantList list;
+    QList<FilmSession*> filmsSessions = getSessionsFor(filmId);
+    for (int i = 0; i < filmsSessions.size(); i++) {
+        list.append(filmsSessions.at(i)->toMap());
+    }
+    return list;
+}
+
+void FilmsService::sessionsFromMaps(const QVariantMap items) {
+    QList<QString> datesStr = items.keys();
+    QList<FilmSession*> filmsSessions;
+    for (int i = 0; i < datesStr.size(); i++) {
+        QString date = datesStr.at(i);
+        QVariantMap map = items.value(date).toMap();
+        QString id = map.keys().at(0);
+        QVariantMap filmMap = map.value(id).toMap();
+
+        QList<QString> cinemasIds = filmMap.keys();
+        for (int j = 0; j < cinemasIds.size(); j++) {
+            QString cinemaId = cinemasIds.at(j);
+
+            FilmSession* filmSession = new FilmSession(this);
+            filmSession->setFilm(getActiveFilm());
+            filmSession->setDate(date.toInt());
+            filmSession->setCinema(findCinemaById(cinemaId.toInt()));
+
+            QList<Session*> sessions;
+//            for (int k = 0; k < cinemasIds.size(); k++) {
+                QVariantList sessionsArray = filmMap.value(cinemaId).toList();
+                for (int z = 0; z < sessionsArray.size(); z++) {
+                    Session* session = new Session();
+                    session->fromMap(sessionsArray.at(z).toMap());
+                    sessions.append(session);
+                }
+//            }
+
+            filmSession->setSessions(sessions);
+            filmsSessions.append(filmSession);
+        }
+    }
+    setFilmsSessions(filmsSessions);
+}
