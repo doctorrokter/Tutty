@@ -9,13 +9,15 @@ Page {
     
     signal sessionsRequested()
     
-    titleBar: TitleBar {
-        kind: TitleBarKind.Default
+    titleBar: CustomTitleBar {
         title: _filmsService.activeFilm.name
     }
     
+//    actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
+//    actionBarVisibility: ChromeVisibility.Overlay
+            
     ScrollView {
-        scrollRole: ScrollRole.None
+        scrollRole: ScrollRole.Main
         Container {
             FilmHeader { film: _filmsService.activeFilm }
             

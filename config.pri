@@ -39,11 +39,13 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/Test.qml) \
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
+        $$quote($$BASEDIR/assets/components/CustomTitleBar.qml) \
         $$quote($$BASEDIR/assets/components/FilmHeader.qml) \
         $$quote($$BASEDIR/assets/components/Gallery.qml) \
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
         $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
+        $$quote($$BASEDIR/assets/components/TimePrice.qml) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \

@@ -1,10 +1,12 @@
 1
-15
+17
+components/CustomTitleBar.qml
 components/FilmHeader.qml
 components/Gallery.qml
 components/ListItemFilm.qml
 components/ListItemHeader.qml
 components/ListItemSession.qml
+components/TimePrice.qml
 images/ic_favorite.png
 main.qml
 pages/ConcertsPage.qml

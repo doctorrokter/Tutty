@@ -73,22 +73,10 @@ CustomListItem {
                                     return session.threeD === false;
                             });
                             sessions.forEach(function(s) {
-                                var timePriceContainer = emptyContainer.createObject(this);    
-                                
-                                var timeContainer = sessionContainer.createObject(this);
-                                var timestamp = Number(s.sessionTime) * 1000;
-                                timeContainer.text = Qt.formatTime(new Date(timestamp), "HH:mm");
-                                timeContainer.textStyle = SystemDefaults.TextStyles.PrimaryText;
-                                timePriceContainer.add(timeContainer);
-                                
-                                if (s.price) {
-                                    var priceContainer = sessionContainer.createObject(this);
-                                    priceContainer.text = s.price + " p.";
-                                    priceContainer.textStyle = SystemDefaults.TextStyles.SubtitleText;
-                                    timePriceContainer.add(priceContainer);
-                                }
-                                
-                                regularSessions.add(timePriceContainer);
+                                var timePrice = timePriceContainer.createObject(this);
+                                timePrice.timestamp = s.sessionTime * 1000;
+                                timePrice.price = s.price;
+                                regularSessions.add(timePrice);
                             });
                         }
                     }
@@ -120,22 +108,10 @@ CustomListItem {
                             });
                             threeDSessions.visible = sessions.length > 0;
                             sessions.forEach(function(s) {
-                                var timePriceContainer = emptyContainer.createObject(this);    
-                                
-                                var timeContainer = sessionContainer.createObject(this);
-                                var timestamp = Number(s.sessionTime) * 1000;
-                                timeContainer.text = Qt.formatTime(new Date(timestamp), "HH:mm");
-                                timeContainer.textStyle = SystemDefaults.TextStyles.PrimaryText;
-                                timePriceContainer.add(timeContainer);
-                                
-                                if (s.price) {
-                                    var priceContainer = sessionContainer.createObject(this);
-                                    priceContainer.text = s.price + " p.";
-                                    priceContainer.textStyle = SystemDefaults.TextStyles.SubtitleText;
-                                    timePriceContainer.add(priceContainer);
-                                }
-                                
-                                threeDSessionsSubcontainer.add(timePriceContainer);
+                                var timePrice = timePriceContainer.createObject(this);
+                                timePrice.timestamp = s.sessionTime * 1000;
+                                timePrice.price = s.price;
+                                threeDSessionsSubcontainer.add(timePrice);
                             });
                         }
                     }
@@ -145,31 +121,8 @@ CustomListItem {
         
         attachedObjects: [
             ComponentDefinition {
-                id: emptyContainer
-                Container {}    
-            },
-            
-            ComponentDefinition {
-                id: sessionContainer
-                Container {
-                    id: session
-                    
-                    property string text
-                    property variant textStyle
-                    
-                    leftPadding: ui.du(1.0)
-                    rightPadding: ui.du(1.0)
-                    topPadding: ui.du(1.0)
-                    bottomPadding: ui.du(1.0)
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    minWidth: ui.du(13)
-                    
-                    Label {
-                        horizontalAlignment: HorizontalAlignment.Center
-                        text: session.text
-                        textStyle.base: session.textStyle
-                    }
-                }
+                id: timePriceContainer
+                TimePrice {}
             },
             
             Dialog {
@@ -207,41 +160,9 @@ CustomListItem {
                                 listItemComponents: [
                                     ListItemComponent {
                                         CustomListItem {
-                                            Container {
-                                                Container {
-                                                    leftPadding: ui.du(1.0)
-                                                    rightPadding: ui.du(1.0)
-                                                    topPadding: ui.du(1.0)
-                                                    bottomPadding: ui.du(1.0)
-                                                    horizontalAlignment: HorizontalAlignment.Fill
-                                                    minWidth: ui.du(13)
-                                                    
-                                                    Label {
-                                                        horizontalAlignment: HorizontalAlignment.Center
-                                                        text: Qt.formatTime(new Date(ListItemData.sessionTime * 1000), "HH:mm")
-                                                        textStyle.base: SystemDefaults.TextStyles.PrimaryText
-                                                    }
-                                                }
-                                                
-                                                Container {
-                                                    leftPadding: ui.du(1.0)
-                                                    rightPadding: ui.du(1.0)
-                                                    topPadding: ui.du(1.0)
-                                                    bottomPadding: ui.du(1.0)
-                                                    horizontalAlignment: HorizontalAlignment.Fill
-                                                    minWidth: ui.du(13)
-                                                    
-                                                    Label {
-                                                        horizontalAlignment: HorizontalAlignment.Center
-                                                        text: {
-                                                            if (ListItemData.price) {
-                                                                return ListItemData.price + " p.";
-                                                            }
-                                                            return "Privet";
-                                                        }
-                                                        textStyle.base: SystemDefaults.TextStyles.SubtitleText
-                                                    }
-                                                }
+                                            TimePrice {
+                                                timestamp: ListItemData.sessionTime * 1000
+                                                price: ListItemData.price
                                             }
                                         }
                                     }

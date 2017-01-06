@@ -12,32 +12,32 @@
 <context>
     <name>FilmPage</name>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="34"/>
+        <location filename="../assets/pages/FilmPage.qml" line="36"/>
         <source>Director</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="40"/>
+        <location filename="../assets/pages/FilmPage.qml" line="42"/>
         <source>Actors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="53"/>
+        <location filename="../assets/pages/FilmPage.qml" line="55"/>
         <source>Comments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="54"/>
+        <location filename="../assets/pages/FilmPage.qml" line="56"/>
         <source>Read comments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="63"/>
+        <location filename="../assets/pages/FilmPage.qml" line="65"/>
         <source>Sessions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="64"/>
+        <location filename="../assets/pages/FilmPage.qml" line="66"/>
         <source>View sessions</source>
         <translation type="unfinished"></translation>
     </message>
@@ -68,17 +68,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="107"/>
+        <location filename="../assets/components/ListItemSession.qml" line="95"/>
         <source>Sessions in 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="188"/>
+        <location filename="../assets/components/ListItemSession.qml" line="141"/>
         <source>Choose a session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="260"/>
+        <location filename="../assets/components/ListItemSession.qml" line="181"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
