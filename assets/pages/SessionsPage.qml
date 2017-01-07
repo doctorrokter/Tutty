@@ -59,7 +59,7 @@ Page {
     
     onCreationCompleted: {
         _filmsService.filmsSessionsChanged.connect(root.populateSessionsList);
-        Request.methods.post({action: "sessions", city: "minsk", film_id: _filmsService.activeFilm.id, "daylimit": 365}, function(response) {
+        Request.methods.post({action: "sessions", city: _citiesService.currentCity.code, film_id: _filmsService.activeFilm.id, "daylimit": 365}, function(response) {
             _filmsService.sessionsFromMaps(JSON.parse(response).items);
         });
     }

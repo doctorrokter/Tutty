@@ -21,6 +21,8 @@
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
 
+#include <QtCore/QCoreApplication>
+
 #include "services/FilmsService.hpp"
 #include "services/CitiesService.hpp"
 
@@ -32,6 +34,9 @@ ApplicationUI::ApplicationUI() :
     // prepare the localization
     m_pTranslator = new QTranslator(this);
     m_pLocaleHandler = new LocaleHandler(this);
+
+    QCoreApplication::setOrganizationName("mikhail.chachkouski");
+    QCoreApplication::setApplicationName("Tutty");
 
     FilmsService* p_filmsService = new FilmsService(this);
     CitiesService* p_citiesService = new CitiesService(this);

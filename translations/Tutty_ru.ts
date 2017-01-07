@@ -8,12 +8,12 @@
         <translation type="obsolete">Выбирите дату</translation>
     </message>
     <message>
-        <location filename="../assets/components/CityPickerDialog.qml" line="30"/>
+        <location filename="../assets/components/CityPickerDialog.qml" line="37"/>
         <source>Choose a city</source>
         <translation type="unfinished">Выбирите город</translation>
     </message>
     <message>
-        <location filename="../assets/components/CityPickerDialog.qml" line="74"/>
+        <location filename="../assets/components/CityPickerDialog.qml" line="81"/>
         <source>Cancel</source>
         <translation type="unfinished">Отмена</translation>
     </message>
@@ -88,17 +88,17 @@
 <context>
     <name>FilmsPage</name>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="43"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="44"/>
         <source>Cinema</source>
         <translation type="unfinished">Кино</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="59"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="60"/>
         <source>Films</source>
         <translation type="unfinished">Фильмы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="64"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="65"/>
         <source>Cinemas</source>
         <translation type="unfinished">Кинотеатры</translation>
     </message>

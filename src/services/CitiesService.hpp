@@ -37,7 +37,7 @@ Q_SIGNALS:
 
 private:
     QList<City*> m_cities;
-    City* m_currentCity;
+    City* m_pCurrentCity;
 
     void destroyCities();
 };

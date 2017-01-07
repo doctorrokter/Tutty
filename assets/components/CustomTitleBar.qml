@@ -50,6 +50,17 @@ TitleBar {
                 horizontalAlignment: HorizontalAlignment.Right
                 verticalAlignment: VerticalAlignment.Center
                 margin.rightOffset: ui.du(10)
+                
+                layout: StackLayout {
+                    orientation: LayoutOrientation.LeftToRight
+                }
+                
+                Label {
+                    text: _citiesService.currentCity.title || "Минск"
+                    textStyle.color: Color.White
+                    verticalAlignment: VerticalAlignment.Center
+                }
+                
                 ImageView {
                     imageSource: "asset:///images/marker.png"
                 }

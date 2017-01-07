@@ -6,12 +6,23 @@
  */
 
 #include "CitiesService.hpp"
+#include <QtCore/QSettings>
 
-CitiesService::CitiesService(QObject* parent) : QObject(parent) {}
+CitiesService::CitiesService(QObject* parent) : QObject(parent) {
+    QSettings settings;
+    City* pCity = new City();
+    if (settings.contains("city")) {
+        pCity->fromMap(settings.value("city", "").toMap());
+    } else {
+        pCity->setCode("minsk");
+        pCity->setId(0);
+    }
+    m_pCurrentCity = pCity;
+}
 
 CitiesService::~CitiesService() {
     destroyCities();
-    delete m_currentCity;
+    delete m_pCurrentCity;
 }
 
 const QList<City*> CitiesService::getCities() const { return m_cities; }
@@ -31,6 +42,11 @@ void CitiesService::fromMaps(const QVariantList citiesMaps) {
     }
 
     setCities(cities);
+
+    if (m_pCurrentCity == 0 || m_pCurrentCity->getId() == 0) {
+        delete m_pCurrentCity;
+        setCurrentCity(m_cities.at(0)->getId());
+    }
 }
 
 QVariantList CitiesService::toMaps() const {
@@ -41,12 +57,14 @@ QVariantList CitiesService::toMaps() const {
     return cities;
 }
 
-City* CitiesService::getCurrentCity() const { return m_currentCity; }
+City* CitiesService::getCurrentCity() const { return m_pCurrentCity; }
 void CitiesService::setCurrentCity(const int cityId) {
+    QSettings settings;
     for (int i = 0; i < m_cities.size(); i++) {
         if (cityId == m_cities.at(i)->getId()) {
-            m_currentCity = m_cities.at(i);
-            emit currentCityChanged(m_currentCity);
+            m_pCurrentCity = m_cities.at(i);
+            settings.setValue("city", m_pCurrentCity->toMap());
+            emit currentCityChanged(m_pCurrentCity);
             return;
         }
     }

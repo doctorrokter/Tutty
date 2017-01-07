@@ -33,6 +33,13 @@ TabbedPane {
                     var fp = filmPage.createObject(this);
                     root.activeTab.content.push(fp);
                 }
+                
+                onCinemaChosen: {
+                    var mp = mapPage.createObject(this);
+                    mp.cinema = cinema.title;
+                    mp.address = _citiesService.currentCity.title + " " + cinema.address;
+                    root.activeTab.content.push(mp);
+                }
             }
             
             onPopTransitionEnded: {
@@ -53,6 +60,11 @@ TabbedPane {
                 ComponentDefinition {
                     id: sessionsPage
                     SessionsPage {}
+                },
+                
+                ComponentDefinition {
+                    id: mapPage
+                    MapPage {}
                 }
             ]
         }

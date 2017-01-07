@@ -4,12 +4,19 @@ Dialog {
     
     id: root
     
-    property variant data: [{"title": "Misnk"}, {"title": "Gomel"}]
-    
     function populateCities() {
         cityDataModel.append(_citiesService.toMaps());
         if (!_citiesService.currentCity) {
             cities.select([0]);
+        } else {
+            var indexPath = [];
+            for (var index = 0; index < cityDataModel.size(); index++) {
+                var city = cityDataModel.value(index);
+                if (_citiesService.currentCity.code === city.code) {
+                    indexPath.push(index);
+                }
+            }
+            cities.select(indexPath);
         }
     }
     

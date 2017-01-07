@@ -1,5 +1,5 @@
 1
-23
+24
 components/CityPickerDialog.qml
 components/CustomTitleBar.qml
 components/DatePickerDialog.qml
@@ -17,6 +17,7 @@ main.qml
 pages/ConcertsPage.qml
 pages/FilmPage.qml
 pages/FilmsPage.qml
+pages/MapPage.qml
 pages/SessionsPage.qml
 sheets/WebSheet.qml
 Test.qml
