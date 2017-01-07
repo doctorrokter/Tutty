@@ -13,9 +13,6 @@ Page {
         title: _filmsService.activeFilm.name
     }
     
-//    actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
-//    actionBarVisibility: ChromeVisibility.Overlay
-            
     ScrollView {
         scrollRole: ScrollRole.Main
         Container {
@@ -53,12 +50,12 @@ Page {
             
             Header {
                 title: qsTr("Comments") + Retranslate.onLocaleOrLanguageChanged + " " + _filmsService.activeFilm.commentsCnt
-                subtitle: qsTr("Read comments") + Retranslate.onLocaleOrLanguageChanged
-                mode: HeaderMode.Interactive
+//                subtitle: qsTr("Read comments") + Retranslate.onLocaleOrLanguageChanged
+//                mode: HeaderMode.Interactive
                 
-                onClicked: {
-                    console.debug();
-                }
+//                onClicked: {
+//                    console.debug();
+//                }
             }
             
             Header {

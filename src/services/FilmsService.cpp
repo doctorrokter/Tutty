@@ -29,6 +29,12 @@ void FilmsService::setCinemas(const QList<Cinema*> cinemas) {
 }
 
 void FilmsService::fromMaps(const QVariantList filmsMaps) {
+    if (!m_films.empty()) {
+        for (int i = 0; i < m_films.size(); i++) {
+            delete m_films.at(i);
+        }
+        m_films.clear();
+    }
     for (int i = 0; i < filmsMaps.size(); i++) {
         Film* film = new Film(this);
         film->fromMap(filmsMaps[i].toMap());
@@ -48,12 +54,18 @@ QVariantList FilmsService::toMaps() const {
 }
 
 void FilmsService::cinemasFromMaps(const QVariantList cinemasMaps) {
-    for (int i = 0; i < cinemasMaps.size(); i++) {
-            Cinema* cinema = new Cinema(this);
-            cinema->fromMap(cinemasMaps[i].toMap());
-            m_cinemas.append(cinema);
+    if (!m_cinemas.empty()) {
+        for (int i = 0; i < m_cinemas.size(); i++) {
+            delete m_cinemas.at(i);
         }
-        emit cinemasChanged(m_cinemas);
+        m_cinemas.clear();
+    }
+    for (int i = 0; i < cinemasMaps.size(); i++) {
+        Cinema* cinema = new Cinema(this);
+        cinema->fromMap(cinemasMaps[i].toMap());
+        m_cinemas.append(cinema);
+    }
+    emit cinemasChanged(m_cinemas);
 }
 
 QVariantList FilmsService::cinemasToMaps() const {

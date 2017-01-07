@@ -39,20 +39,26 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/Test.qml) \
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
+        $$quote($$BASEDIR/assets/components/CityPickerDialog.qml) \
         $$quote($$BASEDIR/assets/components/CustomTitleBar.qml) \
+        $$quote($$BASEDIR/assets/components/DatePickerDialog.qml) \
         $$quote($$BASEDIR/assets/components/FilmHeader.qml) \
         $$quote($$BASEDIR/assets/components/Gallery.qml) \
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
         $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
         $$quote($$BASEDIR/assets/components/TimePrice.qml) \
+        $$quote($$BASEDIR/assets/images/calendar.png) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
+        $$quote($$BASEDIR/assets/images/ic_location.png) \
+        $$quote($$BASEDIR/assets/images/marker.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \
         $$quote($$BASEDIR/assets/pages/SessionsPage.qml) \
-        $$quote($$BASEDIR/assets/sheets/WebSheet.qml)
+        $$quote($$BASEDIR/assets/sheets/WebSheet.qml) \
+        $$quote($$BASEDIR/assets/util/Request.qml)
 }
 
 config_pri_source_group1 {
@@ -60,17 +66,21 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/applicationui.cpp) \
         $$quote($$BASEDIR/src/main.cpp) \
         $$quote($$BASEDIR/src/models/Cinema.cpp) \
+        $$quote($$BASEDIR/src/models/City.cpp) \
         $$quote($$BASEDIR/src/models/Film.cpp) \
         $$quote($$BASEDIR/src/models/FilmSession.cpp) \
         $$quote($$BASEDIR/src/models/Session.cpp) \
+        $$quote($$BASEDIR/src/services/CitiesService.cpp) \
         $$quote($$BASEDIR/src/services/FilmsService.cpp)
 
     HEADERS += \
         $$quote($$BASEDIR/src/applicationui.hpp) \
         $$quote($$BASEDIR/src/models/Cinema.hpp) \
+        $$quote($$BASEDIR/src/models/City.hpp) \
         $$quote($$BASEDIR/src/models/Film.hpp) \
         $$quote($$BASEDIR/src/models/FilmSession.hpp) \
         $$quote($$BASEDIR/src/models/Session.hpp) \
+        $$quote($$BASEDIR/src/services/CitiesService.hpp) \
         $$quote($$BASEDIR/src/services/FilmsService.hpp)
 }
 
@@ -112,7 +122,10 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/pages/*.qs) \
         $$quote($$BASEDIR/../assets/sheets/*.qml) \
         $$quote($$BASEDIR/../assets/sheets/*.js) \
-        $$quote($$BASEDIR/../assets/sheets/*.qs)
+        $$quote($$BASEDIR/../assets/sheets/*.qs) \
+        $$quote($$BASEDIR/../assets/util/*.qml) \
+        $$quote($$BASEDIR/../assets/util/*.js) \
+        $$quote($$BASEDIR/../assets/util/*.qs)
 
     HEADERS += \
         $$quote($$BASEDIR/../src/*.h) \
@@ -122,4 +135,5 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../src/*.hxx)
 }
 
-TRANSLATIONS = $$quote($${TARGET}.ts)
+TRANSLATIONS = $$quote($${TARGET}_ru.ts) \
+    $$quote($${TARGET}.ts)

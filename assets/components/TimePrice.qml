@@ -36,4 +36,10 @@ Container {
             textStyle.base: SystemDefaults.TextStyles.SubtitleText
         }
     }
+    
+    onTimestampChanged: {
+        if (new Date().getTime() >= (Number(root.timestamp) - 900000)) {
+            root.opacity = 0.5;
+        }
+    }
 }

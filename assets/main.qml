@@ -16,6 +16,8 @@
 
 import bb.cascades 1.4
 import "./pages"
+import "./components"
+import "./util"
 
 TabbedPane {
     id: root
@@ -24,6 +26,8 @@ TabbedPane {
         title: qsTr("Films") + Retranslate.onLocaleOrLanguageChanged
         NavigationPane {
             FilmsPage {
+                id: filmsPage
+                
                 onFilmChosen: {
                     _filmsService.setActiveFilm(parseInt(film.id));
                     var fp = filmPage.createObject(this);
@@ -54,11 +58,22 @@ TabbedPane {
         }
     }
     
-    Tab {
-        title: qsTr("Concerts") + Retranslate.onLocaleOrLanguageChanged
-        
-        NavigationPane {
-            ConcertsPage {}
-        }
+//    Tab {
+//        title: qsTr("Concerts") + Retranslate.onLocaleOrLanguageChanged
+//        
+//        NavigationPane {
+//            ConcertsPage {}
+//        }
+//    }
+
+    onCreationCompleted: {
+        request.post({action: "getCities"}, function(response) {
+            _citiesService.fromMaps(JSON.parse(response).items);
+        });
     }
+
+    attachedObjects: [
+        Request { id: request }
+    ]
+
 }

@@ -1,6 +1,12 @@
 import bb.cascades 1.4
 
 TitleBar {
+    id: root
+    
+    property bool calendarEnabled: false
+    property bool locationEnabled: false
+    
+    signal dateChanged(variant jsDate)
     
     appearance: TitleBarAppearance.Plain
     kind: TitleBarKind.FreeForm
@@ -21,6 +27,55 @@ TitleBar {
                 textStyle.base: SystemDefaults.TextStyles.TitleText
                 textStyle.color: Color.White
             }
+            
+            Container {
+                visible: root.calendarEnabled
+                horizontalAlignment: HorizontalAlignment.Right
+                verticalAlignment: VerticalAlignment.Center
+                ImageView {
+                    imageSource: "asset:///images/calendar.png"
+                }
+                
+                gestureHandlers: [
+                    TapHandler {
+                        onTapped: {
+                            datePickerDialog.open();
+                        }
+                    }
+                ]
+            }
+            
+            Container {
+                visible: root.locationEnabled
+                horizontalAlignment: HorizontalAlignment.Right
+                verticalAlignment: VerticalAlignment.Center
+                margin.rightOffset: ui.du(10)
+                ImageView {
+                    imageSource: "asset:///images/marker.png"
+                }
+                
+                gestureHandlers: [
+                    TapHandler {
+                        onTapped: {
+                            cityPicker.open();
+                        }
+                    }
+                ]
+            }
         }
     }
+    
+    attachedObjects: [
+        DatePickerDialog {
+            id: datePickerDialog
+            
+            onDateChanged: {
+                root.dateChanged(jsDate);
+            }
+        },
+        
+        CityPickerDialog {
+            id: cityPicker
+        }
+    ]
 }

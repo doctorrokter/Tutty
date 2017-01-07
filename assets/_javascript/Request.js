@@ -18,13 +18,13 @@ var methods = (function() {
 				if (_req.status === 200) {
 					onSuccess(_req.responseText);
 				} else {
-					console.debug(_req.responseText);
+					onError(_req.responseText);
 				}
 			}
 		};
 
 		_req.onerror = function() {
-			console.debug('Network Error');
+			onError('Network Error');
 		};
 
 		_req.send(paramsStr || null);

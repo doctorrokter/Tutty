@@ -28,6 +28,7 @@
 #include "models/Film.hpp"
 #include "models/Cinema.hpp"
 #include "models/FilmSession.hpp"
+#include "models/City.hpp"
 
 using namespace bb::cascades;
 
@@ -36,9 +37,12 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     qmlRegisterType<Film>("chachkouski.models", 1, 0, "Film");
     qmlRegisterType<Cinema>("chachkouski.models", 1, 0, "Cinema");
     qmlRegisterType<FilmSession>("chachkouski.models", 1, 0, "FilmSession");
+    qmlRegisterType<City>("chachkouski.models", 1, 0, "City");
     qRegisterMetaType<QList<Film*> >("QList<Film*>");
     qRegisterMetaType<QList<Cinema*> >("QList<Cinema*>");
     qRegisterMetaType<QList<FilmSession*> >("QList<FilmSession*>");
+    qRegisterMetaType<QList<City*> >("QList<City*>");
+    qRegisterMetaType<City*>("City*");
 
     Application app(argc, argv);
 

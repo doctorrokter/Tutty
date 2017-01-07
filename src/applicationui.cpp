@@ -22,6 +22,7 @@
 #include <bb/cascades/LocaleHandler>
 
 #include "services/FilmsService.hpp"
+#include "services/CitiesService.hpp"
 
 using namespace bb::cascades;
 
@@ -32,7 +33,8 @@ ApplicationUI::ApplicationUI() :
     m_pTranslator = new QTranslator(this);
     m_pLocaleHandler = new LocaleHandler(this);
 
-    FilmsService* m_filmsService = new FilmsService(this);
+    FilmsService* p_filmsService = new FilmsService(this);
+    CitiesService* p_citiesService = new CitiesService(this);
 
     bool res = QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()));
     // This is only available in Debug builds
@@ -50,7 +52,8 @@ ApplicationUI::ApplicationUI() :
 
     QDeclarativeEngine* engine = QmlDocument::defaultDeclarativeEngine();
     QDeclarativeContext* rootContext = engine->rootContext();
-    rootContext->setContextProperty("_filmsService", m_filmsService);
+    rootContext->setContextProperty("_filmsService", p_filmsService);
+    rootContext->setContextProperty("_citiesService", p_citiesService);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

@@ -70,7 +70,7 @@ CustomListItem {
                         
                         onCreationCompleted: {
                             var sessions = root.sessions.filter(function(session) {
-                                    return session.threeD === false;
+                                return session.threeD === false;
                             });
                             sessions.forEach(function(s) {
                                 var timePrice = timePriceContainer.createObject(this);
