@@ -92,24 +92,14 @@
     </message>
 </context>
 <context>
-    <name>ListItemSession</name>
+    <name>SessionsDialog</name>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="41"/>
-        <source>Buy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/components/ListItemSession.qml" line="95"/>
-        <source>Sessions in 3D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/components/ListItemSession.qml" line="141"/>
+        <location filename="../assets/components/SessionsDialog.qml" line="25"/>
         <source>Choose a session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="181"/>
+        <location filename="../assets/components/SessionsDialog.qml" line="66"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>

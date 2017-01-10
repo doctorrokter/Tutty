@@ -5,12 +5,12 @@
     <name>CityPickerDialog</name>
     <message>
         <source>Choose a date</source>
-        <translation type="obsolete">Выбирите дату</translation>
+        <translation type="obsolete">Выберите дату</translation>
     </message>
     <message>
         <location filename="../assets/components/CityPickerDialog.qml" line="37"/>
         <source>Choose a city</source>
-        <translation type="unfinished">Выбирите город</translation>
+        <translation type="unfinished">Выберите город</translation>
     </message>
     <message>
         <location filename="../assets/components/CityPickerDialog.qml" line="81"/>
@@ -27,7 +27,7 @@
     <message>
         <location filename="../assets/components/DatePickerDialog.qml" line="23"/>
         <source>Choose a date</source>
-        <translation type="unfinished">Выбирите дату</translation>
+        <translation type="unfinished">Выберите дату</translation>
     </message>
     <message>
         <location filename="../assets/components/DatePickerDialog.qml" line="36"/>
@@ -106,22 +106,31 @@
 <context>
     <name>ListItemSession</name>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="41"/>
         <source>Buy</source>
-        <translation type="unfinished">Купить</translation>
+        <translation type="obsolete">Купить</translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="95"/>
         <source>Sessions in 3D</source>
-        <translation type="unfinished">Сеансы в 3D</translation>
+        <translation type="obsolete">Сеансы в 3D</translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="141"/>
         <source>Choose a session</source>
-        <translation type="unfinished">Выбирите сеанс</translation>
+        <translation type="obsolete">Выберите сеанс</translation>
     </message>
     <message>
-        <location filename="../assets/components/ListItemSession.qml" line="181"/>
+        <source>Cancel</source>
+        <translation type="obsolete">Отмена</translation>
+    </message>
+</context>
+<context>
+    <name>SessionsDialog</name>
+    <message>
+        <location filename="../assets/components/SessionsDialog.qml" line="25"/>
+        <source>Choose a session</source>
+        <translation type="unfinished">Выберите сеанс</translation>
+    </message>
+    <message>
+        <location filename="../assets/components/SessionsDialog.qml" line="66"/>
         <source>Cancel</source>
         <translation type="unfinished">Отмена</translation>
     </message>

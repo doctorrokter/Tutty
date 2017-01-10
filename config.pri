@@ -47,10 +47,14 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
         $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
+        $$quote($$BASEDIR/assets/components/SessionsDialog.qml) \
+        $$quote($$BASEDIR/assets/components/Ticket.qml) \
         $$quote($$BASEDIR/assets/components/TimePrice.qml) \
         $$quote($$BASEDIR/assets/images/calendar.png) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/ic_location.png) \
+        $$quote($$BASEDIR/assets/images/ic_ticket.png) \
+        $$quote($$BASEDIR/assets/images/ic_ticket_2.png) \
         $$quote($$BASEDIR/assets/images/marker.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \

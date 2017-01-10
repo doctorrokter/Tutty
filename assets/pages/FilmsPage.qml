@@ -149,7 +149,5 @@ Page {
         _citiesService.currentCityChanged.connect(root.load);
         root.titleBar.dateChanged.connect(root.load);
         load();
-//        filmsDataModel.append(root.films);
-//        cinemasDataModel.append(root.cinemas);
     }
 }

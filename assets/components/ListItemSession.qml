@@ -4,8 +4,17 @@ import bb.system 1.2
 CustomListItem {
     id: root
     
-    property variant cinema
-    property variant sessions
+    property variant cinema: {title: "3D Kino v Zamke", address: "Pobediteley, 5"}
+    property variant sessions: [
+        {sessionTime: 0, price: "5.5", threeD: true},
+        {sessionTime: 0, price: "8.8", threeD: true},
+        {sessionTime: 0, price: "3.5", threeD: false},
+        {sessionTime: 0, price: "3.5", threeD: false},
+        {sessionTime: 0, price: "3.5", threeD: false},
+        {sessionTime: 0, price: "3.5", threeD: true},
+        {sessionTime: 0, price: "5", threeD: true},
+        {sessionTime: 0, price: "10.5", threeD: false}
+    ]
     
     Container {
         horizontalAlignment: HorizontalAlignment.Fill
@@ -21,38 +30,40 @@ CustomListItem {
             }
             horizontalAlignment: HorizontalAlignment.Fill
             
-            Container {
-                layout: DockLayout {}
+            Label {
                 horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Center
+                text: root.cinema.title
+                textStyle.base: SystemDefaults.TextStyles.PrimaryText
+                minWidth: ui.du(50)
+                preferredWidth: ui.du(50)
+                maxWidth: ui.du(100)
+            }
+            
+            Container {
+                horizontalAlignment: HorizontalAlignment.Fill
+                layout: DockLayout {
+                    
+                }
+//                Button {
+//                    horizontalAlignment: HorizontalAlignment.Right
+//                    text: qsTr("Buy") + Retranslate.onLocaleOrLanguageChanged
+//                    maxWidth: ui.du(20.0)
+//                    minWidth: ui.du(20.0)
+//                    
+//                    onClicked: {
+//                        sessionsDialog.sessions = root.sessions;
+//                        sessionsDialog.open();
+//                    }
+//                }
                 
                 Label {
                     horizontalAlignment: HorizontalAlignment.Left
                     verticalAlignment: VerticalAlignment.Center
-                    text: root.cinema.title
-                    textStyle.base: SystemDefaults.TextStyles.PrimaryText
+                    text: root.cinema.address
+                    textStyle.base: SystemDefaults.TextStyles.SubtitleText
                     multiline: true
-                    minWidth: ui.du(50)
-                    preferredWidth: ui.du(50)
-                    maxWidth: ui.du(100)
                 }
-                
-                Button {
-                    horizontalAlignment: HorizontalAlignment.Right
-                    text: qsTr("Buy") + Retranslate.onLocaleOrLanguageChanged
-                    maxWidth: ui.du(20.0)
-                    minWidth: ui.du(20.0)
-                    
-                    onClicked: {
-                        customDialog.sessions = root.sessions;
-                        customDialog.open();
-                    }
-                }
-            }
-            
-            Label {
-                text: root.cinema.address
-                textStyle.base: SystemDefaults.TextStyles.SubtitleText
-                multiline: true
             }
             
             Container {
@@ -60,136 +71,49 @@ CustomListItem {
                     orientation: LayoutOrientation.TopToBottom
                 }
                 
-                ScrollView {
-                    scrollViewProperties.scrollMode: ScrollMode.Horizontal
-                    Container {
-                        id: regularSessions
-                        layout: StackLayout {
+                Container {
+                    id: regularSessions
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    maxHeight: ui.du(20)
+                    ListView {
+                        dataModel: ArrayDataModel {
+                            id: regularSessionsDataModel
+                        }
+                        layout: StackListLayout {
                             orientation: LayoutOrientation.LeftToRight
                         }
                         
-                        onCreationCompleted: {
-                            var sessions = root.sessions.filter(function(session) {
-                                return session.threeD === false;
-                            });
-                            sessions.forEach(function(s) {
-                                var timePrice = timePriceContainer.createObject(this);
-                                timePrice.timestamp = s.sessionTime * 1000;
-                                timePrice.price = s.price;
-                                regularSessions.add(timePrice);
-                            });
-                        }
-                    }
-                }
-                
-                ScrollView {
-                    scrollViewProperties.scrollMode: ScrollMode.Horizontal
-                    Container {
-                        id: threeDSessions
-                        layout: StackLayout {
-                            orientation: LayoutOrientation.TopToBottom
-                        }
-                        margin.topOffset: ui.du(1)
-                        
-                        Label {
-                            text: qsTr("Sessions in 3D") + Retranslate.onLocaleOrLanguageChanged
-                        }
-                        
-                        Container {
-                            id: threeDSessionsSubcontainer
-                            layout: StackLayout {
-                                orientation: LayoutOrientation.LeftToRight
+                        listItemComponents: [
+                            ListItemComponent {
+                                CustomListItem {
+                                    dividerVisible: false
+                                    maxWidth: ui.du(20)
+                                    maxHeight: ui.du(20)
+                                    Ticket {
+                                        timestamp: ListItemData.sessionTime * 1000
+                                        price: ListItemData.price
+                                        threeD: ListItemData.threeD
+                                    }
+                                }
                             }
-                        }
+                        ]   
                         
-                        onCreationCompleted: {
-                            var sessions = root.sessions.filter(function(session) {
-                                    return session.threeD === true;
-                            });
-                            threeDSessions.visible = sessions.length > 0;
-                            sessions.forEach(function(s) {
-                                var timePrice = timePriceContainer.createObject(this);
-                                timePrice.timestamp = s.sessionTime * 1000;
-                                timePrice.price = s.price;
-                                threeDSessionsSubcontainer.add(timePrice);
-                            });
-                        }
+                        onTriggered: {
+                            var data = regularSessionsDataModel.data(indexPath);
+                            browser.query.uri = data.buyTicketUrl;
+                        }                     
+                    }
+                    
+                    onCreationCompleted: {
+                        regularSessionsDataModel.append(root.sessions);
                     }
                 }
             }
         }
-        
+               
         attachedObjects: [
-            ComponentDefinition {
-                id: timePriceContainer
-                TimePrice {}
-            },
-            
-            Dialog {
-                id: customDialog
-                
-                property variant sessions
-                
-                Container {
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Fill
-                    background: Color.create(0.0, 0.0, 0.0, 0.5)
-                    layout: DockLayout {}
-                    
-                    Container {
-                        ListItemHeader {
-                            text: qsTr("Choose a session") + Retranslate.onLocaleOrLanguageChanged
-                        }
-                        
-                        verticalAlignment: VerticalAlignment.Center
-                        horizontalAlignment: HorizontalAlignment.Center
-                        maxHeight: ui.du(50)
-                        maxWidth: ui.du(60);
-                        background: Color.White
-                        
-                        Container {
-                            leftPadding: ui.du(3)
-                            rightPadding: leftPadding
-                            horizontalAlignment: HorizontalAlignment.Fill
-                            ListView {
-                                dataModel: ArrayDataModel {
-                                    id: sessionsDataModel
-                                }
-                                layout: GridListLayout  {}
-                                
-                                listItemComponents: [
-                                    ListItemComponent {
-                                        CustomListItem {
-                                            TimePrice {
-                                                timestamp: ListItemData.sessionTime * 1000
-                                                price: ListItemData.price
-                                            }
-                                        }
-                                    }
-                                ]
-                                
-                                onTriggered: {
-                                    var data = sessionsDataModel.data(indexPath);
-                                    browser.query.uri = data.buyTicketUrl;
-                                }
-                            }
-                        }
-                        
-                        
-                        Button {
-                            horizontalAlignment: HorizontalAlignment.Fill
-                            text: qsTr("Cancel") + Retranslate.onLocaleOrLanguageChanged
-                            
-                            onClicked: {
-                                customDialog.close();
-                            }
-                        }
-                    }
-                }
-                
-                onSessionsChanged: {
-                    sessionsDataModel.append(customDialog.sessions);
-                }
+            SessionsDialog {
+                id: sessionsDialog
             },
                         
             Invocation {

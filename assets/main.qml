@@ -77,6 +77,12 @@ TabbedPane {
 //            ConcertsPage {}
 //        }
 //    }
+    Tab {
+        title: "Test"
+        Test {
+        
+        }
+    }
 
     onCreationCompleted: {
         request.post({action: "getCities"}, function(response) {

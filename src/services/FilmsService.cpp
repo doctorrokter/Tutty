@@ -181,3 +181,16 @@ void FilmsService::sessionsFromMaps(const QVariantMap items) {
     }
     setFilmsSessions(filmsSessions);
 }
+
+QVariantList FilmsService::sessionsByDateAndCinemaId(const int date, const int cinemaId) const {
+    QVariantList list;
+    QList<FilmSession*> filmsSessions = getSessionsFor(m_activeFilm->getId());
+    for (int i = 0; i < filmsSessions.size(); i++) {
+        FilmSession* p_fs = filmsSessions.at(i);
+        if (p_fs->getDate() == date && p_fs->getCinema()->getId() == cinemaId) {
+            list.append(p_fs->toMap());
+            return list;
+        }
+    }
+    return list;
+}

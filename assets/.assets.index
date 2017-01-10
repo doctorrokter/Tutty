@@ -1,5 +1,5 @@
 1
-24
+28
 components/CityPickerDialog.qml
 components/CustomTitleBar.qml
 components/DatePickerDialog.qml
@@ -8,10 +8,14 @@ components/Gallery.qml
 components/ListItemFilm.qml
 components/ListItemHeader.qml
 components/ListItemSession.qml
+components/SessionsDialog.qml
+components/Ticket.qml
 components/TimePrice.qml
 images/calendar.png
 images/ic_favorite.png
 images/ic_location.png
+images/ic_ticket.png
+images/ic_ticket_2.png
 images/marker.png
 main.qml
 pages/ConcertsPage.qml

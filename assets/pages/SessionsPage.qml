@@ -16,10 +16,9 @@ Page {
         title: _filmsService.activeFilm.name
     }
     
+    actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
+    
     ListView {
-        horizontalAlignment: HorizontalAlignment.Fill
-        verticalAlignment: VerticalAlignment.Fill
-            
         scrollRole: ScrollRole.Main
             
         dataModel: GroupDataModel {
@@ -50,6 +49,7 @@ Page {
             ListItemComponent {
                 type: "item"
                 ListItemSession {
+                    maxHeight: ui.du(35)
                     cinema: ListItemData.cinema
                     sessions: ListItemData.sessions
                 }
@@ -62,5 +62,15 @@ Page {
         Request.methods.post({action: "sessions", city: _citiesService.currentCity.code, film_id: _filmsService.activeFilm.id, "daylimit": 365}, function(response) {
             _filmsService.sessionsFromMaps(JSON.parse(response).items);
         });
+//        groupDataModel.insert({
+//                cinema: {title: "3D Kino v Zamke / 3D Kino v Zamke adssdfsdf", address: "Pobediteley, 5"}, 
+//            sessions: [{sessionTime: 0, price: "5.5", threeD: true},
+//            {sessionTime: 0, price: "8.8", threeD: true},
+//                {sessionTime: 0, price: "3.5", threeD: false},
+//                {sessionTime: 0, price: "3.5", threeD: false},
+//                {sessionTime: 0, price: "3.5", threeD: false},
+//                {sessionTime: 0, price: "3.5", threeD: true},
+//                {sessionTime: 0, price: "5", threeD: true},
+//                {sessionTime: 0, price: "10.5", threeD: false}]});
     }
 }

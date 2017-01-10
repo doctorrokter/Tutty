@@ -53,6 +53,8 @@ public:
     Q_INVOKABLE QVariantList sessionsToMaps(const int filmId) const;
     Q_INVOKABLE void sessionsFromMaps(const QVariantMap items);
 
+    Q_INVOKABLE QVariantList sessionsByDateAndCinemaId(const int date, const int cinemaId) const;
+
 Q_SIGNALS:
     void filmsChanged(const QList<Film*>& films);
     void cinemasChanged(const QList<Cinema*>& cinemas);
