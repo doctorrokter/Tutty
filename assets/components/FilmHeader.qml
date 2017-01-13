@@ -3,7 +3,15 @@ import bb.cascades 1.4
 Container {
     id: root
     
-    property variant film
+    property variant film: {
+        name: "Assassin's Creed", 
+        genres: "Fantasy", 
+        country: "USA", 
+        year: "2016",
+        rateTen: 10,
+        restriction: "16+",
+        isPremiere: true
+    }
     
     layout: StackLayout {
         orientation: LayoutOrientation.LeftToRight
@@ -62,9 +70,10 @@ Container {
                 leftMargin: ui.du(2)
                 verticalAlignment: VerticalAlignment.Center
                 Label {
+                    textFormat: TextFormat.Html
                     text: {
                         if (root.film.isPremiere) {
-                            return '<html><div style="border: 1px solid black; border-radius: 1px;">' + qsTr("PREMIERE") + Retranslate.onLocaleOrLanguageChanged + '</div></html>';
+                            return "<html><body><div style=\"border: 1px solid black; border-radius: 1px;\">" + qsTr("PREMIERE") + Retranslate.onLocaleOrLanguageChanged + "</div></body></html>";
                         }
                         return "";
                     }

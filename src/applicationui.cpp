@@ -22,6 +22,7 @@
 #include <bb/cascades/LocaleHandler>
 
 #include <QtCore/QCoreApplication>
+#include <QDir>
 
 #include "services/FilmsService.hpp"
 #include "services/CitiesService.hpp"
@@ -59,6 +60,7 @@ ApplicationUI::ApplicationUI() :
     QDeclarativeContext* rootContext = engine->rootContext();
     rootContext->setContextProperty("_filmsService", p_filmsService);
     rootContext->setContextProperty("_citiesService", p_citiesService);
+    rootContext->setContextProperty("_currentPath", QDir::currentPath());
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

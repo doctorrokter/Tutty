@@ -39,6 +39,9 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/Test.qml) \
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
+        $$quote($$BASEDIR/assets/actions/AppActions.qml) \
+        $$quote($$BASEDIR/assets/actions/FilmsActions.qml) \
+        $$quote($$BASEDIR/assets/components/BorderedLabel.qml) \
         $$quote($$BASEDIR/assets/components/CityPickerDialog.qml) \
         $$quote($$BASEDIR/assets/components/CustomTitleBar.qml) \
         $$quote($$BASEDIR/assets/components/DatePickerDialog.qml) \
@@ -48,11 +51,13 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
         $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
         $$quote($$BASEDIR/assets/components/SessionsDialog.qml) \
+        $$quote($$BASEDIR/assets/components/Spinner.qml) \
         $$quote($$BASEDIR/assets/components/Ticket.qml) \
         $$quote($$BASEDIR/assets/components/TimePrice.qml) \
         $$quote($$BASEDIR/assets/images/calendar.png) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/ic_location.png) \
+        $$quote($$BASEDIR/assets/images/ic_rectangle.png) \
         $$quote($$BASEDIR/assets/images/ic_ticket.png) \
         $$quote($$BASEDIR/assets/images/ic_ticket_2.png) \
         $$quote($$BASEDIR/assets/images/marker.png) \
@@ -68,6 +73,8 @@ config_pri_assets {
 
 config_pri_source_group1 {
     SOURCES += \
+        $$quote($$BASEDIR/src/__test__/cascadestester.cpp) \
+        $$quote($$BASEDIR/src/__test__/services/FilmsServiceSpec.cpp) \
         $$quote($$BASEDIR/src/applicationui.cpp) \
         $$quote($$BASEDIR/src/main.cpp) \
         $$quote($$BASEDIR/src/models/Cinema.cpp) \
@@ -79,6 +86,8 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/services/FilmsService.cpp)
 
     HEADERS += \
+        $$quote($$BASEDIR/src/__test__/cascadestester.hpp) \
+        $$quote($$BASEDIR/src/__test__/services/FilmsServiceSpec.hpp) \
         $$quote($$BASEDIR/src/applicationui.hpp) \
         $$quote($$BASEDIR/src/models/Cinema.hpp) \
         $$quote($$BASEDIR/src/models/City.hpp) \
@@ -100,6 +109,16 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../src/*.cc) \
         $$quote($$BASEDIR/../src/*.cpp) \
         $$quote($$BASEDIR/../src/*.cxx) \
+        $$quote($$BASEDIR/../src/__test__/*.c) \
+        $$quote($$BASEDIR/../src/__test__/*.c++) \
+        $$quote($$BASEDIR/../src/__test__/*.cc) \
+        $$quote($$BASEDIR/../src/__test__/*.cpp) \
+        $$quote($$BASEDIR/../src/__test__/*.cxx) \
+        $$quote($$BASEDIR/../src/__test__/services/*.c) \
+        $$quote($$BASEDIR/../src/__test__/services/*.c++) \
+        $$quote($$BASEDIR/../src/__test__/services/*.cc) \
+        $$quote($$BASEDIR/../src/__test__/services/*.cpp) \
+        $$quote($$BASEDIR/../src/__test__/services/*.cxx) \
         $$quote($$BASEDIR/../src/models/*.c) \
         $$quote($$BASEDIR/../src/models/*.c++) \
         $$quote($$BASEDIR/../src/models/*.cc) \
@@ -116,6 +135,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/_javascript/*.qml) \
         $$quote($$BASEDIR/../assets/_javascript/*.js) \
         $$quote($$BASEDIR/../assets/_javascript/*.qs) \
+        $$quote($$BASEDIR/../assets/actions/*.qml) \
+        $$quote($$BASEDIR/../assets/actions/*.js) \
+        $$quote($$BASEDIR/../assets/actions/*.qs) \
         $$quote($$BASEDIR/../assets/components/*.qml) \
         $$quote($$BASEDIR/../assets/components/*.js) \
         $$quote($$BASEDIR/../assets/components/*.qs) \

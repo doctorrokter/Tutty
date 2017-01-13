@@ -188,7 +188,10 @@ QVariantList FilmsService::sessionsByDateAndCinemaId(const int date, const int c
     for (int i = 0; i < filmsSessions.size(); i++) {
         FilmSession* p_fs = filmsSessions.at(i);
         if (p_fs->getDate() == date && p_fs->getCinema()->getId() == cinemaId) {
-            list.append(p_fs->toMap());
+            QList<Session*> sessions = p_fs->getSessions();
+            for (int j = 0; j < sessions.size(); j++) {
+                list.append(sessions.at(j)->toMap());
+            }
             return list;
         }
     }

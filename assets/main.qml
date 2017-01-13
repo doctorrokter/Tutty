@@ -17,7 +17,6 @@
 import bb.cascades 1.4
 import "./pages"
 import "./components"
-import "./util"
 
 TabbedPane {
     id: root
@@ -69,29 +68,4 @@ TabbedPane {
             ]
         }
     }
-    
-//    Tab {
-//        title: qsTr("Concerts") + Retranslate.onLocaleOrLanguageChanged
-//        
-//        NavigationPane {
-//            ConcertsPage {}
-//        }
-//    }
-    Tab {
-        title: "Test"
-        Test {
-        
-        }
-    }
-
-    onCreationCompleted: {
-        request.post({action: "getCities"}, function(response) {
-            _citiesService.fromMaps(JSON.parse(response).items);
-        });
-    }
-
-    attachedObjects: [
-        Request { id: request }
-    ]
-
 }

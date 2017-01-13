@@ -30,6 +30,9 @@
 #include "models/FilmSession.hpp"
 #include "models/City.hpp"
 
+#include "__test__/cascadestester.hpp"
+#include "__test__/services/FilmsServiceSpec.hpp"
+
 using namespace bb::cascades;
 
 Q_DECL_EXPORT int main(int argc, char **argv)
@@ -43,6 +46,10 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     qRegisterMetaType<QList<FilmSession*> >("QList<FilmSession*>");
     qRegisterMetaType<QList<City*> >("QList<City*>");
     qRegisterMetaType<City*>("City*");
+
+//    FilmsServiceSpec filmsServiceSpec;
+//    CascadesTester tester(&filmsServiceSpec, argc, argv);
+//    QMetaObject::invokeMethod(&tester, "startTest", Qt::QueuedConnection);
 
     Application app(argc, argv);
 

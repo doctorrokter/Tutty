@@ -13,8 +13,9 @@ CustomListItem {
         {sessionTime: 0, price: "3.5", threeD: false},
         {sessionTime: 0, price: "3.5", threeD: true},
         {sessionTime: 0, price: "5", threeD: true},
-        {sessionTime: 0, price: "10.5", threeD: false}
+        {sessionTime: 0, price: "10.5", threeD: true}
     ]
+    property int date: 0
     
     Container {
         horizontalAlignment: HorizontalAlignment.Fill
@@ -103,10 +104,6 @@ CustomListItem {
                             browser.query.uri = data.buyTicketUrl;
                         }                     
                     }
-                    
-                    onCreationCompleted: {
-                        regularSessionsDataModel.append(root.sessions);
-                    }
                 }
             }
         }
@@ -137,5 +134,11 @@ CustomListItem {
                 }
             }
         ]
+    }
+    
+    onSessionsChanged: {
+//        console.debug("cinema", root.cinema.title, "date", root.date, "sessions", root.sessions.length);
+        regularSessionsDataModel.clear();
+        regularSessionsDataModel.append(sessions);
     }
 }

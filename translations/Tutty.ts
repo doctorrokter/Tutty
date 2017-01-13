@@ -35,7 +35,7 @@
 <context>
     <name>FilmHeader</name>
     <message>
-        <location filename="../assets/components/FilmHeader.qml" line="67"/>
+        <location filename="../assets/components/FilmHeader.qml" line="76"/>
         <source>PREMIERE</source>
         <translation type="unfinished"></translation>
     </message>
@@ -43,27 +43,27 @@
 <context>
     <name>FilmPage</name>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="33"/>
+        <location filename="../assets/pages/FilmPage.qml" line="40"/>
         <source>Director</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="39"/>
+        <location filename="../assets/pages/FilmPage.qml" line="46"/>
         <source>Actors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="52"/>
+        <location filename="../assets/pages/FilmPage.qml" line="59"/>
         <source>Comments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="62"/>
+        <location filename="../assets/pages/FilmPage.qml" line="69"/>
         <source>Sessions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="63"/>
+        <location filename="../assets/pages/FilmPage.qml" line="70"/>
         <source>View sessions</source>
         <translation type="unfinished"></translation>
     </message>
@@ -76,17 +76,17 @@
 <context>
     <name>FilmsPage</name>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="44"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="56"/>
         <source>Cinema</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="60"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="202"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="65"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="207"/>
         <source>Cinemas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -115,7 +115,7 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="26"/>
+        <location filename="../assets/main.qml" line="25"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>
