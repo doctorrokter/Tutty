@@ -29,12 +29,12 @@ TabbedPane {
                 
                 onFilmChosen: {
                     _filmsService.setActiveFilm(parseInt(film.id));
-                    var fp = filmPage.createObject(this);
+                    var fp = filmPage.createObject();
                     root.activeTab.content.push(fp);
                 }
                 
                 onCinemaChosen: {
-                    var mp = mapPage.createObject(this);
+                    var mp = mapPage.createObject();
                     mp.cinema = cinema.title;
                     mp.address = _citiesService.currentCity.title + " " + cinema.address;
                     root.activeTab.content.push(mp);
@@ -50,8 +50,13 @@ TabbedPane {
                     id: filmPage
                     FilmPage {
                         onSessionsRequested: {
-                            var sp = sessionsPage.createObject(this);
+                            var sp = sessionsPage.createObject();
                             root.activeTab.content.push(sp);
+                        }
+                        
+                        onCommentsRequested: {
+                            var cp = commentsPage.createObject();
+                            root.activeTab.content.push(cp);
                         }
                     }
                 },
@@ -64,6 +69,11 @@ TabbedPane {
                 ComponentDefinition {
                     id: mapPage
                     MapPage {}
+                },
+                
+                ComponentDefinition {
+                    id: commentsPage
+                    CommentsPage {}
                 }
             ]
         }

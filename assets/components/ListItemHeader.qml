@@ -17,7 +17,7 @@ CustomListItem {
             margin.rightOffset: ui.du(3.0)
             Label {
                 text: root.text
-//                textStyle.base: subtitleHeaderText.style
+                textStyle.color: Color.Black
             }
         }
     }

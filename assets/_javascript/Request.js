@@ -23,8 +23,8 @@ var methods = (function() {
 			}
 		};
 
-		_req.onerror = function() {
-			onError('Network Error');
+		_req.onerror = function(e) {
+			onError(e);
 		};
 
 		_req.send(paramsStr || null);

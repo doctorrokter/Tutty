@@ -11,8 +11,8 @@ Container {
                 spinner.stop();
             }
             onSuccess(response);
-        }, function() {
-            console.debug('REQUEST FAILED');    
+        }, function(e) {
+            console.debug(e.getMessage());    
         });
     }
 }

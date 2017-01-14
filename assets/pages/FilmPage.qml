@@ -7,6 +7,7 @@ Page {
     id: root
     
     signal sessionsRequested()
+    signal commentsRequested()
     
     titleBar: CustomTitleBar {
         title: _filmsService.activeFilm.name
@@ -57,12 +58,12 @@ Page {
                 
                 Header {
                     title: qsTr("Comments") + Retranslate.onLocaleOrLanguageChanged + " " + _filmsService.activeFilm.commentsCnt
-                    //                subtitle: qsTr("Read comments") + Retranslate.onLocaleOrLanguageChanged
-                    //                mode: HeaderMode.Interactive
+                    subtitle: qsTr("Read comments") + Retranslate.onLocaleOrLanguageChanged
+                    mode: HeaderMode.Interactive
                     
-                    //                onClicked: {
-                    //                    console.debug();
-                    //                }
+                    onClicked: {
+                        commentsRequested();
+                    }
                 }
                 
                 Header {

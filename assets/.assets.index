@@ -1,5 +1,5 @@
 1
-33
+34
 actions/AppActions.qml
 actions/FilmsActions.qml
 components/BorderedLabel.qml
@@ -11,6 +11,7 @@ components/Gallery.qml
 components/ListItemFilm.qml
 components/ListItemHeader.qml
 components/ListItemSession.qml
+components/Rating.qml
 components/SessionsDialog.qml
 components/Spinner.qml
 components/Ticket.qml
@@ -23,13 +24,13 @@ images/ic_ticket.png
 images/ic_ticket_2.png
 images/marker.png
 main.qml
+pages/CommentsPage.qml
 pages/ConcertsPage.qml
 pages/FilmPage.qml
 pages/FilmsPage.qml
 pages/MapPage.qml
 pages/SessionsPage.qml
 sheets/WebSheet.qml
-Test.qml
 util/Request.qml
 _javascript/Common.js
 _javascript/Request.js

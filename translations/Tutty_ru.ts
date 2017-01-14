@@ -23,19 +23,32 @@
     </message>
 </context>
 <context>
+    <name>CommentsPage</name>
+    <message>
+        <location filename="../assets/pages/CommentsPage.qml" line="11"/>
+        <source>Comments</source>
+        <translation type="unfinished">Отзывы</translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/CommentsPage.qml" line="56"/>
+        <source>Guest</source>
+        <translation type="unfinished">Гость</translation>
+    </message>
+</context>
+<context>
     <name>DatePickerDialog</name>
     <message>
-        <location filename="../assets/components/DatePickerDialog.qml" line="23"/>
+        <location filename="../assets/components/DatePickerDialog.qml" line="25"/>
         <source>Choose a date</source>
         <translation type="unfinished">Выберите дату</translation>
     </message>
     <message>
-        <location filename="../assets/components/DatePickerDialog.qml" line="36"/>
+        <location filename="../assets/components/DatePickerDialog.qml" line="38"/>
         <source>Cancel</source>
         <translation type="unfinished">Отмена</translation>
     </message>
     <message>
-        <location filename="../assets/components/DatePickerDialog.qml" line="46"/>
+        <location filename="../assets/components/DatePickerDialog.qml" line="48"/>
         <source>Ok</source>
         <translation type="unfinished">Ок</translation>
     </message>
@@ -43,7 +56,7 @@
 <context>
     <name>FilmHeader</name>
     <message>
-        <location filename="../assets/components/FilmHeader.qml" line="76"/>
+        <location filename="../assets/components/FilmHeader.qml" line="64"/>
         <source>PREMIERE</source>
         <translation type="unfinished">ПРЕМЬЕРА</translation>
     </message>
@@ -51,31 +64,32 @@
 <context>
     <name>FilmPage</name>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="40"/>
+        <location filename="../assets/pages/FilmPage.qml" line="41"/>
         <source>Director</source>
         <translation type="unfinished">Режиссёр</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="46"/>
+        <location filename="../assets/pages/FilmPage.qml" line="47"/>
         <source>Actors</source>
         <translation type="unfinished">Актёры</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="59"/>
+        <location filename="../assets/pages/FilmPage.qml" line="60"/>
         <source>Comments</source>
         <translation type="unfinished">Отзывы</translation>
     </message>
     <message>
+        <location filename="../assets/pages/FilmPage.qml" line="61"/>
         <source>Read comments</source>
-        <translation type="obsolete">Читать отзывы</translation>
+        <translation type="unfinished">Читать отзывы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="69"/>
+        <location filename="../assets/pages/FilmPage.qml" line="70"/>
         <source>Sessions</source>
         <translation type="unfinished">Сеансы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="70"/>
+        <location filename="../assets/pages/FilmPage.qml" line="71"/>
         <source>View sessions</source>
         <translation type="unfinished">Просмотреть сеансы</translation>
     </message>

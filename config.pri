@@ -36,7 +36,6 @@ simulator {
 
 config_pri_assets {
     OTHER_FILES += \
-        $$quote($$BASEDIR/assets/Test.qml) \
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
         $$quote($$BASEDIR/assets/actions/AppActions.qml) \
@@ -50,6 +49,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
         $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
+        $$quote($$BASEDIR/assets/components/Rating.qml) \
         $$quote($$BASEDIR/assets/components/SessionsDialog.qml) \
         $$quote($$BASEDIR/assets/components/Spinner.qml) \
         $$quote($$BASEDIR/assets/components/Ticket.qml) \
@@ -62,6 +62,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/ic_ticket_2.png) \
         $$quote($$BASEDIR/assets/images/marker.png) \
         $$quote($$BASEDIR/assets/main.qml) \
+        $$quote($$BASEDIR/assets/pages/CommentsPage.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \

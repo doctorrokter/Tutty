@@ -1,4 +1,5 @@
 import bb.cascades 1.4
+import bb.device 1.4
 
 Dialog {
     
@@ -12,6 +13,7 @@ Dialog {
         layout: DockLayout {}
         
         Container {
+            id: mainContainer
             verticalAlignment: VerticalAlignment.Center
             horizontalAlignment: HorizontalAlignment.Center
             maxHeight: ui.du(70)
@@ -58,5 +60,16 @@ Dialog {
     
     onOpened: {
         dateTimePicker.expanded = true;
+        if (hardware.modelName.toLowerCase().indexOf("q10") !== -1 || 
+            hardware.modelName.toLowerCase().indexOf("q5") !== -1 ||
+            hardware.modelName.toLowerCase().indexOf("720x720") !== -1) {
+            mainContainer.background = Color.Black;
+        }
     }
+    
+    attachedObjects: [
+        HardwareInfo {
+            id: hardware
+        }
+    ]
 }

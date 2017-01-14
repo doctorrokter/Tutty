@@ -12,10 +12,6 @@ Page {
         groupDataModel.insertList(filmSessions);
     }
     
-    function reload() {
-        dataSource.load();
-    }
-    
     titleBar: CustomTitleBar {
         title: _filmsService.activeFilm.name
     }
@@ -36,19 +32,7 @@ Page {
                 id: groupDataModel
                 sortingKeys: ["date"]
             }
-            
-            attachedObjects: [
-                DataSource {
-                    id: dataSource
-                    source: "file://" + _currentPath + "/data/sessions.json"
-                    remote: false
-                    onDataLoaded: {
-                        var d = data;
-                        groupDataModel.insertList(data);
-                    }
-                }
-            ]
-            
+                        
             layout: StackListLayout {
                 headerMode: ListHeaderMode.Sticky
             }

@@ -51,20 +51,8 @@ Container {
             layout: StackLayout {
                 orientation: LayoutOrientation.LeftToRight
             }
-            Container {
-                layout: StackLayout {
-                    orientation: LayoutOrientation.LeftToRight
-                }
-                Label {
-                    text: root.film.rateTen
-                    textStyle.color: Color.Red       
-                }
-                ImageView {
-                    maxWidth: ui.du(4.5)
-                    maxHeight: ui.du(4.5)
-                    imageSource: "asset:///images/ic_favorite.png"
-                    filterColor: Color.Red
-                }
+            Rating {
+                rate: root.film.rateTen
             }
             Container {
                 leftMargin: ui.du(2)

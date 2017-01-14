@@ -41,7 +41,6 @@ Page {
     }
     
     onAddressChanged: {
-        console.debug(root.address);
         webView.url = generateUrl();
         webView.reload();
     }
