@@ -197,3 +197,19 @@ QVariantList FilmsService::sessionsByDateAndCinemaId(const int date, const int c
     }
     return list;
 }
+
+void FilmsService::appendComments(const QVariantList comments) {
+    QList<Comment*> commentsList;
+    for (int i = 0; i < comments.size(); i++) {
+        QVariantMap cMap = comments.at(i).toMap();
+        Comment* p_comment = new Comment(m_activeFilm);
+        p_comment->fromMap(cMap);
+        commentsList.append(p_comment);
+    }
+
+    if (m_activeFilm->getComments().size() == 0) {
+        m_activeFilm->setComments(commentsList);
+    } else {
+        m_activeFilm->appendComments(commentsList);
+    }
+}

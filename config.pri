@@ -80,6 +80,7 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/main.cpp) \
         $$quote($$BASEDIR/src/models/Cinema.cpp) \
         $$quote($$BASEDIR/src/models/City.cpp) \
+        $$quote($$BASEDIR/src/models/Comment.cpp) \
         $$quote($$BASEDIR/src/models/Film.cpp) \
         $$quote($$BASEDIR/src/models/FilmSession.cpp) \
         $$quote($$BASEDIR/src/models/Session.cpp) \
@@ -92,6 +93,7 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/applicationui.hpp) \
         $$quote($$BASEDIR/src/models/Cinema.hpp) \
         $$quote($$BASEDIR/src/models/City.hpp) \
+        $$quote($$BASEDIR/src/models/Comment.hpp) \
         $$quote($$BASEDIR/src/models/Film.hpp) \
         $$quote($$BASEDIR/src/models/FilmSession.hpp) \
         $$quote($$BASEDIR/src/models/Session.hpp) \

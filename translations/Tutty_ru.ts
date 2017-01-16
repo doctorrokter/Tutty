@@ -25,12 +25,12 @@
 <context>
     <name>CommentsPage</name>
     <message>
-        <location filename="../assets/pages/CommentsPage.qml" line="11"/>
+        <location filename="../assets/pages/CommentsPage.qml" line="31"/>
         <source>Comments</source>
         <translation type="unfinished">Отзывы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/CommentsPage.qml" line="56"/>
+        <location filename="../assets/pages/CommentsPage.qml" line="86"/>
         <source>Guest</source>
         <translation type="unfinished">Гость</translation>
     </message>
@@ -134,6 +134,14 @@
     <message>
         <source>Cancel</source>
         <translation type="obsolete">Отмена</translation>
+    </message>
+</context>
+<context>
+    <name>Request</name>
+    <message>
+        <location filename="../assets/util/Request.qml" line="24"/>
+        <source>Network Error. Check connection</source>
+        <translation type="unfinished">Ошибка сети. Проверьте соединение</translation>
     </message>
 </context>
 <context>

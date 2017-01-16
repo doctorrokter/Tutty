@@ -15,8 +15,8 @@ Container {
         request.post({id:[_filmsService.activeFilm.id], type: "cinema", version: 2, action: "getDescription", jsonrpc: "2.0"}, onSuccess);
     }
     
-    function comments(onSuccess) {
-        request.post({action: "comments", film_id: _filmsService.activeFilm.id, comments_from: 0, comments_limit: 100}, onSuccess);
+    function comments(from, to, onSuccess) {
+        request.post({action: "comments", film_id: _filmsService.activeFilm.id, comments_from: from, comments_limit: to}, onSuccess);
     }
     
     attachedObjects: [

@@ -1,4 +1,5 @@
 import bb.cascades 1.4
+import bb.system 1.0
 import "../_javascript/Request.js" as Request;
 
 Container {
@@ -12,7 +13,15 @@ Container {
             }
             onSuccess(response);
         }, function(e) {
-            console.debug(e.getMessage());    
+            console.debug(e.getMessage()); 
+            toast.show();   
         });
     }
+    
+    attachedObjects: [
+        SystemToast {
+            id: toast
+            body: qsTr("Network Error. Check connection") + Retranslate.onLocaleOrLanguageChanged
+        }
+    ]
 }

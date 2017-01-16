@@ -55,6 +55,8 @@ public:
 
     Q_INVOKABLE QVariantList sessionsByDateAndCinemaId(const int date, const int cinemaId) const;
 
+    Q_INVOKABLE void appendComments(const QVariantList comments);
+
 Q_SIGNALS:
     void filmsChanged(const QList<Film*>& films);
     void cinemasChanged(const QList<Cinema*>& cinemas);

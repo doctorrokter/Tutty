@@ -29,6 +29,7 @@
 #include "models/Cinema.hpp"
 #include "models/FilmSession.hpp"
 #include "models/City.hpp"
+#include "models/Comment.hpp"
 
 #include "__test__/cascadestester.hpp"
 #include "__test__/services/FilmsServiceSpec.hpp"
@@ -41,11 +42,14 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     qmlRegisterType<Cinema>("chachkouski.models", 1, 0, "Cinema");
     qmlRegisterType<FilmSession>("chachkouski.models", 1, 0, "FilmSession");
     qmlRegisterType<City>("chachkouski.models", 1, 0, "City");
+    qmlRegisterType<City>("chachkouski.models", 1, 0, "Comment");
     qRegisterMetaType<QList<Film*> >("QList<Film*>");
     qRegisterMetaType<QList<Cinema*> >("QList<Cinema*>");
     qRegisterMetaType<QList<FilmSession*> >("QList<FilmSession*>");
     qRegisterMetaType<QList<City*> >("QList<City*>");
+    qRegisterMetaType<QList<City*> >("QList<Comment*>");
     qRegisterMetaType<City*>("City*");
+    qRegisterMetaType<City*>("Comment*");
 
 //    FilmsServiceSpec filmsServiceSpec;
 //    CascadesTester tester(&filmsServiceSpec, argc, argv);

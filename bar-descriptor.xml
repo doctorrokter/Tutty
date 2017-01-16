@@ -71,7 +71,7 @@
     <description>An unofficial client for afisha.tut.by service</description>
     <authorId>gYAAgJBERbiwoSHtjskM8WvopKU</authorId>
     <author>Mikhail Chachkouski</author>
-    <buildId>1</buildId>
+    <buildIdFile>buildnum</buildIdFile>
 
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->

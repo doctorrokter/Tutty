@@ -12,6 +12,7 @@
 #include <QList>
 #include <QVariantMap>
 #include <QVariantList>
+#include "Comment.hpp"
 
 class Film: public QObject {
     Q_OBJECT
@@ -38,6 +39,7 @@ class Film: public QObject {
     Q_PROPERTY(QString rateImdb READ getRateImdb WRITE setRateImdb NOTIFY rateImdbChanged)
     Q_PROPERTY(QString rateKinopoisk READ getRateKinopoisk WRITE setRateKinopoisk NOTIFY rateKinopoiskChanged)
     Q_PROPERTY(QString url READ getUrl WRITE setUrl NOTIFY urlChanged)
+    Q_PROPERTY(QList<Comment*> comments READ getComments WRITE setComments NOTIFY commentsChanged)
 
 public:
     Film(QObject* parent = 0);
@@ -116,6 +118,11 @@ public:
     Q_INVOKABLE const QString& getUrl() const;
     Q_INVOKABLE void setUrl(const QString url);
 
+    Q_INVOKABLE QList<Comment*> getComments() const;
+    Q_INVOKABLE QVariantList getCommentsMaps() const;
+    Q_INVOKABLE void setComments(const QList<Comment*> comments);
+    Q_INVOKABLE void appendComments(const QList<Comment*> comments);
+
     Q_INVOKABLE void fromMap(const QVariantMap map);
     Q_INVOKABLE QVariantMap toMap() const;
 
@@ -145,6 +152,7 @@ Q_SIGNALS:
     void rateImdbChanged(const QString& rateImdb);
     void rateKinopoiskChanged(const QString& rateKinopoisk);
     void urlChanged(const QString& url);
+    void commentsChanged(const QList<Comment*>& comments);
 
 private:
     int m_id;
@@ -170,6 +178,7 @@ private:
     QString m_rateImdb;
     QString m_rateKinopoisk;
     QString m_url;
+    QList<Comment*> m_comments;
 
     void swap(const Film& film);
 };

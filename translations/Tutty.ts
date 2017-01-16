@@ -17,12 +17,12 @@
 <context>
     <name>CommentsPage</name>
     <message>
-        <location filename="../assets/pages/CommentsPage.qml" line="11"/>
+        <location filename="../assets/pages/CommentsPage.qml" line="31"/>
         <source>Comments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/CommentsPage.qml" line="56"/>
+        <location filename="../assets/pages/CommentsPage.qml" line="86"/>
         <source>Guest</source>
         <translation type="unfinished"></translation>
     </message>
@@ -106,6 +106,14 @@
     <message>
         <location filename="../assets/pages/FilmsPage.qml" line="207"/>
         <source>Cinemas</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Request</name>
+    <message>
+        <location filename="../assets/util/Request.qml" line="24"/>
+        <source>Network Error. Check connection</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

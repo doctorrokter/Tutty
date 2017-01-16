@@ -41,7 +41,11 @@ Film::Film(const Film& film) : QObject(film.parent()) {
     }
 }
 
-Film::~Film() {}
+Film::~Film() {
+    for (int i = 0; i < m_comments.size(); i++) {
+        delete m_comments.at(i);
+    }
+}
 
 Film& Film::operator=(const Film& film) {
     swap(film);
@@ -190,6 +194,29 @@ void Film::setUrl(const QString url) {
     emit urlChanged(m_url);
 }
 
+QList<Comment*> Film::getComments() const { return m_comments; }
+QVariantList Film::getCommentsMaps() const {
+    QVariantList list;
+    for (int i = 0; i < m_comments.size(); i++) {
+        list.append(m_comments.at(i)->toMap());
+    }
+    return list;
+}
+
+void Film::setComments(const QList<Comment*> comments) {
+    m_comments = comments;
+    emit commentsChanged(m_comments);
+}
+
+void Film::appendComments(const QList<Comment*> comments) {
+    for (int i = 0; i < comments.size(); i++) {
+        if (!m_comments.contains(comments.at(i))) {
+            m_comments.append(comments.at(i));
+        }
+    }
+    emit commentsChanged(m_comments);
+}
+
 void Film::fromMap(const QVariantMap map) {
     this->setId(map.value("id").toInt());
     this->setName(map.value("name").toString());
@@ -253,6 +280,13 @@ QVariantMap Film::toMap() const {
         images.append(this->getImages().at(i));
     }
     map.insert("images", images);
+
+    QVariantList comments;
+    for (int i = 0; i < this->getComments().size(); i++) {
+        comments.append(this->getComments().at(0)->toMap());
+    }
+    map.insert("comments", comments);
+
     return map;
 }
 

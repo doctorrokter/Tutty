@@ -63,6 +63,7 @@ CustomListItem {
                     verticalAlignment: VerticalAlignment.Center
                     text: root.cinema.address
                     textStyle.base: SystemDefaults.TextStyles.SubtitleText
+                    textStyle.fontWeight: FontWeight.W100
                     multiline: true
                 }
             }
