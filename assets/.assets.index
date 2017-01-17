@@ -1,5 +1,5 @@
 1
-34
+37
 actions/AppActions.qml
 actions/FilmsActions.qml
 components/BorderedLabel.qml
@@ -17,6 +17,7 @@ components/Spinner.qml
 components/Ticket.qml
 components/TimePrice.qml
 images/calendar.png
+images/ic_add_bookmarks.png
 images/ic_favorite.png
 images/ic_location.png
 images/ic_rectangle.png
@@ -24,12 +25,14 @@ images/ic_ticket.png
 images/ic_ticket_2.png
 images/marker.png
 main.qml
+pages/BookmarksPage.qml
 pages/CommentsPage.qml
 pages/ConcertsPage.qml
 pages/FilmPage.qml
 pages/FilmsPage.qml
 pages/MapPage.qml
 pages/SessionsPage.qml
+pages/SettingsPage.qml
 sheets/WebSheet.qml
 util/Request.qml
 _javascript/Common.js

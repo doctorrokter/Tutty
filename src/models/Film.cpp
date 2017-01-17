@@ -204,6 +204,9 @@ QVariantList Film::getCommentsMaps() const {
 }
 
 void Film::setComments(const QList<Comment*> comments) {
+    for (int i = 0; i < m_comments.size(); i++) {
+        delete m_comments.at(i);
+    }
     m_comments = comments;
     emit commentsChanged(m_comments);
 }

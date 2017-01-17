@@ -31,7 +31,7 @@ Dialog {
             horizontalAlignment: HorizontalAlignment.Center
             maxHeight: ui.du(70)
             maxWidth: ui.du(70);
-            background: Color.White
+            background: ui.palette.background
             
             ListItemHeader {
                 text: qsTr("Choose a city") + Retranslate.onLocaleOrLanguageChanged
@@ -51,14 +51,14 @@ Dialog {
                                 horizontalAlignment: HorizontalAlignment.Fill
                                 verticalAlignment: VerticalAlignment.Fill
                                 layout: DockLayout {}
-                                background: listItemCustom.ListItem.selected ? Application.themeSupport.theme.colorTheme.primary : Color.White
+                                background: listItemCustom.ListItem.selected ? Application.themeSupport.theme.colorTheme.primary : ui.palette.background
                                 Label {
                                     verticalAlignment: VerticalAlignment.Center
                                     horizontalAlignment: HorizontalAlignment.Left
                                     margin.leftOffset: ui.du(5)
                                     text: ListItemData.title
                                     textStyle.base: SystemDefaults.TextStyles.PrimaryText
-                                    textStyle.color: listItemCustom.ListItem.selected ? Color.White : Color.Black
+                                    textStyle.color: ui.palette.textOnPlain
                                 }
                             }
                         }

@@ -16,7 +16,7 @@ Container {
     }
     
     function comments(from, to, onSuccess) {
-        request.post({action: "comments", film_id: _filmsService.activeFilm.id, comments_from: from, comments_limit: to}, onSuccess);
+        request.post({action: "comments", film_id: _filmsService.activeFilm.id, comment_from: from, comment_limit: to}, onSuccess);
     }
     
     attachedObjects: [

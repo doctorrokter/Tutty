@@ -18,7 +18,7 @@ Dialog {
             horizontalAlignment: HorizontalAlignment.Center
             maxHeight: ui.du(70)
             maxWidth: ui.du(70);
-            background: Color.White
+            background: ui.palette.background
             
             DateTimePicker {
                 id: dateTimePicker
@@ -60,11 +60,6 @@ Dialog {
     
     onOpened: {
         dateTimePicker.expanded = true;
-        if (hardware.modelName.toLowerCase().indexOf("q10") !== -1 || 
-            hardware.modelName.toLowerCase().indexOf("q5") !== -1 ||
-            hardware.modelName.toLowerCase().indexOf("720x720") !== -1) {
-            mainContainer.background = Color.Black;
-        }
     }
     
     attachedObjects: [

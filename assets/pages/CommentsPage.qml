@@ -5,25 +5,32 @@ import "../actions"
 Page {
     id: root
     
+//    property variant comments: [{time: "2017-01-17 12:30", comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"}]
     property variant comments: []
     property int page: 1
     property int pageSize: 15
     property bool hasNext: true
     
     function populateComments() {
+        var commentsMaps = _filmsService.activeFilm.getCommentsMaps();
         if (root.comments.length === 0) {
-            root.comments = _filmsService.activeFilm.getCommentsMaps();
+            root.comments = commentsMaps;
             commentsDataModel.append(comments);
         } else {
-            _filmsService.activeFilm.getCommentsMaps().forEach(function(cmt) {
+            commentsMaps.forEach(function(cmt) {
                 var isExists = root.comments.some(function(cmt1) {
                     return cmt1.id === cmt.id;
                 });
                 if (!isExists) {
-                    root.comments.push(cmt);
+                    var newComments = root.comments.slice();
+                    newComments.push(cmt);
+                    root.comments = newComments;
                     commentsDataModel.append(cmt);
                 }
             });
+        }
+        if (_filmsService.activeFilm.commentsCnt === commentsMaps.length) {
+            root.hasNext = false;
         }
     }
     
@@ -41,25 +48,39 @@ Page {
         }
         
         ListView {
-            scrollRole: ScrollRole.Main
+            id: listView
             
+            scrollRole: ScrollRole.Main
             dataModel: ArrayDataModel {
                 id: commentsDataModel
             }
             
-//            attachedObjects: [
-//                ListScrollStateHandler {
-//                    onScrollingChanged: {
-//                        if (atEnd) {
-//                            loadComments();
-//                        }
-//                    }
-//                }
-//            ]
-            
+            attachedObjects: [
+                ListScrollStateHandler {
+                    onScrollingChanged: {
+                        if (atEnd) {
+                            loadComments();
+                        }
+                    }
+                }
+            ]
+
+            onTriggered: {
+                var data = commentsDataModel.data(indexPath);
+                var i = commentsDataModel.indexOf(data);
+                if (data.hasOwnProperty("expanded")) {
+                    data.expanded = !data.expanded;
+                } else {
+                    data.expanded = true;
+                }
+                commentsDataModel.replace(i, data);
+            }
+
             listItemComponents: [
                 ListItemComponent {
                     CustomListItem {
+                        id: rootItem
+                        highlightAppearance: HighlightAppearance.None
                         
                         function getDate(dateStr) {
                             var dateTimeParts = dateStr.split(" ");
@@ -113,6 +134,7 @@ Page {
                             }
                             
                             Container {
+                                maxHeight: ListItemData.hasOwnProperty("expanded") && ListItemData.expanded ? Infinity : ui.du(15)
                                 Label {
                                     text: ListItemData.comment
                                     multiline: true
@@ -134,14 +156,17 @@ Page {
     function loadComments() {
         if (!spinner.running && root.hasNext) {
             var from = 0;
+            var limit = root.pageSize
             if (root.page !== 1) {
                 if (root.page === 2) {
-                    from = root.pageSize;
+                    from = root.pageSize - 1;
+                    limit = (root.pageSize * 2) - 1;
                 } else {
-                    from = (root.page * root.pageSize) - root.pageSize;
+                    from = ((root.page * root.pageSize) - root.pageSize) - (root.page - 1);
+                    limit = (root.pageSize * root.page) - (root.page - 1);
                 }
             }
-            filmsActions.comments(from, root.pageSize, function(response) {
+            filmsActions.comments(from, limit, function(response) {
                     var items = JSON.parse(response).items;
                     if (items.length === 0 || items.length < root.pageSize) {
                         root.hasNext = false;

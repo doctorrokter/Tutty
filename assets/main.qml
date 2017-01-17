@@ -20,13 +20,24 @@ import "./components"
 
 TabbedPane {
     id: root
+    
     showTabsOnActionBar: true
+    
+    Menu.definition: MenuDefinition {
+        settingsAction: SettingsActionItem {
+            onTriggered: {
+                var sp = settingsPage.createObject();
+                root.activeTab.content.push(sp);
+            }
+        }
+    }
+    
     Tab {
         title: qsTr("Films") + Retranslate.onLocaleOrLanguageChanged
         NavigationPane {
             FilmsPage {
                 id: filmsPage
-                
+
                 onFilmChosen: {
                     _filmsService.setActiveFilm(parseInt(film.id));
                     var fp = filmPage.createObject();
@@ -44,38 +55,68 @@ TabbedPane {
             onPopTransitionEnded: {
                 page.destroy();
             }
-            
-            attachedObjects: [
-                ComponentDefinition {
-                    id: filmPage
-                    FilmPage {
-                        onSessionsRequested: {
-                            var sp = sessionsPage.createObject();
-                            root.activeTab.content.push(sp);
-                        }
-                        
-                        onCommentsRequested: {
-                            var cp = commentsPage.createObject();
-                            root.activeTab.content.push(cp);
-                        }
-                    }
-                },
-                
-                ComponentDefinition {
-                    id: sessionsPage
-                    SessionsPage {}
-                },
-                
-                ComponentDefinition {
-                    id: mapPage
-                    MapPage {}
-                },
-                
-                ComponentDefinition {
-                    id: commentsPage
-                    CommentsPage {}
-                }
-            ]
         }
     }
+    
+//    Tab {
+//        title: qsTr("Bookmarks") + Retranslate.onLocaleOrLanguageChanged
+//        
+//        NavigationPane {
+//            BookmarksPage {
+//                onFilmChosen: {
+//                    _filmsService.setActiveFilm(parseInt(film.id));
+//                    var fp = filmPage.createObject();
+//                    root.activeTab.content.push(fp);
+//                }
+//            }
+//        }
+//    }
+    
+    onCreationCompleted: {
+        var theme = _appConfig.get("theme");
+        if (theme) {
+            if (theme === "DARK") {
+                Application.themeSupport.setVisualStyle(VisualStyle.Dark);
+            } else {
+                Application.themeSupport.setVisualStyle(VisualStyle.Bright);
+            }
+        }
+    }
+    
+    attachedObjects: [
+        ComponentDefinition {
+            id: filmPage
+            FilmPage {
+                onSessionsRequested: {
+                    var sp = sessionsPage.createObject();
+                    root.activeTab.content.push(sp);
+                }
+                
+                onCommentsRequested: {
+                    var cp = commentsPage.createObject();
+                    root.activeTab.content.push(cp);
+                }
+            }
+        },
+        
+        ComponentDefinition {
+            id: sessionsPage
+            SessionsPage {}
+        },
+        
+        ComponentDefinition {
+            id: mapPage
+            MapPage {}
+        },
+        
+        ComponentDefinition {
+            id: commentsPage
+            CommentsPage {}
+        },
+        
+        ComponentDefinition {
+            id: settingsPage
+            SettingsPage {}
+        }
+    ]
 }

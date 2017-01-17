@@ -55,6 +55,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/Ticket.qml) \
         $$quote($$BASEDIR/assets/components/TimePrice.qml) \
         $$quote($$BASEDIR/assets/images/calendar.png) \
+        $$quote($$BASEDIR/assets/images/ic_add_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/ic_location.png) \
         $$quote($$BASEDIR/assets/images/ic_rectangle.png) \
@@ -62,12 +63,14 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/ic_ticket_2.png) \
         $$quote($$BASEDIR/assets/images/marker.png) \
         $$quote($$BASEDIR/assets/main.qml) \
+        $$quote($$BASEDIR/assets/pages/BookmarksPage.qml) \
         $$quote($$BASEDIR/assets/pages/CommentsPage.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \
         $$quote($$BASEDIR/assets/pages/MapPage.qml) \
         $$quote($$BASEDIR/assets/pages/SessionsPage.qml) \
+        $$quote($$BASEDIR/assets/pages/SettingsPage.qml) \
         $$quote($$BASEDIR/assets/sheets/WebSheet.qml) \
         $$quote($$BASEDIR/assets/util/Request.qml)
 }
@@ -77,6 +80,7 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/__test__/cascadestester.cpp) \
         $$quote($$BASEDIR/src/__test__/services/FilmsServiceSpec.cpp) \
         $$quote($$BASEDIR/src/applicationui.cpp) \
+        $$quote($$BASEDIR/src/config/AppConfig.cpp) \
         $$quote($$BASEDIR/src/main.cpp) \
         $$quote($$BASEDIR/src/models/Cinema.cpp) \
         $$quote($$BASEDIR/src/models/City.cpp) \
@@ -84,6 +88,7 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/models/Film.cpp) \
         $$quote($$BASEDIR/src/models/FilmSession.cpp) \
         $$quote($$BASEDIR/src/models/Session.cpp) \
+        $$quote($$BASEDIR/src/services/BookmarksService.cpp) \
         $$quote($$BASEDIR/src/services/CitiesService.cpp) \
         $$quote($$BASEDIR/src/services/FilmsService.cpp)
 
@@ -91,12 +96,14 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/__test__/cascadestester.hpp) \
         $$quote($$BASEDIR/src/__test__/services/FilmsServiceSpec.hpp) \
         $$quote($$BASEDIR/src/applicationui.hpp) \
+        $$quote($$BASEDIR/src/config/AppConfig.hpp) \
         $$quote($$BASEDIR/src/models/Cinema.hpp) \
         $$quote($$BASEDIR/src/models/City.hpp) \
         $$quote($$BASEDIR/src/models/Comment.hpp) \
         $$quote($$BASEDIR/src/models/Film.hpp) \
         $$quote($$BASEDIR/src/models/FilmSession.hpp) \
         $$quote($$BASEDIR/src/models/Session.hpp) \
+        $$quote($$BASEDIR/src/services/BookmarksService.hpp) \
         $$quote($$BASEDIR/src/services/CitiesService.hpp) \
         $$quote($$BASEDIR/src/services/FilmsService.hpp)
 }
@@ -122,6 +129,11 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../src/__test__/services/*.cc) \
         $$quote($$BASEDIR/../src/__test__/services/*.cpp) \
         $$quote($$BASEDIR/../src/__test__/services/*.cxx) \
+        $$quote($$BASEDIR/../src/config/*.c) \
+        $$quote($$BASEDIR/../src/config/*.c++) \
+        $$quote($$BASEDIR/../src/config/*.cc) \
+        $$quote($$BASEDIR/../src/config/*.cpp) \
+        $$quote($$BASEDIR/../src/config/*.cxx) \
         $$quote($$BASEDIR/../src/models/*.c) \
         $$quote($$BASEDIR/../src/models/*.c++) \
         $$quote($$BASEDIR/../src/models/*.cc) \

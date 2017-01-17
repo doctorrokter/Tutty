@@ -9,7 +9,7 @@ CustomListItem {
     Container {
         horizontalAlignment: HorizontalAlignment.Fill
         verticalAlignment: VerticalAlignment.Fill
-        background: Color.create('#EFEFEF')
+        background: ui.palette.plain
         layout: DockLayout {}
         Container {
             verticalAlignment: VerticalAlignment.Center
@@ -17,7 +17,7 @@ CustomListItem {
             margin.rightOffset: ui.du(3.0)
             Label {
                 text: root.text
-                textStyle.color: Color.Black
+                textStyle.color: ui.palette.textOnPlain
             }
         }
     }

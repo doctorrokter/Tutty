@@ -2,6 +2,20 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
+    <name>BookmarksPage</name>
+    <message>
+        <location filename="../assets/pages/BookmarksPage.qml" line="15"/>
+        <location filename="../assets/pages/BookmarksPage.qml" line="34"/>
+        <source>Bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/BookmarksPage.qml" line="36"/>
+        <source>Remove from bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CityPickerDialog</name>
     <message>
         <location filename="../assets/components/CityPickerDialog.qml" line="37"/>
@@ -17,12 +31,12 @@
 <context>
     <name>CommentsPage</name>
     <message>
-        <location filename="../assets/pages/CommentsPage.qml" line="31"/>
+        <location filename="../assets/pages/CommentsPage.qml" line="38"/>
         <source>Comments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/CommentsPage.qml" line="86"/>
+        <location filename="../assets/pages/CommentsPage.qml" line="107"/>
         <source>Guest</source>
         <translation type="unfinished"></translation>
     </message>
@@ -99,12 +113,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="202"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="216"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="207"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="221"/>
         <source>Cinemas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -131,6 +145,19 @@
     </message>
 </context>
 <context>
+    <name>SettingsPage</name>
+    <message>
+        <location filename="../assets/pages/SettingsPage.qml" line="10"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/SettingsPage.qml" line="26"/>
+        <source>Dark theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WebSheet</name>
     <message>
         <location filename="../assets/sheets/WebSheet.qml" line="46"/>
@@ -141,7 +168,7 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="25"/>
+        <location filename="../assets/main.qml" line="36"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>

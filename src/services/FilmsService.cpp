@@ -206,10 +206,5 @@ void FilmsService::appendComments(const QVariantList comments) {
         p_comment->fromMap(cMap);
         commentsList.append(p_comment);
     }
-
-    if (m_activeFilm->getComments().size() == 0) {
-        m_activeFilm->setComments(commentsList);
-    } else {
-        m_activeFilm->appendComments(commentsList);
-    }
+    m_activeFilm->setComments(commentsList);
 }

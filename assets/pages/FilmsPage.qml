@@ -159,6 +159,20 @@ Page {
                         ListItemComponent {
                             ListItemFilm {
                                 film: ListItemData
+                                
+//                                contextActions: [
+//                                    ActionSet {
+//                                        title: qsTr("Bookmarks") + Retranslate.onLocaleOrLanguageChanged
+//                                        ActionItem {
+//                                            title: qsTr("Add to bookmarks") + Retranslate.onLocaleOrLanguageChanged
+//                                            imageSource: "asset:///"
+//                                            
+//                                            onTriggered: {
+//                                                _bookmarksService.add(ListItemData);
+//                                            }
+//                                        }
+//                                    }
+//                                ]
                             }
                         }
                     ]
