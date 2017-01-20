@@ -26,10 +26,12 @@
 #include <QList>
 
 #include "models/Film.hpp"
-#include "models/Cinema.hpp"
+#include "models/Place.hpp"
 #include "models/FilmSession.hpp"
 #include "models/City.hpp"
 #include "models/Comment.hpp"
+#include "models/TuttyEvent.hpp"
+#include "models/ConcertSession.hpp"
 
 #include "__test__/cascadestester.hpp"
 #include "__test__/services/FilmsServiceSpec.hpp"
@@ -39,17 +41,23 @@ using namespace bb::cascades;
 Q_DECL_EXPORT int main(int argc, char **argv)
 {
     qmlRegisterType<Film>("chachkouski.models", 1, 0, "Film");
-    qmlRegisterType<Cinema>("chachkouski.models", 1, 0, "Cinema");
+    qmlRegisterType<Place>("chachkouski.models", 1, 0, "Place");
     qmlRegisterType<FilmSession>("chachkouski.models", 1, 0, "FilmSession");
     qmlRegisterType<City>("chachkouski.models", 1, 0, "City");
-    qmlRegisterType<City>("chachkouski.models", 1, 0, "Comment");
+    qmlRegisterType<Comment>("chachkouski.models", 1, 0, "Comment");
+    qmlRegisterType<TuttyEvent>("chachkouski.models", 1, 0, "TuttyEvent");
+    qmlRegisterType<ConcertSession>("chachkouski.models", 1, 0, "ConcertSession");
     qRegisterMetaType<QList<Film*> >("QList<Film*>");
-    qRegisterMetaType<QList<Cinema*> >("QList<Cinema*>");
+    qRegisterMetaType<QList<Place*> >("QList<Place*>");
     qRegisterMetaType<QList<FilmSession*> >("QList<FilmSession*>");
     qRegisterMetaType<QList<City*> >("QList<City*>");
-    qRegisterMetaType<QList<City*> >("QList<Comment*>");
+    qRegisterMetaType<QList<Comment*> >("QList<Comment*>");
+    qRegisterMetaType<QList<TuttyEvent*> >("QList<TuttyEvent*>");
+    qRegisterMetaType<QList<ConcertSession*> >("QList<ConcertSession*>");
     qRegisterMetaType<City*>("City*");
-    qRegisterMetaType<City*>("Comment*");
+    qRegisterMetaType<Comment*>("Comment*");
+    qRegisterMetaType<TuttyEvent*>("TuttyEvent*");
+    qRegisterMetaType<ConcertSession*>("ConcertSession*");
 
 //    FilmsServiceSpec filmsServiceSpec;
 //    CascadesTester tester(&filmsServiceSpec, argc, argv);

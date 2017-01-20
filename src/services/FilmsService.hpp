@@ -14,12 +14,12 @@
 #include <QVariantMap>
 #include "../models/FilmSession.hpp"
 #include "../models/Film.hpp"
-#include "../models/Cinema.hpp"
+#include "../models/Place.hpp"
 
 class FilmsService : public QObject {
     Q_OBJECT
     Q_PROPERTY(QList<Film*> films READ getFilms WRITE setFilms)
-    Q_PROPERTY(QList<Cinema*> cinemas READ getCinemas WRITE setCinemas)
+    Q_PROPERTY(QList<Place*> cinemas READ getCinemas WRITE setCinemas)
     Q_PROPERTY(Film* activeFilm READ getActiveFilm NOTIFY activeFilmChanged)
     Q_PROPERTY(QList<FilmSession*> filmsSessions READ getFilmsSessions WRITE setFilmsSessions NOTIFY filmsSessionsChanged)
 
@@ -30,8 +30,8 @@ public:
     Q_INVOKABLE const QList<Film*> getFilms() const;
     Q_INVOKABLE void setFilms(const QList<Film*> films);
 
-    Q_INVOKABLE const QList<Cinema*> getCinemas() const;
-    Q_INVOKABLE void setCinemas(const QList<Cinema*> cinemas);
+    Q_INVOKABLE const QList<Place*> getCinemas() const;
+    Q_INVOKABLE void setCinemas(const QList<Place*> cinemas);
 
     Q_INVOKABLE void fromMaps(const QVariantList filmsMaps);
     Q_INVOKABLE QVariantList toMaps() const;
@@ -46,7 +46,7 @@ public:
     Q_INVOKABLE void setFilmsSessions(const QList<FilmSession*> filmsSessions);
 
     Q_INVOKABLE Film* findFilmById(const int id) const;
-    Q_INVOKABLE Cinema* findCinemaById(const int id) const;
+    Q_INVOKABLE Place* findCinemaById(const int id) const;
 
     Q_INVOKABLE bool hasSessions(const int filmId) const;
     Q_INVOKABLE QList<FilmSession*> getSessionsFor(const int filmId) const;
@@ -59,15 +59,18 @@ public:
 
 Q_SIGNALS:
     void filmsChanged(const QList<Film*>& films);
-    void cinemasChanged(const QList<Cinema*>& cinemas);
+    void cinemasChanged(const QList<Place*>& cinemas);
     void activeFilmChanged(const Film* activeFilm);
     void filmsSessionsChanged(const QList<FilmSession*> filmsSessions);
 
 private:
     QList<Film*> m_films;
-    QList<Cinema*> m_cinemas;
+    QList<Place*> m_cinemas;
     Film* m_activeFilm;
     QList<FilmSession*> m_filmsSessions;
+
+    void deleteCinemas();
+    void deleteFilms();
 };
 
 #endif /* FILMSSERVICE_HPP_ */

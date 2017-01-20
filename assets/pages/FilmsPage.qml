@@ -19,13 +19,14 @@ Page {
     }
     
     function populateCinemas() {
-        cinemasDataModel.clear();
-        cinemasDataModel.insertList(_filmsService.cinemasToMaps());
+        cinemasContainer.clear();
+        cinemasContainer.places = _filmsService.cinemasToMaps();
     }
     
     function load(jsDate) {
         if (jsDate) {
             root.date = jsDate;
+            subHeader.date = jsDate;
         }
         
         var city = "minsk;"
@@ -38,18 +39,6 @@ Page {
             _filmsService.fromMaps(data.films);
             _filmsService.cinemasFromMaps(data.movietheatres);
         });
-    }
-    
-    function handleSubHeaderVisibility(topPaddingVisible, lowEnoughForSubHeaderHiding, touchYDelta) {
-        if (!subHeader.isShown && topPaddingVisible) {
-            subHeader.isShown = true;
-        } else if (!topPaddingVisible && lowEnoughForSubHeaderHiding) {
-            if (!subHeader.isShown && touchYDelta > 10) {
-                subHeader.isShown = true;
-            } else if (subHeader.isShown && touchYDelta < 10) {
-                subHeader.isShown = false;
-            }
-        }
     }
     
     titleBar: CustomTitleBar {
@@ -75,81 +64,27 @@ Page {
                 id: spinner
             }
             
-            Container {
+            PlacesContainer {
                 id: cinemasContainer
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-                visible: cinemasOption.selected
-                ListView {
-                    id: cinemasListView
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Fill
-                    scrollRole: ScrollRole.Main
-                    topPadding: subHeaderLUH.layoutFrame.height
-                    
-                    dataModel: GroupDataModel {
-                        id: cinemasDataModel
-                        sortingKeys: ["title"]
-                        grouping: ItemGrouping.ByFirstChar
-                    }
-                    
-                    function itemType(data, indexPath) {
-                        if (indexPath.length === 1) {
-                            return "header";
-                        } else {
-                            return "item";
-                        }
-                    }
-                    
-                    listItemComponents: [
-                        ListItemComponent {
-                            type: "header" 
-                            ListItemHeader {
-                                text: ListItemData
-                            }   
-                        },
-                        
-                        ListItemComponent {
-                            type: "item"
-                            StandardListItem {
-                                title: ListItemData.title
-                                description: ListItemData.address
-                            }
-                        }
-                    ]
-                    
-                    onTriggered: {
-                        var data = cinemasDataModel.data(indexPath);
-                        cinemaChosen(data);
-                    }
-                    
-                    onTouch: {
-                        if (event.isDown()) {
-                            root.touchY = event.windowY;
-                        }
-                        
-                        if (event.isMove() || event.isUp()) {
-                            if (root.touchY > (event.windowY + 10)) { // scroll up
-                                subHeader.isShown = false;
-                            } else if (root.touchY < (event.windowY - 10)) { // scroll down
-                                subHeader.isShown = true;
-                            }
-                        }
-                    }
+                visible: false
+                
+                onPlaceChosen: {
+                    cinemaChosen(place);
                 }
             }
             
             Container {
                 id: filmsContainer
+                
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
-                visible: filmsOption.selected
+                visible: true
                 ListView {
                     id: filmsListView
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     scrollRole: ScrollRole.Main
-                    topPadding: subHeaderLUH.layoutFrame.height
+                    topPadding: subHeader.height
                     
                     dataModel: ArrayDataModel {
                         id: filmsDataModel
@@ -198,55 +133,23 @@ Page {
                 }
             }
             
-            Container {
-                property bool isShown: true
+            Subheader {
+                id: subHeader
+                date: root.date
                 
-                id: subHeader            
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Top
+                option1: qsTr("Films") + Retranslate.onLocaleOrLanguageChanged
+                option2: qsTr("Cinemas") + Retranslate.onLocaleOrLanguageChanged
                 
-                Container {
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    SegmentedControl {
-                        horizontalAlignment: HorizontalAlignment.Fill
-                        bottomMargin: ui.du(0)
-                        options: [
-                            Option {
-                                id: filmsOption
-                                text: qsTr("Films") + Retranslate.onLocaleOrLanguageChanged
-                            },
-                            
-                            Option {
-                                id: cinemasOption
-                                text: qsTr("Cinemas") + Retranslate.onLocaleOrLanguageChanged
-                            }
-                        ]
-                        
-                        onSelectedIndexChanged: {
-                            subHeader.isShown = true;
-                        }
-                    }
+                onOption1Selected: {
+                    filmsContainer.visible = true;
+                    cinemasContainer.visible = false;
                 }
                 
-                
-                ListItemHeader {
-                    text: Qt.formatDate(root.date, "dddd, d MMMM");
+                onOption2Selected: {
+                    filmsContainer.visible = false;
+                    cinemasContainer.visible = true;
                 }
-                
-                attachedObjects: [
-                    LayoutUpdateHandler {
-                        id: subHeaderLUH
-                    }
-                ]
-                
-                onIsShownChanged: {
-                    if (isShown) {
-                        subHeader.setTranslationY(0);
-                    } else {
-                        subHeader.setTranslationY(-subHeaderLUH.layoutFrame.height);
-                    }
-                }
-            }    
+            }
         }
     }
     

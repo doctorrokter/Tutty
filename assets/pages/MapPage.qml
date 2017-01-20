@@ -4,11 +4,11 @@ import "../components"
 Page {
     id: root
     
-    property string cinema
+    property string placeTitle
     property string address
     
     titleBar: CustomTitleBar {
-        title: root.cinema
+        title: root.placeTitle
     }
     
     function generateUrl() {
@@ -36,8 +36,8 @@ Page {
         }
     }
     
-    onCinemaChanged: {
-        root.titleBar.title = root.cinema;
+    onPlaceTitleChanged: {
+        root.titleBar.title = root.placeTitle;
     }
     
     onAddressChanged: {

@@ -32,8 +32,8 @@ void FilmSession::setFilm(Film* film) {
     }
 }
 
-Cinema* FilmSession::getCinema() const { return p_cinema; }
-void FilmSession::setCinema(Cinema* cinema) {
+Place* FilmSession::getCinema() const { return p_cinema; }
+void FilmSession::setCinema(Place* cinema) {
     if (p_cinema != cinema) {
         p_cinema = cinema;
         emit cinemaChanged(p_cinema);

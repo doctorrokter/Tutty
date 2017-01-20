@@ -1,17 +1,17 @@
 /*
- * Cinema.hpp
+ * Place.hpp
  *
- *  Created on: Dec 6, 2016
+ *  Created on: Jan 18, 2017
  *      Author: misha
  */
 
-#ifndef CINEMA_HPP_
-#define CINEMA_HPP_
+#ifndef PLACE_HPP_
+#define PLACE_HPP_
 
 #include <QtCore/QObject>
 #include <QVariantMap>
 
-class Cinema: public QObject {
+class Place: public QObject {
     Q_OBJECT
     Q_PROPERTY(int id READ getId WRITE setId)
     Q_PROPERTY(QString title READ getTitle WRITE setTitle)
@@ -23,12 +23,12 @@ class Cinema: public QObject {
     Q_PROPERTY(int priority READ getPriority WRITE setPriority)
 
 public:
-    Cinema(QObject* parent = 0);
-    Cinema(const Cinema& film);
-    virtual ~Cinema();
+    Place(QObject* parent = 0);
+    Place(const Place& place);
+    virtual ~Place();
 
-    Cinema& operator=(const Cinema& cinema);
-    bool operator==(const Cinema& cinema);
+    Place& operator=(const Place& place);
+    bool operator==(const Place& place);
 
     Q_INVOKABLE int getId() const;
     Q_INVOKABLE void setId(const int id);
@@ -67,7 +67,7 @@ private:
     QString m_placePhoto;
     int m_priority;
 
-    void swap(const Cinema& cinema);
+    void swap(const Place& place);
 };
 
-#endif /* CINEMA_HPP_ */
+#endif /* PLACE_HPP_ */

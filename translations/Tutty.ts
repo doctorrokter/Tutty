@@ -42,6 +42,20 @@
     </message>
 </context>
 <context>
+    <name>ConcertsPage</name>
+    <message>
+        <location filename="../assets/pages/ConcertsPage.qml" line="36"/>
+        <location filename="../assets/pages/ConcertsPage.qml" line="144"/>
+        <source>Concerts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/ConcertsPage.qml" line="145"/>
+        <source>Concert Halls</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DatePickerDialog</name>
     <message>
         <location filename="../assets/components/DatePickerDialog.qml" line="25"/>
@@ -108,17 +122,17 @@
 <context>
     <name>FilmsPage</name>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="56"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="45"/>
         <source>Cinema</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="216"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="140"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="221"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="141"/>
         <source>Cinemas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -170,6 +184,11 @@
     <message>
         <location filename="../assets/main.qml" line="36"/>
         <source>Films</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="62"/>
+        <source>Concerts</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

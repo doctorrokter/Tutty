@@ -10,13 +10,9 @@
 
 using namespace std;
 
-Film::Film(QObject* parent) : QObject(parent) {
-    m_id = 0;
-    m_name = "";
-    m_description = "";
+Film::Film(QObject* parent) : TuttyEvent(parent) {
     m_actors = "";
     m_director = "";
-    m_image = "";
     m_year = 0;
     m_country = "";
     m_duration = 0;
@@ -27,15 +23,13 @@ Film::Film(QObject* parent) : QObject(parent) {
     m_genres = "";
     m_restriction = "";
     m_timeLeft = 0;
-    m_commentsCnt = 0;
     m_rate = "";
     m_rateTen = "";
     m_rateImdb = "";
     m_rateKinopoisk = "";
-    m_url = "";
 }
 
-Film::Film(const Film& film) : QObject(film.parent()) {
+Film::Film(const Film& film) : TuttyEvent(film.parent()) {
     if (this != &film) {
         swap(film);
     }
@@ -53,25 +47,7 @@ Film& Film::operator=(const Film& film) {
 }
 
 bool Film::operator==(const Film& film) {
-    return this->getId() == film.getId();
-}
-
-int Film::getId() const { return m_id; }
-void Film::setId(const int id) {
-    m_id = id;
-    emit idChanged(m_id);
-}
-
-const QString& Film::getName() const { return m_name; }
-void Film::setName(const QString name) {
-    m_name = name;
-    emit nameChanged(m_name);
-}
-
-const QString& Film::getDescription() const { return m_description; }
-void Film::setDescription(const QString description) {
-    m_description = description;
-    emit descriptionChanged(m_description);
+    return TuttyEvent::operator==(film);
 }
 
 const QString& Film::getActors() const { return m_actors; }
@@ -84,12 +60,6 @@ const QString& Film::getDirector() const { return m_director; }
 void Film::setDirector(const QString director) {
     m_director = director;
     emit directorChanged(m_director);
-}
-
-const QString& Film::getImage() const { return m_image; }
-void Film::setImage(const QString image) {
-    m_image = image;
-    emit imageChanged(m_image);
 }
 
 int Film::getYear() const { return m_year; }
@@ -146,22 +116,10 @@ void Film::setRestriction(const QString restriction) {
     emit restrictionChanged(m_restriction);
 }
 
-const QList<QString>& Film::getImages() const { return m_images; }
-void Film::setImages(const QList<QString>& images) {
-    m_images = images;
-    emit imagesChanged(m_images);
-}
-
 int Film::getTimeLeft() const { return m_timeLeft; }
 void Film::setTimeLeft(const int timeLeft) {
     m_timeLeft = timeLeft;
     emit timeLeftChanged(m_timeLeft);
-}
-
-int Film::getCommentsCnt() const { return m_commentsCnt; }
-void Film::setCommentsCnt(const int commentsCnt) {
-    m_commentsCnt = commentsCnt;
-    emit commentsCntChanged(m_commentsCnt);
 }
 
 const QString& Film::getRate() const { return m_rate; }
@@ -186,12 +144,6 @@ const QString& Film::getRateKinopoisk() const { return m_rateKinopoisk; }
 void Film::setRateKinopoisk(const QString rateKinopoisk) {
     m_rateKinopoisk = rateKinopoisk;
     emit rateKinopoiskChanged(m_rateKinopoisk);
-}
-
-const QString& Film::getUrl() const { return m_url; }
-void Film::setUrl(const QString url) {
-    m_url = url;
-    emit urlChanged(m_url);
 }
 
 QList<Comment*> Film::getComments() const { return m_comments; }
@@ -221,12 +173,9 @@ void Film::appendComments(const QList<Comment*> comments) {
 }
 
 void Film::fromMap(const QVariantMap map) {
-    this->setId(map.value("id").toInt());
-    this->setName(map.value("name").toString());
-    this->setDescription(map.value("description").toString());
+    TuttyEvent::fromMap(map);
     this->setActors(map.value("actors").toString());
     this->setDirector(map.value("director").toString());
-    this->setImage(map.value("image").toString());
     this->setYear(map.value("year").toInt());
     this->setCountry(map.value("country").toString());
     this->setDuration(map.value("duration").toInt());
@@ -236,31 +185,17 @@ void Film::fromMap(const QVariantMap map) {
     this->setVideo(map.value("video").toString());
     this->setGenres(map.value("genres").toString());
     this->setRestriction(map.value("restriction").toString());
-
-    QList<QVariant> rawImages = map.value("images").toList();
-    QList<QString> images;
-    for (int i = 0; i < rawImages.size(); i++) {
-        images.append(rawImages[i].toString());
-    }
-    this->setImages(images);
-
     this->setTimeLeft(map.value("timeLeft").toInt());
-    this->setCommentsCnt(map.value("commentsCnt").toInt());
     this->setRate(map.value("rate").toString());
     this->setRateTen(map.value("rate_ten").toString());
     this->setRateImdb(map.value("rate_imdb").toString());
     this->setRateKinopoisk(map.value("rate_kinopoisk").toString());
-    this->setUrl(map.value("url").toString());
 }
 
 QVariantMap Film::toMap() const {
-    QVariantMap map;
-    map.insert("id", this->getId());
-    map.insert("name", this->getName());
-    map.insert("description", this->getDescription());
+    QVariantMap map = TuttyEvent::toMap();
     map.insert("actors", this->getActors());
     map.insert("director", this->getDirector());
-    map.insert("image", this->getImage());
     map.insert("year", this->getYear());
     map.insert("country", this->getCountry());
     map.insert("duration", this->getDuration());
@@ -271,18 +206,10 @@ QVariantMap Film::toMap() const {
     map.insert("genres", this->getGenres());
     map.insert("restriction", this->getRestriction());
     map.insert("timeLeft", this->getTimeLeft());
-    map.insert("commentsCnt", this->getCommentsCnt());
     map.insert("rate", this->getRate());
     map.insert("rateTen", this->getRateTen());
     map.insert("rateImdb", this->getRateImdb());
     map.insert("rateKinopoisk", this->getRateKinopoisk());
-    map.insert("url", this->getUrl());
-
-    QVariantList images;
-    for (int i = 0; i < this->getImages().size(); i++) {
-        images.append(this->getImages().at(i));
-    }
-    map.insert("images", images);
 
     QVariantList comments;
     for (int i = 0; i < this->getComments().size(); i++) {
@@ -294,22 +221,13 @@ QVariantMap Film::toMap() const {
 }
 
 void Film::swap(const Film& film) {
-    this->setId(film.getId());
-
-    QString name = film.getName();
-    this->setName(name);
-
-    QString description = film.getDescription();
-    this->setDescription(description);
+    TuttyEvent::swap(film);
 
     QString actors = film.getActors();
     this->setActors(actors);
 
     QString director = film.getDirector();
     this->setDirector(director);
-
-    QString image = film.getImage();
-    this->setImage(image);
 
     this->setYear(film.getYear());
 
@@ -331,25 +249,9 @@ void Film::swap(const Film& film) {
     this->setRestriction(restriction);
 
     this->setTimeLeft(film.getTimeLeft());
-    this->setCommentsCnt(film.getCommentsCnt());
     this->setRate(film.getRate());
     this->setRateTen(film.getRateTen());
     this->setRateImdb(film.getRateImdb());
     this->setRateKinopoisk(film.getRateKinopoisk());
-
-    QString url = film.getUrl();
-    this->setUrl(url);
-
-    for (int i = 0; i < film.getImages().size(); i++) {
-        m_images.append(film.getImages().at(i));
-    }
-}
-
-QVariantList Film::imagesToQVList() const {
-    QVariantList images;
-    for (int i = 0; i < m_images.size(); i++) {
-        images.append(m_images.at(i));
-    }
-    return images;
 }
 

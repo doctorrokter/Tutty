@@ -46,7 +46,7 @@ TabbedPane {
                 
                 onCinemaChosen: {
                     var mp = mapPage.createObject();
-                    mp.cinema = cinema.title;
+                    mp.placeTitle = cinema.title;
                     mp.address = _citiesService.currentCity.title + " " + cinema.address;
                     root.activeTab.content.push(mp);
                 }
@@ -54,6 +54,23 @@ TabbedPane {
             
             onPopTransitionEnded: {
                 page.destroy();
+            }
+        }
+    }
+    
+    Tab {
+        title: qsTr("Concerts") + Retranslate.onLocaleOrLanguageChanged
+        
+        NavigationPane {
+            ConcertsPage {
+                id: concertsPage
+                
+                onConcertHallChosen: {
+                    var mp = mapPage.createObject();
+                    mp.placeTitle = concertHall.title;
+                    mp.address = _citiesService.currentCity.title + " " + concertHall.address;
+                    root.activeTab.content.push(mp);
+                }
             }
         }
     }

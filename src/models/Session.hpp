@@ -20,6 +20,7 @@ class Session: public QObject {
     Q_PROPERTY(bool ticketsAvailable READ isTicketsAvailable WRITE setTicketsAvailable NOTIFY ticketsAvailableChanged)
     Q_PROPERTY(QString buyTicketUrl READ getBuyTicketUrl WRITE setBuyTicketUrl NOTIFY buyTicketUrlChanged)
     Q_PROPERTY(bool threeD READ isThreeD WRITE setThreeD NOTIFY threeDChanged)
+    Q_PROPERTY(QString ticket READ getTicket WRITE setTicket NOTIFY ticketChanged)
 
 public:
     Session(QObject* parent = 0);
@@ -50,6 +51,9 @@ public:
     Q_INVOKABLE bool isThreeD() const;
     Q_INVOKABLE void setThreeD(const bool threeD);
 
+    Q_INVOKABLE const QString& getTicket() const;
+    Q_INVOKABLE void setTicket(const QString ticket);
+
     Q_INVOKABLE void fromMap(const QVariantMap map);
     Q_INVOKABLE QVariantMap toMap();
 
@@ -61,6 +65,7 @@ Q_SIGNALS:
     void ticketsAvailableChanged(bool ticketsAvailable);
     void buyTicketUrlChanged(QString& buyTicketUrl);
     void threeDChanged(bool threeD);
+    void ticketChanged(const QString ticket);
 
 private:
     int m_id;
@@ -70,6 +75,7 @@ private:
     bool m_ticketsAvailable;
     QString m_buyTicketUrl;
     bool m_threeD;
+    QString m_ticket;
 
     void swap(const Session& session);
 };

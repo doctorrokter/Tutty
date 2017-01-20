@@ -39,6 +39,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/_javascript/Common.js) \
         $$quote($$BASEDIR/assets/_javascript/Request.js) \
         $$quote($$BASEDIR/assets/actions/AppActions.qml) \
+        $$quote($$BASEDIR/assets/actions/ConcertsActions.qml) \
         $$quote($$BASEDIR/assets/actions/FilmsActions.qml) \
         $$quote($$BASEDIR/assets/components/BorderedLabel.qml) \
         $$quote($$BASEDIR/assets/components/CityPickerDialog.qml) \
@@ -46,17 +47,22 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/DatePickerDialog.qml) \
         $$quote($$BASEDIR/assets/components/FilmHeader.qml) \
         $$quote($$BASEDIR/assets/components/Gallery.qml) \
+        $$quote($$BASEDIR/assets/components/ListItemConcert.qml) \
         $$quote($$BASEDIR/assets/components/ListItemFilm.qml) \
         $$quote($$BASEDIR/assets/components/ListItemHeader.qml) \
         $$quote($$BASEDIR/assets/components/ListItemSession.qml) \
+        $$quote($$BASEDIR/assets/components/PlacesContainer.qml) \
         $$quote($$BASEDIR/assets/components/Rating.qml) \
         $$quote($$BASEDIR/assets/components/SessionsDialog.qml) \
         $$quote($$BASEDIR/assets/components/Spinner.qml) \
+        $$quote($$BASEDIR/assets/components/Subheader.qml) \
         $$quote($$BASEDIR/assets/components/Ticket.qml) \
         $$quote($$BASEDIR/assets/components/TimePrice.qml) \
+        $$quote($$BASEDIR/assets/concerts.json) \
         $$quote($$BASEDIR/assets/images/calendar.png) \
         $$quote($$BASEDIR/assets/images/ic_add_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
+        $$quote($$BASEDIR/assets/images/ic_history.png) \
         $$quote($$BASEDIR/assets/images/ic_location.png) \
         $$quote($$BASEDIR/assets/images/ic_rectangle.png) \
         $$quote($$BASEDIR/assets/images/ic_ticket.png) \
@@ -82,14 +88,17 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/applicationui.cpp) \
         $$quote($$BASEDIR/src/config/AppConfig.cpp) \
         $$quote($$BASEDIR/src/main.cpp) \
-        $$quote($$BASEDIR/src/models/Cinema.cpp) \
         $$quote($$BASEDIR/src/models/City.cpp) \
         $$quote($$BASEDIR/src/models/Comment.cpp) \
+        $$quote($$BASEDIR/src/models/ConcertSession.cpp) \
         $$quote($$BASEDIR/src/models/Film.cpp) \
         $$quote($$BASEDIR/src/models/FilmSession.cpp) \
+        $$quote($$BASEDIR/src/models/Place.cpp) \
         $$quote($$BASEDIR/src/models/Session.cpp) \
+        $$quote($$BASEDIR/src/models/TuttyEvent.cpp) \
         $$quote($$BASEDIR/src/services/BookmarksService.cpp) \
         $$quote($$BASEDIR/src/services/CitiesService.cpp) \
+        $$quote($$BASEDIR/src/services/ConcertsService.cpp) \
         $$quote($$BASEDIR/src/services/FilmsService.cpp)
 
     HEADERS += \
@@ -97,14 +106,17 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/__test__/services/FilmsServiceSpec.hpp) \
         $$quote($$BASEDIR/src/applicationui.hpp) \
         $$quote($$BASEDIR/src/config/AppConfig.hpp) \
-        $$quote($$BASEDIR/src/models/Cinema.hpp) \
         $$quote($$BASEDIR/src/models/City.hpp) \
         $$quote($$BASEDIR/src/models/Comment.hpp) \
+        $$quote($$BASEDIR/src/models/ConcertSession.hpp) \
         $$quote($$BASEDIR/src/models/Film.hpp) \
         $$quote($$BASEDIR/src/models/FilmSession.hpp) \
+        $$quote($$BASEDIR/src/models/Place.hpp) \
         $$quote($$BASEDIR/src/models/Session.hpp) \
+        $$quote($$BASEDIR/src/models/TuttyEvent.hpp) \
         $$quote($$BASEDIR/src/services/BookmarksService.hpp) \
         $$quote($$BASEDIR/src/services/CitiesService.hpp) \
+        $$quote($$BASEDIR/src/services/ConcertsService.hpp) \
         $$quote($$BASEDIR/src/services/FilmsService.hpp)
 }
 

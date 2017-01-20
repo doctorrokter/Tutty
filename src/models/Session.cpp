@@ -66,14 +66,21 @@ void Session::setThreeD(const bool threeD) {
     emit threeDChanged(m_threeD);
 }
 
+const QString& Session::getTicket() const { return m_ticket; }
+void Session::setTicket(const QString ticket) {
+    m_ticket = ticket;
+    emit ticketChanged(m_ticket);
+}
+
 void Session::fromMap(const QVariantMap map) {
     this->setId(map.value("idSession").toInt());
     this->setSessionTime(map.value("session_time").toInt());
-    this->setBycardSessionId(map.value("bycard_session_id").toInt());
-    this->setPrice(map.value("price").toString());
-    this->setTicketsAvailable(map.value("tickets_available").toBool());
-    this->setBuyTicketUrl(map.value("buyTicketUrl").toString());
-    this->setThreeD(map.value("3d").toBool());
+    this->setBycardSessionId(map.value("bycard_session_id", 0).toInt());
+    this->setPrice(map.value("price", "").toString());
+    this->setTicketsAvailable(map.value("tickets_available", false).toBool());
+    this->setBuyTicketUrl(map.value("buyTicketUrl", "").toString());
+    this->setThreeD(map.value("3d", false).toBool());
+    this->setTicket(map.value("ticket", "").toString());
 }
 
 QVariantMap Session::toMap() {
@@ -85,6 +92,7 @@ QVariantMap Session::toMap() {
     map.insert("ticketsAvailable", this->isTicketsAvailable());
     map.insert("buyTicketUrl", this->getBuyTicketUrl());
     map.insert("threeD", this->isThreeD());
+    map.insert("ticket", this->getTicket());
     return map;
 }
 
@@ -101,6 +109,9 @@ void Session::swap(const Session& session) {
         QString buyTicketUrl = session.getBuyTicketUrl();
         this->setBuyTicketUrl(buyTicketUrl);
         this->setThreeD(session.isThreeD());
+
+        QString ticket = session.getTicket();
+        this->setTicket(ticket);
     }
 }
 

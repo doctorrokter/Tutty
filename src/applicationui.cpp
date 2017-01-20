@@ -26,6 +26,7 @@
 
 #include "services/FilmsService.hpp"
 #include "services/CitiesService.hpp"
+#include "services/ConcertsService.hpp"
 #include "services/BookmarksService.hpp"
 
 #include "config/AppConfig.hpp"
@@ -46,6 +47,7 @@ ApplicationUI::ApplicationUI() :
     FilmsService* p_filmsService = new FilmsService(this);
     CitiesService* p_citiesService = new CitiesService(this);
     BookmarksService* p_bookmarksService = new BookmarksService(this);
+    ConcertsService* p_concertsService = new ConcertsService(this);
 
     bool res = QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()));
     // This is only available in Debug builds
@@ -66,6 +68,7 @@ ApplicationUI::ApplicationUI() :
     rootContext->setContextProperty("_filmsService", p_filmsService);
     rootContext->setContextProperty("_citiesService", p_citiesService);
     rootContext->setContextProperty("_bookmarksService", p_bookmarksService);
+    rootContext->setContextProperty("_concertsService", p_concertsService);
     rootContext->setContextProperty("_currentPath", QDir::currentPath());
     rootContext->setContextProperty("_appConfig", p_appConfig);
 

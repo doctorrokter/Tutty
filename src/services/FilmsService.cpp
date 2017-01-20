@@ -14,27 +14,27 @@ using namespace std;
 
 FilmsService::FilmsService(QObject* parent) : QObject(parent) {}
 
-FilmsService::~FilmsService() {}
+FilmsService::~FilmsService() {
+    deleteFilms();
+    deleteCinemas();
+}
 
 const QList<Film*> FilmsService::getFilms() const { return m_films; }
 void FilmsService::setFilms(const QList<Film*> films) {
+    deleteFilms();
     m_films = films;
     emit filmsChanged(m_films);
 }
 
-const QList<Cinema*> FilmsService::getCinemas() const { return m_cinemas; }
-void FilmsService::setCinemas(const QList<Cinema*> cinemas) {
+const QList<Place*> FilmsService::getCinemas() const { return m_cinemas; }
+void FilmsService::setCinemas(const QList<Place*> cinemas) {
+    deleteCinemas();
     m_cinemas = cinemas;
     emit cinemasChanged(m_cinemas);
 }
 
 void FilmsService::fromMaps(const QVariantList filmsMaps) {
-    if (!m_films.empty()) {
-        for (int i = 0; i < m_films.size(); i++) {
-            delete m_films.at(i);
-        }
-        m_films.clear();
-    }
+    deleteFilms();
     for (int i = 0; i < filmsMaps.size(); i++) {
         Film* film = new Film(this);
         film->fromMap(filmsMaps[i].toMap());
@@ -54,14 +54,9 @@ QVariantList FilmsService::toMaps() const {
 }
 
 void FilmsService::cinemasFromMaps(const QVariantList cinemasMaps) {
-    if (!m_cinemas.empty()) {
-        for (int i = 0; i < m_cinemas.size(); i++) {
-            delete m_cinemas.at(i);
-        }
-        m_cinemas.clear();
-    }
+    deleteCinemas();
     for (int i = 0; i < cinemasMaps.size(); i++) {
-        Cinema* cinema = new Cinema(this);
+        Place* cinema = new Place(this);
         cinema->fromMap(cinemasMaps[i].toMap());
         m_cinemas.append(cinema);
     }
@@ -71,7 +66,7 @@ void FilmsService::cinemasFromMaps(const QVariantList cinemasMaps) {
 QVariantList FilmsService::cinemasToMaps() const {
     QVariantList list;
     for (int i = 0; i < m_cinemas.size(); i++) {
-        Cinema* cinema = m_cinemas.at(i);
+        Place* cinema = m_cinemas.at(i);
         QVariantMap cinemaMap = cinema->toMap();
         list.append(cinemaMap);
     }
@@ -109,9 +104,9 @@ Film* FilmsService::findFilmById(const int id) const {
     return NULL;
 }
 
-Cinema* FilmsService::findCinemaById(const int id) const {
+Place* FilmsService::findCinemaById(const int id) const {
     for (int i = 0; i < m_cinemas.size(); i++) {
-        Cinema* cinema = m_cinemas.at(i);
+        Place* cinema = m_cinemas.at(i);
         if (cinema->getId() == id) {
             return cinema;
         }
@@ -207,4 +202,22 @@ void FilmsService::appendComments(const QVariantList comments) {
         commentsList.append(p_comment);
     }
     m_activeFilm->setComments(commentsList);
+}
+
+void FilmsService::deleteCinemas() {
+    if (!m_cinemas.empty()) {
+        for (int i = 0; i < m_cinemas.size(); i++) {
+            delete m_cinemas.at(i);
+        }
+        m_cinemas.clear();
+    }
+}
+
+void FilmsService::deleteFilms() {
+    if (!m_films.empty()) {
+        for (int i = 0; i < m_films.size(); i++) {
+            delete m_films.at(i);
+        }
+        m_films.clear();
+    }
 }
