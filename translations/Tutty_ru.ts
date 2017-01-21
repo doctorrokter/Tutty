@@ -50,6 +50,18 @@
     </message>
 </context>
 <context>
+    <name>ConcertPage</name>
+    <message>
+        <location filename="../assets/pages/ConcertPage.qml" line="108"/>
+        <source>Add to calendar</source>
+        <translation type="unfinished">Добавить в календарь</translation>
+    </message>
+    <message>
+        <source>Event added! Calendar updated</source>
+        <translation type="obsolete">Событие добавлено! Календарь обновлён</translation>
+    </message>
+</context>
+<context>
     <name>ConcertsPage</name>
     <message>
         <location filename="../assets/pages/ConcertsPage.qml" line="40"/>
@@ -167,6 +179,15 @@
         <source>Cancel</source>
         <translation type="obsolete">Отмена</translation>
     </message>
+    <message>
+        <location filename="../assets/components/ListItemSession.qml" line="122"/>
+        <source>Create an event in Calendar?</source>
+        <translation type="unfinished">Добавить событие в календарь?</translation>
+    </message>
+    <message>
+        <source>Event added! Calendar updated</source>
+        <translation type="obsolete">Событие добавлено! Календарь обновлён</translation>
+    </message>
 </context>
 <context>
     <name>Request</name>
@@ -187,6 +208,17 @@
         <location filename="../assets/components/SessionsDialog.qml" line="66"/>
         <source>Cancel</source>
         <translation type="unfinished">Отмена</translation>
+    </message>
+</context>
+<context>
+    <name>SessionsPage</name>
+    <message>
+        <source>Event added! Calendar updated</source>
+        <translation type="obsolete">Событие добавлено! Календарь обновлён</translation>
+    </message>
+    <message>
+        <source>Create an event in Calendar?</source>
+        <translation type="obsolete">Добавить событие в календарь?</translation>
     </message>
 </context>
 <context>
@@ -224,16 +256,26 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="36"/>
+        <location filename="../assets/main.qml" line="37"/>
         <source>Films</source>
         <translation type="unfinished">Фильмы</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="99"/>
+        <source>News</source>
+        <translation type="unfinished">Новости</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="132"/>
+        <source>Event added! Calendar updated</source>
+        <translation type="unfinished">Событие добавлено! Календарь обновлён</translation>
     </message>
     <message>
         <source>Bookmarks</source>
         <translation type="obsolete">Закладки</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="64"/>
+        <location filename="../assets/main.qml" line="65"/>
         <source>Concerts</source>
         <translation type="unfinished">Концерты</translation>
     </message>

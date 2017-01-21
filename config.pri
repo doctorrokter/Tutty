@@ -66,10 +66,12 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/ic_history.png) \
         $$quote($$BASEDIR/assets/images/ic_location.png) \
+        $$quote($$BASEDIR/assets/images/ic_notes.png) \
         $$quote($$BASEDIR/assets/images/ic_rectangle.png) \
         $$quote($$BASEDIR/assets/images/ic_ticket.png) \
         $$quote($$BASEDIR/assets/images/ic_ticket_2.png) \
         $$quote($$BASEDIR/assets/images/marker.png) \
+        $$quote($$BASEDIR/assets/images/news.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/BookmarksPage.qml) \
         $$quote($$BASEDIR/assets/pages/CommentsPage.qml) \
@@ -102,7 +104,9 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/services/BookmarksService.cpp) \
         $$quote($$BASEDIR/src/services/CitiesService.cpp) \
         $$quote($$BASEDIR/src/services/ConcertsService.cpp) \
-        $$quote($$BASEDIR/src/services/FilmsService.cpp)
+        $$quote($$BASEDIR/src/services/FilmsService.cpp) \
+        $$quote($$BASEDIR/src/utils/Calendar.cpp) \
+        $$quote($$BASEDIR/src/utils/Eraser.cpp)
 
     HEADERS += \
         $$quote($$BASEDIR/src/__test__/cascadestester.hpp) \
@@ -120,7 +124,9 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/services/BookmarksService.hpp) \
         $$quote($$BASEDIR/src/services/CitiesService.hpp) \
         $$quote($$BASEDIR/src/services/ConcertsService.hpp) \
-        $$quote($$BASEDIR/src/services/FilmsService.hpp)
+        $$quote($$BASEDIR/src/services/FilmsService.hpp) \
+        $$quote($$BASEDIR/src/utils/Calendar.hpp) \
+        $$quote($$BASEDIR/src/utils/Eraser.hpp)
 }
 
 CONFIG += precompile_header
@@ -159,6 +165,11 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../src/services/*.cc) \
         $$quote($$BASEDIR/../src/services/*.cpp) \
         $$quote($$BASEDIR/../src/services/*.cxx) \
+        $$quote($$BASEDIR/../src/utils/*.c) \
+        $$quote($$BASEDIR/../src/utils/*.c++) \
+        $$quote($$BASEDIR/../src/utils/*.cc) \
+        $$quote($$BASEDIR/../src/utils/*.cpp) \
+        $$quote($$BASEDIR/../src/utils/*.cxx) \
         $$quote($$BASEDIR/../assets/*.qml) \
         $$quote($$BASEDIR/../assets/*.js) \
         $$quote($$BASEDIR/../assets/*.qs) \

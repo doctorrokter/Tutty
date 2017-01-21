@@ -1,4 +1,5 @@
 import bb.cascades 1.4
+import bb.system 1.2
 import "../components"
 import "../actions"
 
@@ -15,49 +16,53 @@ Page {
             layout: StackLayout {
                 orientation: LayoutOrientation.TopToBottom
             }
-        
-            leftPadding: ui.du(2.5)
-            topPadding: ui.du(2.5)
-            rightPadding: ui.du(2.5)
-            bottomPadding: ui.du(2.5)
             
             Spinner {
                 id: spinner
             }
         
             Container {
-                layout: StackLayout {
-                    orientation: LayoutOrientation.LeftToRight
-                }
-            
-                Container {
-                    WebView {
-                        minWidth: ui.du(25.0)
-                        maxWidth: ui.du(25.0)
-                        url: _concertsService.activeConcert.concert.image
-                    }
-                }
+                leftPadding: ui.du(2.5)
+                topPadding: ui.du(2.5)
+                rightPadding: ui.du(2.5)
+                bottomPadding: ui.du(2.5)
+                
+                
+                
                 Container {
                     layout: StackLayout {
-                        orientation: LayoutOrientation.TopToBottom
+                        orientation: LayoutOrientation.LeftToRight
                     }
-                    leftPadding: ui.du(2.5)
-                    Label {
-                        text: _concertsService.activeConcert.concert.name
-                        textStyle.base: SystemDefaults.TextStyles.TitleText
-                        multiline: true
+                    
+                    Container {
+                        WebView {
+                            minWidth: ui.du(25.0)
+                            maxWidth: ui.du(25.0)
+                            url: _concertsService.activeConcert.concert.image
+                        }
+                    }
+                    Container {
+                        layout: StackLayout {
+                            orientation: LayoutOrientation.TopToBottom
+                        }
+                        leftPadding: ui.du(2.5)
+                        Label {
+                            text: _concertsService.activeConcert.concert.name
+                            textStyle.base: SystemDefaults.TextStyles.TitleText
+                            multiline: true
+                        }
                     }
                 }
-            }
-        
-            Container {
-                topPadding: ui.du(2.5)
-                bottomPadding: ui.du(2.5)
-                Label {
-                    text: _concertsService.activeConcert.concert.description
-                    textStyle.base: SystemDefaults.TextStyles.BodyText
-                    textFormat: TextFormat.Html
-                    multiline: true
+                
+                Container {
+                    topPadding: ui.du(2.5)
+                    bottomPadding: ui.du(2.5)
+                    Label {
+                        text: _concertsService.activeConcert.concert.description
+                        textStyle.base: SystemDefaults.TextStyles.BodyText
+                        textFormat: TextFormat.Html
+                        multiline: true
+                    }
                 }
             }
             
@@ -96,6 +101,21 @@ Page {
                             concert: ListItemData.concert
                             place: ListItemData.place
                             date: ListItemData.date
+                            
+                            contextActions: [
+                                ActionSet {
+                                    ActionItem {
+                                        title: qsTr("Add to calendar") + Retranslate.onLocaleOrLanguageChanged
+                                        imageSource: "asset:///images/ic_notes.png"
+                                        
+                                        onTriggered: {
+                                            var data = ListItemData;
+                                            var body = data.place.title + "\n" + data.place.address;
+                                            _calendar.createEvent(data.concert.name, body, new Date(data.date * 1000));
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 ]

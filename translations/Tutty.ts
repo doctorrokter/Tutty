@@ -42,6 +42,14 @@
     </message>
 </context>
 <context>
+    <name>ConcertPage</name>
+    <message>
+        <location filename="../assets/pages/ConcertPage.qml" line="108"/>
+        <source>Add to calendar</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConcertsPage</name>
     <message>
         <location filename="../assets/pages/ConcertsPage.qml" line="40"/>
@@ -138,6 +146,14 @@
     </message>
 </context>
 <context>
+    <name>ListItemSession</name>
+    <message>
+        <location filename="../assets/components/ListItemSession.qml" line="122"/>
+        <source>Create an event in Calendar?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Request</name>
     <message>
         <location filename="../assets/util/Request.qml" line="24"/>
@@ -182,13 +198,23 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="36"/>
+        <location filename="../assets/main.qml" line="37"/>
         <source>Films</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="64"/>
+        <location filename="../assets/main.qml" line="65"/>
         <source>Concerts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="99"/>
+        <source>News</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="132"/>
+        <source>Event added! Calendar updated</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

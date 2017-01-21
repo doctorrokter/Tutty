@@ -71,30 +71,10 @@ Page {
         }
     ]
     
-    
     onCreationCompleted: {
         _filmsService.filmsSessionsChanged.connect(root.populateSessionsList);
         filmsActions.sessions(function(response) {
             _filmsService.sessionsFromMaps(JSON.parse(response).items);
-//            var data = [];
-//            var items = JSON.parse(response).items;
-//            Object.keys(items).forEach(function(dateStr) {
-//                var map = items[dateStr];
-//                var filmId = Object.keys(map)[0];
-//                var filmMap = map[filmId];
-//                var cinemasIds = Object.keys(filmMap);
-//                
-//                cinemasIds.forEach(function(cinemaId) {
-//                    var s = {
-//                        date: parseInt(dateStr), 
-//                        cinema: _filmsService.findCinemaById(cinemaId).toMap(), 
-//                        sessions: filmMap[cinemaId]
-//                    };
-//                    data.push(s);
-//                });
-//            });
-//            _filmsService.storeSessions(JSON.stringify(data));
-//            groupDataModel.insertList(data);
         });
     }
 }

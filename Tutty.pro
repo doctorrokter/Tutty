@@ -1,6 +1,6 @@
 APP_NAME = Tutty
 
 CONFIG += qt warn_on cascades10 qtestlib
-LIBS += -lbbsystem -lbbdata
+LIBS += -lbbsystem -lbbdata -lbbpim
 
 include(config.pri)

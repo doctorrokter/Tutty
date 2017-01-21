@@ -15,6 +15,7 @@
  */
 
 import bb.cascades 1.4
+import bb.system 1.2
 import "./pages"
 import "./components"
 
@@ -81,6 +82,10 @@ TabbedPane {
                     root.activeTab.content.push(cp);
                 }
             }
+            
+            onPopTransitionEnded: {
+                page.destroy();
+            }
         }
         
         onTriggered: {
@@ -88,6 +93,11 @@ TabbedPane {
                 concertsPage.load();
             }
         }
+    }
+    
+    Tab {
+        title: qsTr("News") + Retranslate.onLocaleOrLanguageChanged
+        imageSource: "asset:///images/news.png"
     }
     
 //    Tab {
@@ -113,9 +123,15 @@ TabbedPane {
                 Application.themeSupport.setVisualStyle(VisualStyle.Bright);
             }
         }
+        _calendar.eventCreated.connect(toast.show);
     }
     
     attachedObjects: [
+        SystemToast {
+            id: toast
+            body: qsTr("Event added! Calendar updated") + Retranslate.onLocaleOrLanguageChanged
+        },
+        
         ComponentDefinition {
             id: filmPage
             FilmPage {

@@ -29,6 +29,8 @@
 #include "services/ConcertsService.hpp"
 #include "services/BookmarksService.hpp"
 
+#include "utils/Calendar.hpp"
+
 #include "config/AppConfig.hpp"
 
 using namespace bb::cascades;
@@ -48,6 +50,8 @@ ApplicationUI::ApplicationUI() :
     CitiesService* p_citiesService = new CitiesService(this);
     BookmarksService* p_bookmarksService = new BookmarksService(this);
     ConcertsService* p_concertsService = new ConcertsService(this);
+
+    Calendar* p_calendar = new Calendar(this);
 
     bool res = QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()));
     // This is only available in Debug builds
@@ -71,6 +75,7 @@ ApplicationUI::ApplicationUI() :
     rootContext->setContextProperty("_concertsService", p_concertsService);
     rootContext->setContextProperty("_currentPath", QDir::currentPath());
     rootContext->setContextProperty("_appConfig", p_appConfig);
+    rootContext->setContextProperty("_calendar", p_calendar);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

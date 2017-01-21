@@ -16,6 +16,7 @@ CustomListItem {
         {sessionTime: 0, price: "10.5", threeD: true}
     ]
     property int date: 0
+    property variant sessionDate
     
     Container {
         horizontalAlignment: HorizontalAlignment.Fill
@@ -102,7 +103,9 @@ CustomListItem {
                         
                         onTriggered: {
                             var data = regularSessionsDataModel.data(indexPath);
+                            root.sessionDate = new Date(data.sessionTime * 1000);
                             browser.query.uri = data.buyTicketUrl;
+                            dialog.show();
                         }                     
                     }
                 }
@@ -113,7 +116,21 @@ CustomListItem {
             SessionsDialog {
                 id: sessionsDialog
             },
-                        
+            
+            SystemDialog {
+                id: dialog
+                title: qsTr("Create an event in Calendar?") + Retranslate.onLocaleOrLanguageChanged
+                
+                
+                
+                onFinished: {
+                    if (value === 2) {
+                        var body = root.cinema.title + "\n" + root.cinema.address;
+                        _calendar.createEvent(_filmsService.activeFilm.name, body, root.sessionDate);
+                    }
+                }
+            },
+            
             Invocation {
                 id: browser
                 
@@ -138,7 +155,6 @@ CustomListItem {
     }
     
     onSessionsChanged: {
-//        console.debug("cinema", root.cinema.title, "date", root.date, "sessions", root.sessions.length);
         regularSessionsDataModel.clear();
         regularSessionsDataModel.append(sessions);
     }
