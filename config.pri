@@ -60,6 +60,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/TimePrice.qml) \
         $$quote($$BASEDIR/assets/concerts.json) \
         $$quote($$BASEDIR/assets/images/calendar.png) \
+        $$quote($$BASEDIR/assets/images/concerts.png) \
+        $$quote($$BASEDIR/assets/images/films.png) \
         $$quote($$BASEDIR/assets/images/ic_add_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/ic_history.png) \

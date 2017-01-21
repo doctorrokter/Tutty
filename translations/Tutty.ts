@@ -187,7 +187,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="62"/>
+        <location filename="../assets/main.qml" line="64"/>
         <source>Concerts</source>
         <translation type="unfinished"></translation>
     </message>

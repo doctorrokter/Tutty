@@ -34,6 +34,8 @@ TabbedPane {
     
     Tab {
         title: qsTr("Films") + Retranslate.onLocaleOrLanguageChanged
+        imageSource: "asset:///images/films.png"
+        
         NavigationPane {
             FilmsPage {
                 id: filmsPage
@@ -60,6 +62,7 @@ TabbedPane {
     
     Tab {
         title: qsTr("Concerts") + Retranslate.onLocaleOrLanguageChanged
+        imageSource: "asset:///images/concerts.png"
         
         NavigationPane {
             ConcertsPage {

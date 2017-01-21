@@ -1,5 +1,5 @@
 1
-44
+46
 actions/AppActions.qml
 actions/ConcertsActions.qml
 actions/FilmsActions.qml
@@ -22,6 +22,8 @@ components/Ticket.qml
 components/TimePrice.qml
 concerts.json
 images/calendar.png
+images/concerts.png
+images/films.png
 images/ic_add_bookmarks.png
 images/ic_favorite.png
 images/ic_history.png
