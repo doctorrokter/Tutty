@@ -64,7 +64,7 @@ void CitiesService::setCurrentCity(const int cityId) {
         if (cityId == m_cities.at(i)->getId()) {
             m_pCurrentCity = m_cities.at(i);
             settings.setValue("city", m_pCurrentCity->toMap());
-            emit currentCityChanged(m_pCurrentCity);
+            emit currentCityChanged();
             return;
         }
     }
@@ -72,9 +72,7 @@ void CitiesService::setCurrentCity(const int cityId) {
 
 void CitiesService::destroyCities() {
     if (!m_cities.empty()) {
-        for (int i = 0; i < m_cities.size(); i++) {
-            delete m_cities.at(i);
-        }
+        qDeleteAll(m_cities.begin(), m_cities.end());
         m_cities.clear();
     }
 }

@@ -51,6 +51,7 @@ Page {
                         
                         Label {
                             text: _filmsService.activeFilm.description
+                            textFormat: TextFormat.Html
                             multiline: true
                         }
                     }
@@ -86,9 +87,9 @@ Page {
     onCreationCompleted: {
         if (!_filmsService.activeFilm.description) {
             filmsActions.getDescription(function(response) {
-                    var items = JSON.parse(response).items;
-                    _filmsService.activeFilm.description = items[_filmsService.activeFilm.id].description_full;
-                    _filmsService.activeFilm.commentsCnt = items[_filmsService.activeFilm.id].commentsCnt;
+                var items = JSON.parse(response).items;
+                _filmsService.activeFilm.description = items[_filmsService.activeFilm.id].description_html;
+                _filmsService.activeFilm.commentsCnt = items[_filmsService.activeFilm.id].commentsCnt;
             });
         }
     }

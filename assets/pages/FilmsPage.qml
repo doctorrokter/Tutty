@@ -19,8 +19,7 @@ Page {
     }
     
     function populateCinemas() {
-        cinemasContainer.clear();
-        cinemasContainer.places = _filmsService.cinemasToMaps();
+        cinemasContainer.setPlaces(_filmsService.cinemasToMaps());
     }
     
     function load(jsDate) {
@@ -29,7 +28,7 @@ Page {
             subHeader.date = jsDate;
         }
         
-        var city = "minsk;"
+        var city = "minsk";
         if (_citiesService.currentCity) {
             city = _citiesService.currentCity.code;
         }
@@ -45,6 +44,10 @@ Page {
         title: qsTr("Cinema") + Retranslate.onLocaleOrLanguageChanged
         calendarEnabled: true
         locationEnabled: true
+        
+        onDateChanged: {
+            root.load(jsDate);
+        }
     }
     
     Container {
@@ -67,6 +70,7 @@ Page {
             PlacesContainer {
                 id: cinemasContainer
                 visible: false
+                places: []
                 
                 onPlaceChosen: {
                     cinemaChosen(place);
@@ -171,7 +175,6 @@ Page {
         _filmsService.filmsChanged.connect(root.populateFilms);
         _filmsService.cinemasChanged.connect(root.populateCinemas);
         _citiesService.currentCityChanged.connect(root.load);
-        root.titleBar.dateChanged.connect(root.load);
         load();
     }
 }

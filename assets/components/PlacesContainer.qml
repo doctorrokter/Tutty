@@ -5,7 +5,7 @@ Container {
     
     signal placeChosen(variant place); 
     
-    property variant places
+    property variant places: []
     property int touchY: 0
     
     horizontalAlignment: HorizontalAlignment.Fill
@@ -19,7 +19,7 @@ Container {
         topPadding: subHeader.isShown ? subHeader.height : 0
         
         dataModel: GroupDataModel {
-            id: rootDataModel
+            id: placesDataModel
             sortingKeys: ["title"]
             grouping: ItemGrouping.ByFirstChar
         }
@@ -54,13 +54,14 @@ Container {
         ]
         
         onTriggered: {
-            var data = rootDataModel.data(indexPath);
+            var data = placesDataModel.data(indexPath);
             placeChosen(data);
         }
     }
     
     onPlacesChanged: {
-        rootDataModel.insertList(root.places);
+        placesDataModel.clear();
+        placesDataModel.insertList(root.places);
     }
     
     onTouch: {
@@ -77,7 +78,8 @@ Container {
         }
     }
     
-    function clear() {
-        rootDataModel.clear();
+    function setPlaces(places) {
+        root.places = places;
+        placesChanged();
     }
 }

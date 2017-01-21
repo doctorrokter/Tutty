@@ -71,6 +71,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/BookmarksPage.qml) \
         $$quote($$BASEDIR/assets/pages/CommentsPage.qml) \
+        $$quote($$BASEDIR/assets/pages/ConcertPage.qml) \
         $$quote($$BASEDIR/assets/pages/ConcertsPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \

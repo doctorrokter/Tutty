@@ -19,6 +19,7 @@ class ConcertsService : public QObject {
     Q_OBJECT
     Q_PROPERTY(QList<Place*> concertHalls READ getConcertHalls WRITE setConcertHalls NOTIFY concertHallsChanged)
     Q_PROPERTY(QList<ConcertSession*> concerts READ getConcerts WRITE setConcerts NOTIFY concertsChanged)
+    Q_PROPERTY(ConcertSession* activeConcert READ getActiveConcert NOTIFY activeConcertChanged)
 public:
     ConcertsService(QObject* parent = 0);
     virtual ~ConcertsService();
@@ -32,6 +33,9 @@ public:
     Q_INVOKABLE void concertHallsFromMaps(const QVariantList concertHallsMaps);
     Q_INVOKABLE QVariantList concertHallsToMaps() const;
 
+    Q_INVOKABLE ConcertSession* getActiveConcert() const;
+    Q_INVOKABLE void setActiveConcert(const int id, const int date);
+
     Q_INVOKABLE void processMap(const QVariantMap concertsMap);
     Q_INVOKABLE QVariantList concertsToMaps() const;
 
@@ -40,10 +44,12 @@ public:
 Q_SIGNALS:
     void concertHallsChanged(const QList<Place*>& concertHalls);
     void concertsChanged(const QList<ConcertSession*>& concerts);
+    void activeConcertChanged(ConcertSession* concert);
 
 private:
     QList<Place*> m_concertHalls;
     QList<ConcertSession*> m_concerts;
+    ConcertSession* m_p_activeConcert;
 
     void deleteConcertHalls();
     void deleteConcerts();

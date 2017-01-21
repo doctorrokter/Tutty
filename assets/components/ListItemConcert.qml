@@ -1,6 +1,6 @@
 import bb.cascades 1.4
 
-Container {
+CustomListItem {
     id: root
     
     property variant concert: {
@@ -11,52 +11,57 @@ Container {
         title: "Брисл / Bristle"
     }
     property variant date: 1484935200
+    property bool showImage: true
     
-    layout: StackLayout {
-        orientation: LayoutOrientation.LeftToRight
-    }
-    leftPadding: ui.du(2.5)
-    topPadding: ui.du(2.5)
-    rightPadding: ui.du(2.5)
-    bottomPadding: ui.du(2.5)
-    
-    Container {
-        WebView {
-            minWidth: ui.du(25.0)
-            maxWidth: ui.du(25.0)
-            url: root.concert.image
-        }
-    }
     Container {
         layout: StackLayout {
-            orientation: LayoutOrientation.TopToBottom
+            orientation: LayoutOrientation.LeftToRight
         }
+        
         leftPadding: ui.du(2.5)
-        Label {
-            text: root.concert.name
-            textStyle.base: SystemDefaults.TextStyles.TitleText
-            multiline: true
-        }
-        Label {
-            text: root.place.title
-            textStyle.base: SystemDefaults.TextStyles.SubtitleText
-            multiline: true
+        topPadding: ui.du(2.5)
+        rightPadding: ui.du(2.5)
+        bottomPadding: ui.du(2.5)
+        
+        Container {
+            visible: root.showImage
+            WebView {
+                minWidth: ui.du(25.0)
+                maxWidth: ui.du(25.0)
+                url: root.concert.image
+            }
         }
         Container {
             layout: StackLayout {
-                orientation: LayoutOrientation.LeftToRight
+                orientation: LayoutOrientation.TopToBottom
             }
-            ImageView {
-                imageSource: "asset:///images/ic_history.png"
-                filterColor: Color.Red
-                maxWidth: ui.du(5)
-                maxHeight: ui.du(5)
-                verticalAlignment: VerticalAlignment.Center
+            leftPadding: ui.du(2.5)
+            Label {
+                text: root.concert.name
+                textStyle.base: SystemDefaults.TextStyles.TitleText
+                multiline: true
             }
             Label {
-                verticalAlignment: VerticalAlignment.Center
-                text: Qt.formatTime(new Date(Number(root.date * 1000)), "HH:mm")
-                textStyle.color: Color.Red
+                text: root.place.title
+                textStyle.base: SystemDefaults.TextStyles.SubtitleText
+                multiline: true
+            }
+            Container {
+                layout: StackLayout {
+                    orientation: LayoutOrientation.LeftToRight
+                }
+                ImageView {
+                    imageSource: "asset:///images/ic_history.png"
+                    filterColor: Color.Red
+                    maxWidth: ui.du(5)
+                    maxHeight: ui.du(5)
+                    verticalAlignment: VerticalAlignment.Center
+                }
+                Label {
+                    verticalAlignment: VerticalAlignment.Center
+                    text: Qt.formatTime(new Date(Number(root.date * 1000)), "HH:mm")
+                    textStyle.color: Color.Red
+                }
             }
         }
     }

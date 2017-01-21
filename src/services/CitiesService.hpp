@@ -33,7 +33,7 @@ public:
 
 Q_SIGNALS:
     void citiesChanged(const QList<City*>& cities);
-    void currentCityChanged(const City* city);
+    void currentCityChanged();
 
 private:
     QList<City*> m_cities;

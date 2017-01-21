@@ -206,18 +206,14 @@ void FilmsService::appendComments(const QVariantList comments) {
 
 void FilmsService::deleteCinemas() {
     if (!m_cinemas.empty()) {
-        for (int i = 0; i < m_cinemas.size(); i++) {
-            delete m_cinemas.at(i);
-        }
+        qDeleteAll(m_cinemas.begin(), m_cinemas.end());
         m_cinemas.clear();
     }
 }
 
 void FilmsService::deleteFilms() {
     if (!m_films.empty()) {
-        for (int i = 0; i < m_films.size(); i++) {
-            delete m_films.at(i);
-        }
+        qDeleteAll(m_films.begin(), m_films.end());
         m_films.clear();
     }
 }

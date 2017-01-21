@@ -52,13 +52,13 @@
 <context>
     <name>ConcertsPage</name>
     <message>
-        <location filename="../assets/pages/ConcertsPage.qml" line="36"/>
-        <location filename="../assets/pages/ConcertsPage.qml" line="144"/>
+        <location filename="../assets/pages/ConcertsPage.qml" line="40"/>
+        <location filename="../assets/pages/ConcertsPage.qml" line="152"/>
         <source>Concerts</source>
         <translation type="unfinished">Концерты</translation>
     </message>
     <message>
-        <location filename="../assets/pages/ConcertsPage.qml" line="145"/>
+        <location filename="../assets/pages/ConcertsPage.qml" line="153"/>
         <source>Concert Halls</source>
         <translation type="unfinished">Концертные залы</translation>
     </message>
@@ -102,22 +102,22 @@
         <translation type="unfinished">Актёры</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="60"/>
+        <location filename="../assets/pages/FilmPage.qml" line="61"/>
         <source>Comments</source>
         <translation type="unfinished">Отзывы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="61"/>
+        <location filename="../assets/pages/FilmPage.qml" line="62"/>
         <source>Read comments</source>
         <translation type="unfinished">Читать отзывы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="70"/>
+        <location filename="../assets/pages/FilmPage.qml" line="71"/>
         <source>Sessions</source>
         <translation type="unfinished">Сеансы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmPage.qml" line="71"/>
+        <location filename="../assets/pages/FilmPage.qml" line="72"/>
         <source>View sessions</source>
         <translation type="unfinished">Просмотреть сеансы</translation>
     </message>
@@ -130,7 +130,7 @@
 <context>
     <name>FilmsPage</name>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="45"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="44"/>
         <source>Cinema</source>
         <translation type="unfinished">Кино</translation>
     </message>
@@ -139,12 +139,12 @@
         <translation type="obsolete">Закладки</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="140"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="144"/>
         <source>Films</source>
         <translation type="unfinished">Фильмы</translation>
     </message>
     <message>
-        <location filename="../assets/pages/FilmsPage.qml" line="141"/>
+        <location filename="../assets/pages/FilmsPage.qml" line="145"/>
         <source>Cinemas</source>
         <translation type="unfinished">Кинотеатры</translation>
     </message>

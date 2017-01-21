@@ -10,10 +10,10 @@ Page {
     
     property variant date: new Date()
     property int touchY: 0
+    property bool firstLoaded: false
     
     function populateConcertHalls() {
-        concertHallsContainer.clear();
-        concertHallsContainer.places = _concertsService.concertHallsToMaps();
+        concertHallsContainer.setPlaces(_concertsService.concertHallsToMaps());
     }
     
     function populateConcerts() {
@@ -28,7 +28,11 @@ Page {
         }
         
         concertsActions.placeeventunion(Math.round(root.date.getTime() / 1000), function(response) {
-            _concertsService.processMap(JSON.parse(response));
+            if (!root.firstLoaded) {
+                root.firstLoaded = true;
+            }
+            var data = JSON.parse(response);
+            _concertsService.processMap(data);
         });
     }
     
@@ -36,6 +40,10 @@ Page {
         title: qsTr("Concerts") + Retranslate.onLocaleOrLanguageChanged
         calendarEnabled: true
         locationEnabled: true
+        
+        onDateChanged: {
+            root.load(jsDate);
+        }
     }
     
     Container {
@@ -166,7 +174,6 @@ Page {
     onCreationCompleted: {
         _concertsService.concertHallsChanged.connect(root.populateConcertHalls);
         _concertsService.concertsChanged.connect(root.populateConcerts);
-        root.titleBar.dateChanged.connect(root.load);
-        root.load();
+        _citiesService.currentCityChanged.connect(root.load);
     }
 }

@@ -50,6 +50,19 @@ QVariantList ConcertsService::concertHallsToMaps() const {
     return list;
 }
 
+ConcertSession* ConcertsService::getActiveConcert() const { return m_p_activeConcert; }
+void ConcertsService::setActiveConcert(const int id, const int date) {
+    QList<ConcertSession*>::iterator iter;
+    for (iter = m_concerts.begin(); iter != m_concerts.end(); iter++) {
+        ConcertSession* cs = *iter;
+        if (cs->getDate() == date && cs->getConcert()->getId() == id) {
+            m_p_activeConcert = cs;
+            emit activeConcertChanged(m_p_activeConcert);
+            return;
+        }
+    }
+}
+
 void ConcertsService::processMap(const QVariantMap concertsMap) {
     QVariantList places = concertsMap.value("places").toList();
     concertHallsFromMaps(places);
@@ -79,11 +92,15 @@ void ConcertsService::processMap(const QVariantMap concertsMap) {
                 sessions.append(p_session);
             }
             p_concertSession->setSessions(sessions);
-            p_concertSession->setPlace(findPlaceById(placeIdStr.toInt()));
+
+            Place* p_place = new Place(this);
+            p_place->fromMap(findPlaceById(placeIdStr.toInt())->toMap());
+            p_concertSession->setPlace(p_place);
+
             p_concertSession->setDate(dateStr.toInt());
 
             for (int i = 0; i < events.size(); i++) {
-            QVariantMap eventMap = events.at(i).toMap();
+                QVariantMap eventMap = events.at(i).toMap();
                 if (eventMap.value("id").toInt() == eventId.toInt()) {
                     TuttyEvent* p_concert = new TuttyEvent(this);
                     p_concert->fromMap(eventMap);
@@ -106,18 +123,14 @@ QVariantList ConcertsService::concertsToMaps() const {
 
 void ConcertsService::deleteConcertHalls() {
     if (!m_concertHalls.empty()) {
-        for (int i = 0; i < m_concertHalls.size(); i++) {
-            delete m_concertHalls.at(i);
-        }
+        qDeleteAll(m_concertHalls.begin(), m_concertHalls.end());
         m_concertHalls.clear();
     }
 }
 
 void ConcertsService::deleteConcerts() {
     if (!m_concerts.empty()) {
-        for (int i = 0; i < m_concerts.size(); i++) {
-            delete m_concerts.at(i);
-        }
+        qDeleteAll(m_concerts.begin(), m_concerts.end());
         m_concerts.clear();
     }
 }

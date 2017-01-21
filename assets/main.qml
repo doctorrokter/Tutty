@@ -71,6 +71,18 @@ TabbedPane {
                     mp.address = _citiesService.currentCity.title + " " + concertHall.address;
                     root.activeTab.content.push(mp);
                 }
+                
+                onConcertChosen: {
+                    _concertsService.setActiveConcert(parseInt(concert.concert.id), parseInt(concert.date));
+                    var cp = concertPage.createObject();
+                    root.activeTab.content.push(cp);
+                }
+            }
+        }
+        
+        onTriggered: {
+            if (!concertsPage.firstLoaded) {
+                concertsPage.load();
             }
         }
     }
@@ -134,6 +146,11 @@ TabbedPane {
         ComponentDefinition {
             id: settingsPage
             SettingsPage {}
+        },
+        
+        ComponentDefinition {
+            id: concertPage
+            ConcertPage {}
         }
     ]
 }

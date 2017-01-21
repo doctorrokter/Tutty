@@ -1,5 +1,5 @@
 1
-43
+44
 actions/AppActions.qml
 actions/ConcertsActions.qml
 actions/FilmsActions.qml
@@ -33,6 +33,7 @@ images/marker.png
 main.qml
 pages/BookmarksPage.qml
 pages/CommentsPage.qml
+pages/ConcertPage.qml
 pages/ConcertsPage.qml
 pages/FilmPage.qml
 pages/FilmsPage.qml
