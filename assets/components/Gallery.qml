@@ -21,7 +21,7 @@ Container {
         
         onCreationCompleted: {
             root.images.forEach(function(image) {
-                var img = imageWebView.createObject();
+                var img = imageWebView.createObject(this);
                 img.url = image;
                 gallery.add(img);
             });

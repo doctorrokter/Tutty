@@ -4,9 +4,9 @@ var url = "http://afisha.tut.by/export/api.php";
 
 var methods = (function() {
 	function request(httpMethod, paramsStr, onSuccess, onError) {
-		console.debug('request: ' + httpMethod);
-		console.debug('url: ' + url);
-		console.debug('params: ' + paramsStr);
+//		console.debug('request: ' + httpMethod);
+//		console.debug('url: ' + url);
+//		console.debug('params: ' + paramsStr);
 		
 		var _req = new XMLHttpRequest();
 

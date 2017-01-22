@@ -80,6 +80,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/FilmPage.qml) \
         $$quote($$BASEDIR/assets/pages/FilmsPage.qml) \
         $$quote($$BASEDIR/assets/pages/MapPage.qml) \
+        $$quote($$BASEDIR/assets/pages/NewsPage.qml) \
         $$quote($$BASEDIR/assets/pages/SessionsPage.qml) \
         $$quote($$BASEDIR/assets/pages/SettingsPage.qml) \
         $$quote($$BASEDIR/assets/sheets/WebSheet.qml) \

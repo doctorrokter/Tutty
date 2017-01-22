@@ -1,5 +1,5 @@
 1
-48
+49
 actions/AppActions.qml
 actions/ConcertsActions.qml
 actions/FilmsActions.qml
@@ -42,6 +42,7 @@ pages/ConcertsPage.qml
 pages/FilmPage.qml
 pages/FilmsPage.qml
 pages/MapPage.qml
+pages/NewsPage.qml
 pages/SessionsPage.qml
 pages/SettingsPage.qml
 sheets/WebSheet.qml

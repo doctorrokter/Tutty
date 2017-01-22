@@ -27,7 +27,7 @@ TabbedPane {
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
             onTriggered: {
-                var sp = settingsPage.createObject();
+                var sp = settingsPage.createObject(this);
                 root.activeTab.content.push(sp);
             }
         }
@@ -43,12 +43,12 @@ TabbedPane {
 
                 onFilmChosen: {
                     _filmsService.setActiveFilm(parseInt(film.id));
-                    var fp = filmPage.createObject();
+                    var fp = filmPage.createObject(this);
                     root.activeTab.content.push(fp);
                 }
                 
                 onCinemaChosen: {
-                    var mp = mapPage.createObject();
+                    var mp = mapPage.createObject(this);
                     mp.placeTitle = cinema.title;
                     mp.address = _citiesService.currentCity.title + " " + cinema.address;
                     root.activeTab.content.push(mp);
@@ -70,7 +70,7 @@ TabbedPane {
                 id: concertsPage
                 
                 onConcertHallChosen: {
-                    var mp = mapPage.createObject();
+                    var mp = mapPage.createObject(this);
                     mp.placeTitle = concertHall.title;
                     mp.address = _citiesService.currentCity.title + " " + concertHall.address;
                     root.activeTab.content.push(mp);
@@ -78,7 +78,7 @@ TabbedPane {
                 
                 onConcertChosen: {
                     _concertsService.setActiveConcert(parseInt(concert.concert.id), parseInt(concert.date));
-                    var cp = concertPage.createObject();
+                    var cp = concertPage.createObject(this);
                     root.activeTab.content.push(cp);
                 }
             }
@@ -95,10 +95,14 @@ TabbedPane {
         }
     }
     
-    Tab {
-        title: qsTr("News") + Retranslate.onLocaleOrLanguageChanged
-        imageSource: "asset:///images/news.png"
-    }
+//    Tab {
+//        title: qsTr("News") + Retranslate.onLocaleOrLanguageChanged
+//        imageSource: "asset:///images/news.png"
+//        
+//        NavigationPane {
+//            NewsPage {}
+//        }
+//    }
     
 //    Tab {
 //        title: qsTr("Bookmarks") + Retranslate.onLocaleOrLanguageChanged
@@ -136,12 +140,12 @@ TabbedPane {
             id: filmPage
             FilmPage {
                 onSessionsRequested: {
-                    var sp = sessionsPage.createObject();
+                    var sp = sessionsPage.createObject(this);
                     root.activeTab.content.push(sp);
                 }
                 
                 onCommentsRequested: {
-                    var cp = commentsPage.createObject();
+                    var cp = commentsPage.createObject(this);
                     root.activeTab.content.push(cp);
                 }
             }

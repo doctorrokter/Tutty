@@ -190,6 +190,14 @@
     </message>
 </context>
 <context>
+    <name>NewsPage</name>
+    <message>
+        <location filename="../assets/pages/NewsPage.qml" line="9"/>
+        <source>News</source>
+        <translation type="unfinished">Новости</translation>
+    </message>
+</context>
+<context>
     <name>Request</name>
     <message>
         <location filename="../assets/util/Request.qml" line="24"/>
@@ -261,12 +269,11 @@
         <translation type="unfinished">Фильмы</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="99"/>
         <source>News</source>
-        <translation type="unfinished">Новости</translation>
+        <translation type="obsolete">Новости</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="132"/>
+        <location filename="../assets/main.qml" line="136"/>
         <source>Event added! Calendar updated</source>
         <translation type="unfinished">Событие добавлено! Календарь обновлён</translation>
     </message>
